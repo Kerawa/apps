@@ -32,11 +32,20 @@ import org.w3c.dom.Element;
  */
 public class Ads extends javax.swing.JFrame {
 
+     JFileChooser fileChooser = new JFileChooser();
+//        int returnValue = fileChooser.showOpenDialog(null);
+//        if (returnValue == JFileChooser.APPROVE_OPTION) {
+//            File selectedFile13 = fileChooser.getSelectedFile();
+//            ImageIcon icon = new ImageIcon(selectedFile13.getPath());
+//            Image resizeImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
+//            ImageIcon resizedIcon = new ImageIcon(resizeImage);
+//            imageUpload13.setIcon(resizedIcon);
+    
     List<String> list;
     File fileSelected;
     Cities cities = new Cities();
     String image = "";
-
+    int i = 0;
     /**
      * Creates new form Ads
      */
@@ -158,21 +167,21 @@ public class Ads extends javax.swing.JFrame {
         UnitaryPrice = new javax.swing.JTextArea();
         landUnitaryLabel = new javax.swing.JLabel();
         imagePanel = new javax.swing.JPanel();
-        imageUpload6 = new javax.swing.JLabel();
-        imageUpload2 = new javax.swing.JLabel();
-        imageUpload3 = new javax.swing.JLabel();
-        imageUpload4 = new javax.swing.JLabel();
-        imageUpload5 = new javax.swing.JLabel();
-        imageUpload1 = new javax.swing.JLabel();
-        imageUpload7 = new javax.swing.JLabel();
-        imageUpload13 = new javax.swing.JLabel();
-        imageUpload14 = new javax.swing.JLabel();
-        imageUpload15 = new javax.swing.JLabel();
-        imageUpload11 = new javax.swing.JLabel();
-        imageUpload12 = new javax.swing.JLabel();
-        imageUpload8 = new javax.swing.JLabel();
-        imageUpload9 = new javax.swing.JLabel();
-        imageUpload10 = new javax.swing.JLabel();
+        imageUpload01 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
@@ -180,7 +189,7 @@ public class Ads extends javax.swing.JFrame {
         jSeparator8 = new javax.swing.JSeparator();
         error = new javax.swing.JLabel();
         price = new javax.swing.JFormattedTextField();
-        errorPrice = new java.awt.Label();
+        errorPrice = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         comfirmation_message = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -393,108 +402,9 @@ public class Ads extends javax.swing.JFrame {
         imagePanel.setBackground(new java.awt.Color(240, 240, 242));
         imagePanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        imageUpload6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        imageUpload6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imageUpload6MouseClicked(evt);
-            }
-        });
-
-        imageUpload2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        imageUpload2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imageUpload2MouseClicked(evt);
-            }
-        });
-
-        imageUpload3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        imageUpload3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imageUpload3MouseClicked(evt);
-            }
-        });
-
-        imageUpload4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        imageUpload4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imageUpload4MouseClicked(evt);
-            }
-        });
-
-        imageUpload5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        imageUpload5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imageUpload5MouseClicked(evt);
-            }
-        });
-
-        imageUpload1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        imageUpload1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imageUpload1MouseClicked(evt);
-            }
-        });
-
-        imageUpload7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        imageUpload7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imageUpload7MouseClicked(evt);
-            }
-        });
-
-        imageUpload13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        imageUpload13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imageUpload13MouseClicked(evt);
-            }
-        });
-
-        imageUpload14.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        imageUpload14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imageUpload14MouseClicked(evt);
-            }
-        });
-
-        imageUpload15.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        imageUpload15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imageUpload15MouseClicked(evt);
-            }
-        });
-
-        imageUpload11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        imageUpload11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imageUpload11MouseClicked(evt);
-            }
-        });
-
-        imageUpload12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        imageUpload12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imageUpload12MouseClicked(evt);
-            }
-        });
-
-        imageUpload8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        imageUpload8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imageUpload8MouseClicked(evt);
-            }
-        });
-
-        imageUpload9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        imageUpload9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imageUpload9MouseClicked(evt);
-            }
-        });
-
-        imageUpload10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        imageUpload10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imageUpload10MouseClicked(evt);
+        imageUpload01.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageUpload01ActionPerformed(evt);
             }
         });
 
@@ -503,67 +413,68 @@ public class Ads extends javax.swing.JFrame {
         imagePanelLayout.setHorizontalGroup(
             imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(imagePanelLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addContainerGap()
+                .addGroup(imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(imagePanelLayout.createSequentialGroup()
-                        .addComponent(imageUpload1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(imageUpload2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(imageUpload3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(imageUpload4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imageUpload01, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(imageUpload5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(imagePanelLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addGroup(imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(imageUpload11, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(imageUpload6, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(imagePanelLayout.createSequentialGroup()
-                                .addComponent(imageUpload7, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(imageUpload8, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(imageUpload9, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(imageUpload10, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(imagePanelLayout.createSequentialGroup()
-                                .addComponent(imageUpload12, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(imageUpload13, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(imageUpload14, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(imageUpload15, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(imagePanelLayout.createSequentialGroup()
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         imagePanelLayout.setVerticalGroup(
             imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(imagePanelLayout.createSequentialGroup()
-                .addGroup(imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(imageUpload2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(imageUpload3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(imageUpload1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imageUpload5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imageUpload4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(imageUpload6, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imageUpload7, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imageUpload8, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imageUpload9, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imageUpload10, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(imageUpload11, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imageUpload12, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imageUpload13, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imageUpload14, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imageUpload15, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imageUpload01, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, imagePanelLayout.createSequentialGroup()
+                        .addGroup(imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, imagePanelLayout.createSequentialGroup()
+                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         jLabel15.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
@@ -594,66 +505,6 @@ public class Ads extends javax.swing.JFrame {
             hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(hostPanelLayout.createSequentialGroup()
                 .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(hostPanelLayout.createSequentialGroup()
-                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jSeparator7))
-                        .addGroup(hostPanelLayout.createSequentialGroup()
-                            .addGap(148, 148, 148)
-                            .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(hostPanelLayout.createSequentialGroup()
-                                    .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
-                                            .addGap(17, 17, 17)
-                                            .addComponent(jLabel10))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
-                                            .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel11)
-                                                .addComponent(jLabel12)
-                                                .addComponent(jLabel13)
-                                                .addComponent(jLabel14)
-                                                .addComponent(telelabel)
-                                                .addComponent(teleleble2))
-                                            .addGap(56, 56, 56)
-                                            .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(city_area, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(contact_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(contact_telephone02, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(country, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
-                                            .addGap(24, 24, 24)
-                                            .addComponent(jLabel16))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
-                                            .addGap(4, 4, 4)
-                                            .addComponent(jLabel18)
-                                            .addGap(96, 96, 96)
-                                            .addComponent(dealers_email, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
-                                            .addComponent(jLabel21)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(CheckBoxShowEmail)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 1171, Short.MAX_VALUE)
-                                        .addComponent(jSeparator3)))
-                                .addGroup(hostPanelLayout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(jLabel9)
-                                    .addGap(98, 98, 98)
-                                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(currencyTag, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(27, 27, 27)
-                                    .addComponent(errorPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hostPanelLayout.createSequentialGroup()
-                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(97, 97, 97)
-                                    .addComponent(dealer_name, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1177, Short.MAX_VALUE)))))
                     .addGroup(hostPanelLayout.createSequentialGroup()
                         .addGap(340, 340, 340)
                         .addComponent(publish)
@@ -661,12 +512,12 @@ public class Ads extends javax.swing.JFrame {
                         .addComponent(jButton3))
                     .addGroup(hostPanelLayout.createSequentialGroup()
                         .addGap(150, 150, 150)
-                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
+                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(hostPanelLayout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addComponent(jLabel4))
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(hostPanelLayout.createSequentialGroup()
                                 .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel6)
@@ -734,6 +585,68 @@ public class Ads extends javax.swing.JFrame {
                     .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(hostPanelLayout.createSequentialGroup()
+                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(hostPanelLayout.createSequentialGroup()
+                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator7))
+                    .addGroup(hostPanelLayout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(hostPanelLayout.createSequentialGroup()
+                                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
+                                        .addGap(17, 17, 17)
+                                        .addComponent(jLabel10))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
+                                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel11)
+                                            .addComponent(jLabel12)
+                                            .addComponent(jLabel13)
+                                            .addComponent(jLabel14)
+                                            .addComponent(telelabel)
+                                            .addComponent(teleleble2))
+                                        .addGap(56, 56, 56)
+                                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(city_area, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(contact_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(contact_telephone02, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(country, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
+                                        .addGap(24, 24, 24)
+                                        .addComponent(jLabel16))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addComponent(jLabel18)
+                                        .addGap(96, 96, 96)
+                                        .addComponent(dealers_email, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel21)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(CheckBoxShowEmail)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 1171, Short.MAX_VALUE)
+                                    .addComponent(jSeparator3)))
+                            .addGroup(hostPanelLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel9)
+                                .addGap(98, 98, 98)
+                                .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(currencyTag, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
+                                .addComponent(errorPrice)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hostPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(97, 97, 97)
+                                .addComponent(dealer_name, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1177, Short.MAX_VALUE)))))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         hostPanelLayout.setVerticalGroup(
@@ -751,121 +664,117 @@ public class Ads extends javax.swing.JFrame {
                 .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
                 .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(currencyTag, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(errorPrice)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(hostPanelLayout.createSequentialGroup()
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(314, 314, 314))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hostPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel9)
-                                .addComponent(currencyTag, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(hostPanelLayout.createSequentialGroup()
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(314, 314, 314))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hostPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel11)
-                                    .addComponent(country, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel12)
-                                    .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel13)
-                                    .addComponent(city_area, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel14)
-                                    .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(telelabel)
-                                    .addComponent(contact_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(teleleble2)
-                                    .addComponent(contact_telephone02, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel16)
-                        .addGap(8, 8, 8)
                         .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dealer_name, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(3, 3, 3)
-                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dealers_email, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18))
-                        .addGap(18, 18, 18)
-                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel21)
-                            .addComponent(CheckBoxShowEmail))
-                        .addGap(31, 31, 31)
-                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(surfaceLabel)
-                            .addComponent(surfaceAreaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(landUnitaryHost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(carMileAgeLable)
-                            .addComponent(mileAge, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel11)
+                            .addComponent(country, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jobSal)
-                            .addComponent(jobSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addComponent(contactFormOptions)
-                        .addGap(18, 18, 18)
-                        .addComponent(contactByEmail)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(attachedLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(extensionNote)
-                        .addGap(18, 18, 18)
-                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonAttactments)
-                            .addComponent(showAttachedFiles, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(addNewAttachments)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(utubeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(utubeNote)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(youTubeUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel15)
-                        .addGap(12, 12, 12)
-                        .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12)
+                            .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(publish)))
-                    .addGroup(hostPanelLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(errorPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel13)
+                            .addComponent(city_area, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(telelabel)
+                            .addComponent(contact_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(teleleble2)
+                            .addComponent(contact_telephone02, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel16)
+                .addGap(8, 8, 8)
+                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dealer_name, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dealers_email, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
+                .addGap(18, 18, 18)
+                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(CheckBoxShowEmail))
+                .addGap(31, 31, 31)
+                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(surfaceLabel)
+                    .addComponent(surfaceAreaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(landUnitaryHost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(carMileAgeLable)
+                    .addComponent(mileAge, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jobSal)
+                    .addComponent(jobSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(contactFormOptions)
+                .addGap(18, 18, 18)
+                .addComponent(contactByEmail)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(attachedLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(extensionNote)
+                .addGap(18, 18, 18)
+                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonAttactments)
+                    .addComponent(showAttachedFiles, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(addNewAttachments)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(utubeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(utubeNote)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(youTubeUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel15)
+                .addGap(12, 12, 12)
+                .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(publish))
                 .addContainerGap(378, Short.MAX_VALUE))
         );
 
@@ -1007,8 +916,8 @@ public class Ads extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1217, Short.MAX_VALUE))
         );
 
         pack();
@@ -1055,210 +964,6 @@ public class Ads extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cityActionPerformed
 
-    private void imageUpload10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageUpload10MouseClicked
-        // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile10 = fileChooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile10.getPath());
-            Image resizeImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            ImageIcon resizedIcon = new ImageIcon(resizeImage);
-            imageUpload10.setIcon(resizedIcon);
-        }
-    }//GEN-LAST:event_imageUpload10MouseClicked
-
-    private void imageUpload9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageUpload9MouseClicked
-        // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile9 = fileChooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile9.getPath());
-            Image resizeImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            ImageIcon resizedIcon = new ImageIcon(resizeImage);
-            imageUpload9.setIcon(resizedIcon);
-        }
-    }//GEN-LAST:event_imageUpload9MouseClicked
-
-    private void imageUpload8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageUpload8MouseClicked
-        // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile8 = fileChooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile8.getPath());
-            Image resizeImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            ImageIcon resizedIcon = new ImageIcon(resizeImage);
-            imageUpload8.setIcon(resizedIcon);
-        }
-    }//GEN-LAST:event_imageUpload8MouseClicked
-
-    private void imageUpload12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageUpload12MouseClicked
-        // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile12 = fileChooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile12.getPath());
-            Image resizeImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            ImageIcon resizedIcon = new ImageIcon(resizeImage);
-            imageUpload12.setIcon(resizedIcon);
-        }
-    }//GEN-LAST:event_imageUpload12MouseClicked
-
-    private void imageUpload11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageUpload11MouseClicked
-        // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile11 = fileChooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile11.getPath());
-            Image resizeImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            ImageIcon resizedIcon = new ImageIcon(resizeImage);
-            imageUpload11.setIcon(resizedIcon);
-        }
-    }//GEN-LAST:event_imageUpload11MouseClicked
-
-    private void imageUpload15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageUpload15MouseClicked
-        // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile15 = fileChooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile15.getPath());
-            Image resizeImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            ImageIcon resizedIcon = new ImageIcon(resizeImage);
-            imageUpload15.setIcon(resizedIcon);
-        }
-    }//GEN-LAST:event_imageUpload15MouseClicked
-
-    private void imageUpload14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageUpload14MouseClicked
-        // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile14 = fileChooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile14.getPath());
-            Image resizeImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            ImageIcon resizedIcon = new ImageIcon(resizeImage);
-            imageUpload14.setIcon(resizedIcon);
-        }
-    }//GEN-LAST:event_imageUpload14MouseClicked
-
-    private void imageUpload13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageUpload13MouseClicked
-        // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile13 = fileChooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile13.getPath());
-            Image resizeImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            ImageIcon resizedIcon = new ImageIcon(resizeImage);
-            imageUpload13.setIcon(resizedIcon);
-        }
-    }//GEN-LAST:event_imageUpload13MouseClicked
-
-    private void imageUpload7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageUpload7MouseClicked
-        // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile7 = fileChooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile7.getPath());
-            Image resizeImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            ImageIcon resizedIcon = new ImageIcon(resizeImage);
-            imageUpload7.setIcon(resizedIcon);
-        }
-    }//GEN-LAST:event_imageUpload7MouseClicked
-
-    private void imageUpload1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageUpload1MouseClicked
-        // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile1 = fileChooser.getSelectedFile();
-            if (selectedFile1.getName().endsWith(".jpg") || selectedFile1.getName().endsWith(".jpeg")) {
-                ImageIcon icon = new ImageIcon(selectedFile1.getPath());
-                Image resizeImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-                ImageIcon resizedIcon = new ImageIcon(resizeImage);
-                imageUpload1.setIcon(resizedIcon);
-            } else {
-                ImageIcon defaultIcon = new ImageIcon("/home/mabian/images/kerawalogo.jpeg");
-                Image defaultImage = defaultIcon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-                ImageIcon resizedIcon = new ImageIcon(defaultImage);
-                imageUpload1.setIcon(resizedIcon);
-
-            }
-
-        }
-    }//GEN-LAST:event_imageUpload1MouseClicked
-
-    private void imageUpload5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageUpload5MouseClicked
-        // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile5 = fileChooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile5.getPath());
-            Image resizeImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            ImageIcon resizedIcon = new ImageIcon(resizeImage);
-            imageUpload5.setIcon(resizedIcon);
-        }
-    }//GEN-LAST:event_imageUpload5MouseClicked
-
-    private void imageUpload4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageUpload4MouseClicked
-        // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile4 = fileChooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile4.getPath());
-            Image resizeImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            ImageIcon resizedIcon = new ImageIcon(resizeImage);
-            imageUpload4.setIcon(resizedIcon);
-        }
-    }//GEN-LAST:event_imageUpload4MouseClicked
-
-    private void imageUpload3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageUpload3MouseClicked
-        // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile3 = fileChooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile3.getPath());
-            Image resizeImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            ImageIcon resizedIcon = new ImageIcon(resizeImage);
-            imageUpload3.setIcon(resizedIcon);
-        }
-    }//GEN-LAST:event_imageUpload3MouseClicked
-
-    private void imageUpload2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageUpload2MouseClicked
-        // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile2 = fileChooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile2.getPath());
-            Image resizeImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            ImageIcon resizedIcon = new ImageIcon(resizeImage);
-            imageUpload2.setIcon(resizedIcon);
-        }
-    }//GEN-LAST:event_imageUpload2MouseClicked
-
-    private void imageUpload6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageUpload6MouseClicked
-        // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile6 = fileChooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile6.getPath());
-            Image resizeImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            ImageIcon resizedIcon = new ImageIcon(resizeImage);
-            imageUpload6.setIcon(resizedIcon);
-        }
-    }//GEN-LAST:event_imageUpload6MouseClicked
-
     private void surfaceAreaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surfaceAreaTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_surfaceAreaTextFieldActionPerformed
@@ -1271,8 +976,7 @@ public class Ads extends javax.swing.JFrame {
          */
         JFileChooser chooser = new JFileChooser();
         int returnValue = chooser.showOpenDialog(null);
-        if(returnValue == JFileChooser.APPROVE_OPTION)
-        {
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
             File file = chooser.getSelectedFile();
             showAttachedFiles.setText(file.getName());
         }
@@ -1756,6 +1460,29 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+                landUnitaryHost.setVisible(false);
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
                 error.setVisible(false);
                 break;
             case "Other fashion articles":
@@ -1823,6 +1550,29 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+                landUnitaryHost.setVisible(false);
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
                 error.setVisible(false);
                 break;
             case "Computers":
@@ -2145,9 +1895,8 @@ public class Ads extends javax.swing.JFrame {
     }//GEN-LAST:event_categorylchoiceActionPerformed
 
     private void publishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_publishActionPerformed
-       
-        try {
 
+        try {
 
             /**
              * Making up the xml document from the entered form fields
@@ -2183,7 +1932,7 @@ public class Ads extends javax.swing.JFrame {
             Element priceeElement = document.createElement("price");
             priceeElement.appendChild(document.createTextNode(price.getText().trim()));
             ad.appendChild(priceeElement);
-            
+
             Element currencyElement = document.createElement("currency");
             currencyElement.appendChild(document.createTextNode(currencyTag.getSelectedItem().toString()));
             ad.appendChild(currencyElement);
@@ -2197,30 +1946,29 @@ public class Ads extends javax.swing.JFrame {
             Element cityElement = document.createElement("cityCode_c");
             cityElement.appendChild(document.createTextNode(city.getSelectedItem().toString().trim()));
             ad.appendChild(cityElement);
-            
-            
+
             //setting city area element
             Element cityarea = document.createElement("city_area");
             cityarea.appendChild(document.createTextNode(city_area.getText()));
             ad.appendChild(cityarea);
-            
+
             //setting up address element
             Element addressElement = document.createElement("address");
             addressElement.appendChild(document.createTextNode(address.getText()));
             ad.appendChild(addressElement);
-            
+
             Element contact01 = document.createElement("contact01");
             contact01.appendChild(document.createTextNode(contact_telephone.getText()));
             ad.appendChild(contact01);
-            
+
             Element contact02 = document.createElement("contact02");
             contact01.appendChild(document.createTextNode(contact_telephone02.getText()));
             ad.appendChild(contact02);
-            
+
             Element sellersName = document.createElement("sellers_name");
             sellersName.appendChild(document.createTextNode(dealer_name.getText()));
             ad.appendChild(sellersName);
-            
+
             Element sellersEmail = document.createElement("sellers_email");
             sellersEmail.appendChild(document.createTextNode(dealers_email.getText()));
             ad.appendChild(sellersEmail);
@@ -2228,49 +1976,41 @@ public class Ads extends javax.swing.JFrame {
             Element showEmail = document.createElement("show_email");
             boolean returnValue = CheckBoxShowEmail.isSelected();
             String responds;
-            if(returnValue)
-            {
+            if (returnValue) {
                 responds = "true";
-            }
-            else{
+            } else {
                 responds = "false";
             }
             showEmail.appendChild(document.createTextNode(responds));
             ad.appendChild(showEmail);
-            
+
             Element surfaceArea = document.createElement("surface");
             surfaceArea.appendChild(document.createTextNode(surfaceAreaTextField.getText()));
             ad.appendChild(surfaceArea);
-            
-            
+
             Element unitaryPrice = document.createElement("unitry_price");
             unitaryPrice.appendChild(document.createTextNode(UnitaryPrice.getText().trim()));
             ad.appendChild(unitaryPrice);
-            
-            
+
             Element milAge = document.createElement("mile_age");
             milAge.appendChild(document.createTextNode(mileAge.getText().trim()));
             ad.appendChild(milAge);
-            
-            
+
             Element salaryElement = document.createElement("joob_salary");
             salaryElement.appendChild(document.createTextNode(jobSalary.getText().trim()));
             ad.appendChild(salaryElement);
 
             Element contactByMail = document.createElement("contact_by_mail");
-            boolean  repos = contactByEmail.isSelected();
+            boolean repos = contactByEmail.isSelected();
             String checkResponds;
-            if(repos)
-            {
+            if (repos) {
                 checkResponds = "true";
-            }
-            else{
+            } else {
                 checkResponds = "false";
             }
             contactByMail.appendChild(document.createTextNode(checkResponds));
             ad.appendChild(contactByMail);
-            
-            
+
             //auto verification element
             Element autoverifyElement = document.createElement("autoVerify");
             autoverifyElement.appendChild(document.createTextNode("true"));
@@ -2288,30 +2028,33 @@ public class Ads extends javax.swing.JFrame {
             Element showAttached = document.createElement("attached_file");
             showAttached.appendChild(document.createTextNode("not activated yet"));
             ad.appendChild(showAttached);
-            
+
             Element utube_url = document.createElement("youtube_url");
             utube_url.appendChild(document.createTextNode(youTubeUrl.getText().trim()));
             ad.appendChild(utube_url);
 
-        
-
             Element imageElement = document.createElement("base64image");
+
             imageElement.appendChild(document.createTextNode("image in Base64 needs to be placed here"));
             ad.appendChild(imageElement);
 
-           
             //now i am write all the information to an xml file eg ads.xml
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(document);
             StreamResult result = new StreamResult(new File("/home/mabian/Desktop/AdsFile/ads.xml"));
             transformer.transform(source, result);
-
+            
+            for (String list1 : list) {
+                System.out.println(list1);
+            }
+            
             JOptionPane.showMessageDialog(this, "Your ad has being saved."
                     + "go to /home/mabian/Desktop/AdsFile/ads.xml to view.");
             //testing console to see results
             StreamResult result1 = new StreamResult(System.out);
             transformer.transform(source, result1);
+
             //byte[] imagedecoded = decodeImage(image);
             //System.out.println("hmmmm i am not sure if you work: " + imagedecoded.toString());
         } catch (Exception ex) {
@@ -2337,12 +2080,11 @@ public class Ads extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_descriptionKeyTyped
-    
-    private static String encodeBase64(byte[] imageByte)
-    {
+
+    private static String encodeBase64(byte[] imageByte) {
         return Base64.getEncoder().encodeToString(imageByte);
     }
-    
+
     private void priceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceKeyTyped
         // TODO add your handling code here:4
         char dot_hyhen = evt.getKeyChar();
@@ -2352,6 +2094,17 @@ public class Ads extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_priceKeyTyped
+
+    private void imageUpload01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageUpload01ActionPerformed
+        // TODO add your handling code here:
+         JFileChooser Chooser = new JFileChooser();
+        int returnValue = Chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile13 = Chooser.getSelectedFile();
+            ImageIcon icon = new ImageIcon(selectedFile13.getPath());
+            imageUpload01.setIcon(icon);
+        }
+    }//GEN-LAST:event_imageUpload01ActionPerformed
 
     //method the helps to switch the different cities depending on the region selected
     private void getCountry(String str) {
@@ -2414,9 +2167,7 @@ public class Ads extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException 
-                | IllegalAccessException 
-                | javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -2462,7 +2213,7 @@ public class Ads extends javax.swing.JFrame {
     private javax.swing.JTextArea description;
     private javax.swing.JMenu editMenu;
     private javax.swing.JLabel error;
-    private java.awt.Label errorPrice;
+    private javax.swing.JLabel errorPrice;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JLabel extensionNote;
     private javax.swing.JMenu fileMenu;
@@ -2470,23 +2221,23 @@ public class Ads extends javax.swing.JFrame {
     private javax.swing.JMenu helpMenu;
     private javax.swing.JPanel hostPanel;
     private javax.swing.JPanel imagePanel;
-    private javax.swing.JLabel imageUpload1;
-    private javax.swing.JLabel imageUpload10;
-    private javax.swing.JLabel imageUpload11;
-    private javax.swing.JLabel imageUpload12;
-    private javax.swing.JLabel imageUpload13;
-    private javax.swing.JLabel imageUpload14;
-    private javax.swing.JLabel imageUpload15;
-    private javax.swing.JLabel imageUpload2;
-    private javax.swing.JLabel imageUpload3;
-    private javax.swing.JLabel imageUpload4;
-    private javax.swing.JLabel imageUpload5;
-    private javax.swing.JLabel imageUpload6;
-    private javax.swing.JLabel imageUpload7;
-    private javax.swing.JLabel imageUpload8;
-    private javax.swing.JLabel imageUpload9;
+    private javax.swing.JButton imageUpload01;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
