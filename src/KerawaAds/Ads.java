@@ -32,7 +32,7 @@ import org.w3c.dom.Element;
  */
 public class Ads extends javax.swing.JFrame {
 
-    List<File> list;
+    List<String> list;
     File fileSelected;
     Cities cities = new Cities();
     String image = "";
@@ -2337,7 +2337,12 @@ public class Ads extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_descriptionKeyTyped
-
+    
+    private static String encodeBase64(byte[] imageByte)
+    {
+        return Base64.getEncoder().encodeToString(imageByte);
+    }
+    
     private void priceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceKeyTyped
         // TODO add your handling code here:4
         char dot_hyhen = evt.getKeyChar();
