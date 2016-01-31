@@ -2075,10 +2075,10 @@ public class Ads extends javax.swing.JFrame {
                 break;
             case "Other - Services":
                 //this is the external form fields
-                telelabel.setVisible(false);
-                contact_telephone.setVisible(false);
-                teleleble2.setVisible(false);
-                contact_telephone02.setVisible(false);
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
 
@@ -2094,20 +2094,20 @@ public class Ads extends javax.swing.JFrame {
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
 
-                contactFormOptions.setVisible(false);
-                contactByEmail.setVisible(false);
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
 
-                attachedLabel.setVisible(false);
-                extensionNote.setVisible(false);
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
 
-                buttonAttactments.setVisible(false);
-                showAttachedFiles.setVisible(false);
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
 
-                addNewAttachments.setVisible(false);
+                addNewAttachments.setVisible(true);
                 error.setVisible(false);
-                utubeLabel.setVisible(false);
-                utubeNote.setVisible(false);
-                youTubeUrl.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
                 break;
 
             default:
@@ -2381,7 +2381,11 @@ public class Ads extends javax.swing.JFrame {
         char dot_hyhen = evt.getKeyChar();
 
         if (evt.getKeyChar() <= KeyEvent.VK_9) {
+            errorPrice.setVisible(false);
         } else {
+            errorPrice.setVisible(true);
+            errorPrice.setText("invalid, figure needed");
+            errorPrice.setForeground(Color.RED);
             evt.consume();
         }
     }//GEN-LAST:event_priceKeyTyped
@@ -2417,7 +2421,7 @@ public class Ads extends javax.swing.JFrame {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
             ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            imageUpload02.setIcon(icon);
+            imageUpload03.setIcon(icon);
             getListImage(selectedFile);
         }
     }//GEN-LAST:event_imageUpload03ActionPerformed
@@ -2429,7 +2433,7 @@ public class Ads extends javax.swing.JFrame {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
             ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            imageUpload02.setIcon(icon);
+            imageUpload04.setIcon(icon);
             getListImage(selectedFile);
         }
     }//GEN-LAST:event_imageUpload04ActionPerformed
@@ -2441,7 +2445,7 @@ public class Ads extends javax.swing.JFrame {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
             ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            imageUpload02.setIcon(icon);
+            imageUpload05.setIcon(icon);
             getListImage(selectedFile);
         }
     }//GEN-LAST:event_imageUpload05ActionPerformed
@@ -2453,7 +2457,7 @@ public class Ads extends javax.swing.JFrame {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
             ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            imageUpload02.setIcon(icon);
+            imageUpload06.setIcon(icon);
             getListImage(selectedFile);
         }
     }//GEN-LAST:event_imageUpload06ActionPerformed
@@ -2465,7 +2469,7 @@ public class Ads extends javax.swing.JFrame {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
             ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            imageUpload02.setIcon(icon);
+            imageUpload07.setIcon(icon);
             getListImage(selectedFile);
         }
     }//GEN-LAST:event_imageUpload07ActionPerformed
@@ -2477,7 +2481,7 @@ public class Ads extends javax.swing.JFrame {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
             ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            imageUpload02.setIcon(icon);
+            imageUpload08.setIcon(icon);
             getListImage(selectedFile);
         }
     }//GEN-LAST:event_imageUpload08ActionPerformed
@@ -2489,7 +2493,7 @@ public class Ads extends javax.swing.JFrame {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
             ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            imageUpload02.setIcon(icon);
+            imageUpload09.setIcon(icon);
             getListImage(selectedFile);
         }
     }//GEN-LAST:event_imageUpload09ActionPerformed
@@ -2501,7 +2505,7 @@ public class Ads extends javax.swing.JFrame {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
             ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            imageUpload02.setIcon(icon);
+            imageUpload10.setIcon(icon);
             getListImage(selectedFile);
         }
     }//GEN-LAST:event_imageUpload10ActionPerformed
@@ -2513,7 +2517,7 @@ public class Ads extends javax.swing.JFrame {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
             ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            imageUpload02.setIcon(icon);
+            imageUpload11.setIcon(icon);
             getListImage(selectedFile);
         }
     }//GEN-LAST:event_imageUpload11ActionPerformed
@@ -2525,7 +2529,7 @@ public class Ads extends javax.swing.JFrame {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
             ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            imageUpload02.setIcon(icon);
+            imageUpload12.setIcon(icon);
             getListImage(selectedFile);
         }
     }//GEN-LAST:event_imageUpload12ActionPerformed
@@ -2537,7 +2541,7 @@ public class Ads extends javax.swing.JFrame {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
             ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            imageUpload02.setIcon(icon);
+            imageUpload13.setIcon(icon);
             getListImage(selectedFile);
         }
     }//GEN-LAST:event_imageUpload13ActionPerformed
@@ -2549,7 +2553,7 @@ public class Ads extends javax.swing.JFrame {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
             ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            imageUpload02.setIcon(icon);
+            imageUpload14.setIcon(icon);
             getListImage(selectedFile);
         }
     }//GEN-LAST:event_imageUpload14ActionPerformed
@@ -2561,7 +2565,7 @@ public class Ads extends javax.swing.JFrame {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
             ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            imageUpload02.setIcon(icon);
+            imageUpload15.setIcon(icon);
             getListImage(selectedFile);
         }
     }//GEN-LAST:event_imageUpload15ActionPerformed
