@@ -9,7 +9,10 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 import java.util.logging.Level;
@@ -32,26 +35,20 @@ import org.w3c.dom.Element;
  */
 public class Ads extends javax.swing.JFrame {
 
-     JFileChooser fileChooser = new JFileChooser();
-//        int returnValue = fileChooser.showOpenDialog(null);
-//        if (returnValue == JFileChooser.APPROVE_OPTION) {
-//            File selectedFile13 = fileChooser.getSelectedFile();
-//            ImageIcon icon = new ImageIcon(selectedFile13.getPath());
-//            Image resizeImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-//            ImageIcon resizedIcon = new ImageIcon(resizeImage);
-//            imageUpload13.setIcon(resizedIcon);
-    
-    List<String> list;
+    JFileChooser fileChooser = new JFileChooser();
+
     File fileSelected;
     Cities cities = new Cities();
     String image = "";
     int i = 0;
+    List<File> imagesList;
+
     /**
      * Creates new form Ads
      */
     public Ads() {
         initComponents();
-        this.list = new ArrayList();
+        imagesList = new ArrayList<>();
         fileSelected = new File("/home/mabian/images/kerawalogo.jpeg");
         header.setBackground(Color.LIGHT_GRAY);
         ImageIcon logoIcon = new ImageIcon(fileSelected.getPath());
@@ -67,7 +64,6 @@ public class Ads extends javax.swing.JFrame {
         error.setVisible(false);
         errorPrice.setVisible(false);
 
-//
         surfaceLabel.setVisible(false);
         surfaceAreaTextField.setVisible(false);
 
@@ -79,7 +75,6 @@ public class Ads extends javax.swing.JFrame {
 
         landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
         landUnitaryHost.setVisible(false);
-        //landSaparator.setVisible(false);
 
         contactFormOptions.setVisible(false);
         contactByEmail.setVisible(false);
@@ -168,20 +163,20 @@ public class Ads extends javax.swing.JFrame {
         landUnitaryLabel = new javax.swing.JLabel();
         imagePanel = new javax.swing.JPanel();
         imageUpload01 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
+        imageUpload02 = new javax.swing.JButton();
+        imageUpload03 = new javax.swing.JButton();
+        imageUpload04 = new javax.swing.JButton();
+        imageUpload05 = new javax.swing.JButton();
+        imageUpload11 = new javax.swing.JButton();
+        imageUpload12 = new javax.swing.JButton();
+        imageUpload13 = new javax.swing.JButton();
+        imageUpload14 = new javax.swing.JButton();
+        imageUpload15 = new javax.swing.JButton();
+        imageUpload06 = new javax.swing.JButton();
+        imageUpload07 = new javax.swing.JButton();
+        imageUpload08 = new javax.swing.JButton();
+        imageUpload09 = new javax.swing.JButton();
+        imageUpload10 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
@@ -249,9 +244,9 @@ public class Ads extends javax.swing.JFrame {
         jLabel2.setText("Category *");
 
         categorylchoice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select a category.....", "Automotive", "      Vehicles", "      Motorcycles", "      Car parts - Accessories", "      Other Automotive", "Real Estate", "      Houses - Apartments for Sale", "      Houses - Apartments for Rent", "      Land for sale or rent", "      Office - commercial space", "      Other Real Estate", "Jobs", "      Job vacancies", "      Job wanted - Resume", "Fashion", "       Women's Clothing", "       Men's Clothing", "       Children's Clothing", "        Watches - Jewelries - Sunglasses", "         Fashion Accessories", "         Other fashion articles", "High Tech", "        Audio - Video", "         Phones - Tablets", "         Computers", "         Video games", "         Other -  High Tech", "For sale", "         Furniture, House decorations", "        Appliances", "        Other - For Sale", "Services", "       Service offered", "       Looking for service", "       Events", "       Other - Services" }));
-        categorylchoice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                categorylchoiceActionPerformed(evt);
+        categorylchoice.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                categorylchoiceItemStateChanged(evt);
             }
         });
 
@@ -293,9 +288,9 @@ public class Ads extends javax.swing.JFrame {
 
         country.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select a region....", "Cameroun", "Congo Brazza", "Congo Kinshasa", "Côte d’Ivoire", "Gabon", "Senegal" }));
         country.setBorder(null);
-        country.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                countryActionPerformed(evt);
+        country.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                countryItemStateChanged(evt);
             }
         });
 
@@ -314,15 +309,32 @@ public class Ads extends javax.swing.JFrame {
         telelabel.setText("Telephone 1");
 
         contact_telephone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("# ##0"))));
+        contact_telephone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                contact_telephoneKeyTyped(evt);
+            }
+        });
 
         teleleble2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         teleleble2.setText("Telephone 2");
+
+        contact_telephone02.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                contact_telephone02KeyTyped(evt);
+            }
+        });
 
         jLabel21.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel21.setText("Show e-mail on the listing page");
 
         jobSal.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jobSal.setText("job-salary-141210");
+
+        jobSalary.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jobSalaryKeyTyped(evt);
+            }
+        });
 
         contactFormOptions.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
         contactFormOptions.setText("Contact Form Options");
@@ -353,6 +365,12 @@ public class Ads extends javax.swing.JFrame {
         carMileAgeLable.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         carMileAgeLable.setText("Cars-MileAge-150619: ");
 
+        mileAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                mileAgeKeyTyped(evt);
+            }
+        });
+
         utubeLabel.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
         utubeLabel.setText("Youtube video");
 
@@ -362,9 +380,9 @@ public class Ads extends javax.swing.JFrame {
         surfaceLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         surfaceLabel.setText("Surface:");
 
-        surfaceAreaTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                surfaceAreaTextFieldActionPerformed(evt);
+        surfaceAreaTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                surfaceAreaTextFieldKeyTyped(evt);
             }
         });
 
@@ -408,6 +426,90 @@ public class Ads extends javax.swing.JFrame {
             }
         });
 
+        imageUpload02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageUpload02ActionPerformed(evt);
+            }
+        });
+
+        imageUpload03.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageUpload03ActionPerformed(evt);
+            }
+        });
+
+        imageUpload04.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageUpload04ActionPerformed(evt);
+            }
+        });
+
+        imageUpload05.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageUpload05ActionPerformed(evt);
+            }
+        });
+
+        imageUpload11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageUpload11ActionPerformed(evt);
+            }
+        });
+
+        imageUpload12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageUpload12ActionPerformed(evt);
+            }
+        });
+
+        imageUpload13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageUpload13ActionPerformed(evt);
+            }
+        });
+
+        imageUpload14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageUpload14ActionPerformed(evt);
+            }
+        });
+
+        imageUpload15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageUpload15ActionPerformed(evt);
+            }
+        });
+
+        imageUpload06.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageUpload06ActionPerformed(evt);
+            }
+        });
+
+        imageUpload07.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageUpload07ActionPerformed(evt);
+            }
+        });
+
+        imageUpload08.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageUpload08ActionPerformed(evt);
+            }
+        });
+
+        imageUpload09.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageUpload09ActionPerformed(evt);
+            }
+        });
+
+        imageUpload10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageUpload10ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout imagePanelLayout = new javax.swing.GroupLayout(imagePanel);
         imagePanel.setLayout(imagePanelLayout);
         imagePanelLayout.setHorizontalGroup(
@@ -418,33 +520,33 @@ public class Ads extends javax.swing.JFrame {
                     .addGroup(imagePanelLayout.createSequentialGroup()
                         .addComponent(imageUpload01, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imageUpload02, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imageUpload03, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imageUpload04, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(imageUpload05, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(imagePanelLayout.createSequentialGroup()
-                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imageUpload06, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imageUpload07, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imageUpload08, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imageUpload09, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(imageUpload10, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(imagePanelLayout.createSequentialGroup()
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imageUpload11, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imageUpload12, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imageUpload13, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imageUpload14, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(imageUpload15, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         imagePanelLayout.setVerticalGroup(
@@ -452,28 +554,28 @@ public class Ads extends javax.swing.JFrame {
             .addGroup(imagePanelLayout.createSequentialGroup()
                 .addGroup(imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(imageUpload01, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(imageUpload02, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imageUpload03, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imageUpload04, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imageUpload05, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, imagePanelLayout.createSequentialGroup()
                         .addGroup(imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(imageUpload07, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(imageUpload06, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(imageUpload08, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(imageUpload09, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(imageUpload11, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(imageUpload13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(imageUpload12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imageUpload14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, imagePanelLayout.createSequentialGroup()
-                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imageUpload10, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(imageUpload15, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -505,11 +607,6 @@ public class Ads extends javax.swing.JFrame {
             hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(hostPanelLayout.createSequentialGroup()
                 .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(hostPanelLayout.createSequentialGroup()
-                        .addGap(340, 340, 340)
-                        .addComponent(publish)
-                        .addGap(81, 81, 81)
-                        .addComponent(jButton3))
                     .addGroup(hostPanelLayout.createSequentialGroup()
                         .addGap(150, 150, 150)
                         .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -584,69 +681,72 @@ public class Ads extends javax.swing.JFrame {
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(hostPanelLayout.createSequentialGroup()
-                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(hostPanelLayout.createSequentialGroup()
+                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jSeparator7))
+                        .addGroup(hostPanelLayout.createSequentialGroup()
+                            .addGap(148, 148, 148)
+                            .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(hostPanelLayout.createSequentialGroup()
+                                    .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
+                                            .addGap(17, 17, 17)
+                                            .addComponent(jLabel10))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
+                                            .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel11)
+                                                .addComponent(jLabel12)
+                                                .addComponent(jLabel13)
+                                                .addComponent(jLabel14)
+                                                .addComponent(telelabel)
+                                                .addComponent(teleleble2))
+                                            .addGap(56, 56, 56)
+                                            .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(city_area, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(contact_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(contact_telephone02, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(country, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
+                                            .addGap(24, 24, 24)
+                                            .addComponent(jLabel16))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
+                                            .addGap(4, 4, 4)
+                                            .addComponent(jLabel18)
+                                            .addGap(96, 96, 96)
+                                            .addComponent(dealers_email, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
+                                            .addComponent(jLabel21)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(CheckBoxShowEmail)))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 1171, Short.MAX_VALUE)
+                                        .addComponent(jSeparator3)))
+                                .addGroup(hostPanelLayout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jLabel9)
+                                    .addGap(98, 98, 98)
+                                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(currencyTag, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(35, 35, 35)
+                                    .addComponent(errorPrice)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hostPanelLayout.createSequentialGroup()
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(97, 97, 97)
+                                    .addComponent(dealer_name, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1177, Short.MAX_VALUE)))))
                     .addGroup(hostPanelLayout.createSequentialGroup()
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator7))
-                    .addGroup(hostPanelLayout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(hostPanelLayout.createSequentialGroup()
-                                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
-                                        .addGap(17, 17, 17)
-                                        .addComponent(jLabel10))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
-                                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel11)
-                                            .addComponent(jLabel12)
-                                            .addComponent(jLabel13)
-                                            .addComponent(jLabel14)
-                                            .addComponent(telelabel)
-                                            .addComponent(teleleble2))
-                                        .addGap(56, 56, 56)
-                                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(city_area, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(contact_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(contact_telephone02, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(country, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
-                                        .addGap(24, 24, 24)
-                                        .addComponent(jLabel16))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addComponent(jLabel18)
-                                        .addGap(96, 96, 96)
-                                        .addComponent(dealers_email, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel21)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(CheckBoxShowEmail)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 1171, Short.MAX_VALUE)
-                                    .addComponent(jSeparator3)))
-                            .addGroup(hostPanelLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel9)
-                                .addGap(98, 98, 98)
-                                .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(currencyTag, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(errorPrice)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hostPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(97, 97, 97)
-                                .addComponent(dealer_name, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1177, Short.MAX_VALUE)))))
+                        .addGap(459, 459, 459)
+                        .addComponent(publish)
+                        .addGap(104, 104, 104)
+                        .addComponent(jButton3)))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         hostPanelLayout.setVerticalGroup(
@@ -818,7 +918,7 @@ public class Ads extends javax.swing.JFrame {
                         .addGap(254, 254, 254)
                         .addComponent(comfirmation_message, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 36, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -906,18 +1006,18 @@ public class Ads extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1324, Short.MAX_VALUE)
-                .addContainerGap())
             .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1217, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1274, Short.MAX_VALUE))
         );
 
         pack();
@@ -933,40 +1033,1135 @@ public class Ads extends javax.swing.JFrame {
 
     private void categorylchoiceItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_categorylchoiceItemStateChanged
         // TODO add your handling code here:
+        String selectedCategory = categorylchoice.getSelectedItem().toString().trim();
+        title.setText(selectedCategory);
+        switch (selectedCategory) {
+            case "Vehicles":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(true);
+                mileAge.setVisible(true);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Motorcycles":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(true);
+                mileAge.setVisible(true);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Car parts - Accessories":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Other Automotive":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Houses - Apartments for Sale":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(true);
+                surfaceAreaTextField.setVisible(true);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Houses - Apartments for Rent":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Land for sale or rent":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(true);
+                surfaceAreaTextField.setVisible(true);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(true);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Office - commercial space":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Other Real Estate":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Job vacancies":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(true);
+                jobSalary.setVisible(true);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Job wanted - Resume":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Women's Clothing":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Men's Clothing":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Children's Clothing":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Watches - Jewelries - Sunglasses":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Fashion Accessories":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Other fashion articles":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Audio - Video":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Phones - Tablets":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Computers":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Video games":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Other -  High Tech":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Furniture, House decorations":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Appliances":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Other - For Sale":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Service offered":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Looking for service":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Events":
+                //this is the external form fields
+                telelabel.setVisible(true);
+                contact_telephone.setVisible(true);
+                teleleble2.setVisible(true);
+                contact_telephone02.setVisible(true);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(true);
+                contactByEmail.setVisible(true);
+
+                attachedLabel.setVisible(true);
+                extensionNote.setVisible(true);
+
+                buttonAttactments.setVisible(true);
+                showAttachedFiles.setVisible(true);
+
+                addNewAttachments.setVisible(true);
+
+                error.setVisible(false);
+                utubeLabel.setVisible(true);
+                utubeNote.setVisible(true);
+                youTubeUrl.setVisible(true);
+                break;
+            case "Other - Services":
+                //this is the external form fields
+                telelabel.setVisible(false);
+                contact_telephone.setVisible(false);
+                teleleble2.setVisible(false);
+                contact_telephone02.setVisible(false);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(false);
+                contactByEmail.setVisible(false);
+
+                attachedLabel.setVisible(false);
+                extensionNote.setVisible(false);
+
+                buttonAttactments.setVisible(false);
+                showAttachedFiles.setVisible(false);
+
+                addNewAttachments.setVisible(false);
+                error.setVisible(false);
+                utubeLabel.setVisible(false);
+                utubeNote.setVisible(false);
+                youTubeUrl.setVisible(false);
+                break;
+
+            default:
+                //this is the external form fields
+                telelabel.setVisible(false);
+                contact_telephone.setVisible(false);
+                teleleble2.setVisible(false);
+                contact_telephone02.setVisible(false);
+                error.setVisible(false);
+                errorPrice.setVisible(false);
+
+                surfaceLabel.setVisible(false);
+                surfaceAreaTextField.setVisible(false);
+
+                carMileAgeLable.setVisible(false);
+                mileAge.setVisible(false);
+
+                jobSal.setVisible(false);
+                jobSalary.setVisible(false);
+
+                landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+                landUnitaryHost.setVisible(false);
+
+                contactFormOptions.setVisible(false);
+                contactByEmail.setVisible(false);
+
+                attachedLabel.setVisible(false);
+                extensionNote.setVisible(false);
+
+                buttonAttactments.setVisible(false);
+                showAttachedFiles.setVisible(false);
+
+                addNewAttachments.setVisible(false);
+
+                utubeLabel.setVisible(false);
+                utubeNote.setVisible(false);
+                youTubeUrl.setVisible(false);
+                error.setVisible(true);
+                error.setForeground(Color.red);
+
+        }
 
     }//GEN-LAST:event_categorylchoiceItemStateChanged
 
     private List getListImage(File l) {
         List<File> fileList = new ArrayList<>();
-        fileList.add(l);
+        imagesList.add(l);
         return fileList;
     }
-    List<File> fileOutputList = new ArrayList<>();
 
-    public static String encodeImage(byte[] imageBytes) {
-        return Base64.getEncoder().encodeToString(imageBytes);
-    }
-
-//        
-// public static Bitmap StringToBitMap(String image) {
-//        try {
-//            byte[] encodeByte = Base64.decode(image, Base64.DEFAULT);
-//            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0,
-//                    encodeByte.length);
-//            return bitmap;
-//        } catch (Exception e) {
-//            e.getMessage();
-//            return null;
-//        }
-//    }
 
     private void cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cityActionPerformed
-
-    private void surfaceAreaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surfaceAreaTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_surfaceAreaTextFieldActionPerformed
 
     private void buttonAttactmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAttactmentsActionPerformed
         // TODO add your handling code here:
@@ -982,917 +2177,6 @@ public class Ads extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonAttactmentsActionPerformed
 
-    private void countryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countryActionPerformed
-        // TODO add your handling code here:
-        String countrySelected = country.getSelectedItem().toString().trim();
-        getCountry(countrySelected);
-    }//GEN-LAST:event_countryActionPerformed
-
-
-    private void categorylchoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorylchoiceActionPerformed
-        // TODO add your handling code here:
-
-        String categorySelected = categorylchoice.getSelectedItem().toString().trim();
-
-        //depenending on the category selected, change the form
-        switch (categorySelected) {
-            //switch the form
-
-            case "Vehicles":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                carMileAgeLable.setVisible(true);
-                mileAge.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Motorcycles":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Car parts - Accessories":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Other Automotive":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Houses - Apartments for Sale":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-
-                surfaceLabel.setVisible(true);
-                surfaceAreaTextField.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Houses - Apartments for Rent":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-
-                youTubeUrl.setVisible(true);
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Land for sale or rent":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-
-                surfaceLabel.setVisible(true);
-                surfaceAreaTextField.setVisible(true);
-
-                landUnitaryHost.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Office - commercial space":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Other Real Estate":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Job vacancies":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                jobSal.setVisible(true);
-                jobSalary.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Job wanted - Resume":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Women's Clothing":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Men's Clothing":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Children's Clothing":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-
-                break;
-            case "Watches - Jewelries - Sunglasses":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Fashion Accessories":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Other fashion articles":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Audio - Video":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Phones - Tablets":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Computers":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Video games":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Other -  High Tech":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Furniture, House decorations":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Appliances":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Other - For Sale":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Service offered":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Looking for service":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Events":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            case "Other - Services":
-                telelabel.setVisible(true);
-                contact_telephone.setVisible(true);
-                teleleble2.setVisible(true);
-                contact_telephone02.setVisible(true);
-
-                contactFormOptions.setVisible(true);
-                contactByEmail.setVisible(true);
-
-                attachedLabel.setVisible(true);
-                extensionNote.setVisible(true);
-
-                buttonAttactments.setVisible(true);
-                showAttachedFiles.setVisible(true);
-
-                addNewAttachments.setVisible(true);
-
-                utubeLabel.setVisible(true);
-                utubeNote.setVisible(true);
-                youTubeUrl.setVisible(true);
-
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(false);
-                break;
-            default:
-                System.out.println("Invalid option");
-                telelabel.setVisible(false);
-                contact_telephone.setVisible(false);
-                teleleble2.setVisible(false);
-                contact_telephone02.setVisible(false);
-                error.setForeground(Color.red);
-                jobSal.setVisible(false);
-                jobSalary.setVisible(false);
-                landUnitaryHost.setVisible(false);
-                carMileAgeLable.setVisible(false);
-                mileAge.setVisible(false);
-                surfaceLabel.setVisible(false);
-                surfaceAreaTextField.setVisible(false);
-                error.setVisible(true);
-
-        }
-    }//GEN-LAST:event_categorylchoiceActionPerformed
 
     private void publishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_publishActionPerformed
 
@@ -1902,6 +2186,20 @@ public class Ads extends javax.swing.JFrame {
              * Making up the xml document from the entered form fields
              *
              */
+            FileInputStream fis = null;
+            String stringBase64 = "";
+            for (File imagesList1 : imagesList) {
+                fis = new FileInputStream(imagesList1);
+                byte imageData[] = new byte[(int) imagesList1.length()];
+                fis.read(imageData);
+                stringBase64 = Base64.getEncoder().encodeToString(imageData);
+                System.out.println(stringBase64 + " file name is " + imagesList1 + "\n");
+            }
+
+            byte[] decided = Base64.getDecoder().decode(stringBase64);
+
+            fis.close();
+
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
 
@@ -2044,11 +2342,7 @@ public class Ads extends javax.swing.JFrame {
             DOMSource source = new DOMSource(document);
             StreamResult result = new StreamResult(new File("/home/mabian/Desktop/AdsFile/ads.xml"));
             transformer.transform(source, result);
-            
-            for (String list1 : list) {
-                System.out.println(list1);
-            }
-            
+
             JOptionPane.showMessageDialog(this, "Your ad has being saved."
                     + "go to /home/mabian/Desktop/AdsFile/ads.xml to view.");
             //testing console to see results
@@ -2081,9 +2375,6 @@ public class Ads extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_descriptionKeyTyped
 
-    private static String encodeBase64(byte[] imageByte) {
-        return Base64.getEncoder().encodeToString(imageByte);
-    }
 
     private void priceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceKeyTyped
         // TODO add your handling code here:4
@@ -2097,14 +2388,240 @@ public class Ads extends javax.swing.JFrame {
 
     private void imageUpload01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageUpload01ActionPerformed
         // TODO add your handling code here:
-         JFileChooser Chooser = new JFileChooser();
+        JFileChooser Chooser = new JFileChooser();
         int returnValue = Chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile13 = Chooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile13.getPath());
+            File selectedFile = Chooser.getSelectedFile();
+            ImageIcon icon = new ImageIcon(selectedFile.getPath());
             imageUpload01.setIcon(icon);
+            getListImage(selectedFile);
         }
     }//GEN-LAST:event_imageUpload01ActionPerformed
+
+    private void imageUpload02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageUpload02ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser Chooser = new JFileChooser();
+        int returnValue = Chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = Chooser.getSelectedFile();
+            ImageIcon icon = new ImageIcon(selectedFile.getPath());
+            imageUpload02.setIcon(icon);
+            getListImage(selectedFile);
+        }
+    }//GEN-LAST:event_imageUpload02ActionPerformed
+
+    private void imageUpload03ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageUpload03ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser Chooser = new JFileChooser();
+        int returnValue = Chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = Chooser.getSelectedFile();
+            ImageIcon icon = new ImageIcon(selectedFile.getPath());
+            imageUpload02.setIcon(icon);
+            getListImage(selectedFile);
+        }
+    }//GEN-LAST:event_imageUpload03ActionPerformed
+
+    private void imageUpload04ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageUpload04ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser Chooser = new JFileChooser();
+        int returnValue = Chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = Chooser.getSelectedFile();
+            ImageIcon icon = new ImageIcon(selectedFile.getPath());
+            imageUpload02.setIcon(icon);
+            getListImage(selectedFile);
+        }
+    }//GEN-LAST:event_imageUpload04ActionPerformed
+
+    private void imageUpload05ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageUpload05ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser Chooser = new JFileChooser();
+        int returnValue = Chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = Chooser.getSelectedFile();
+            ImageIcon icon = new ImageIcon(selectedFile.getPath());
+            imageUpload02.setIcon(icon);
+            getListImage(selectedFile);
+        }
+    }//GEN-LAST:event_imageUpload05ActionPerformed
+
+    private void imageUpload06ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageUpload06ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser Chooser = new JFileChooser();
+        int returnValue = Chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = Chooser.getSelectedFile();
+            ImageIcon icon = new ImageIcon(selectedFile.getPath());
+            imageUpload02.setIcon(icon);
+            getListImage(selectedFile);
+        }
+    }//GEN-LAST:event_imageUpload06ActionPerformed
+
+    private void imageUpload07ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageUpload07ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser Chooser = new JFileChooser();
+        int returnValue = Chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = Chooser.getSelectedFile();
+            ImageIcon icon = new ImageIcon(selectedFile.getPath());
+            imageUpload02.setIcon(icon);
+            getListImage(selectedFile);
+        }
+    }//GEN-LAST:event_imageUpload07ActionPerformed
+
+    private void imageUpload08ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageUpload08ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser Chooser = new JFileChooser();
+        int returnValue = Chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = Chooser.getSelectedFile();
+            ImageIcon icon = new ImageIcon(selectedFile.getPath());
+            imageUpload02.setIcon(icon);
+            getListImage(selectedFile);
+        }
+    }//GEN-LAST:event_imageUpload08ActionPerformed
+
+    private void imageUpload09ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageUpload09ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser Chooser = new JFileChooser();
+        int returnValue = Chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = Chooser.getSelectedFile();
+            ImageIcon icon = new ImageIcon(selectedFile.getPath());
+            imageUpload02.setIcon(icon);
+            getListImage(selectedFile);
+        }
+    }//GEN-LAST:event_imageUpload09ActionPerformed
+
+    private void imageUpload10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageUpload10ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser Chooser = new JFileChooser();
+        int returnValue = Chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = Chooser.getSelectedFile();
+            ImageIcon icon = new ImageIcon(selectedFile.getPath());
+            imageUpload02.setIcon(icon);
+            getListImage(selectedFile);
+        }
+    }//GEN-LAST:event_imageUpload10ActionPerformed
+
+    private void imageUpload11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageUpload11ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser Chooser = new JFileChooser();
+        int returnValue = Chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = Chooser.getSelectedFile();
+            ImageIcon icon = new ImageIcon(selectedFile.getPath());
+            imageUpload02.setIcon(icon);
+            getListImage(selectedFile);
+        }
+    }//GEN-LAST:event_imageUpload11ActionPerformed
+
+    private void imageUpload12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageUpload12ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser Chooser = new JFileChooser();
+        int returnValue = Chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = Chooser.getSelectedFile();
+            ImageIcon icon = new ImageIcon(selectedFile.getPath());
+            imageUpload02.setIcon(icon);
+            getListImage(selectedFile);
+        }
+    }//GEN-LAST:event_imageUpload12ActionPerformed
+
+    private void imageUpload13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageUpload13ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser Chooser = new JFileChooser();
+        int returnValue = Chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = Chooser.getSelectedFile();
+            ImageIcon icon = new ImageIcon(selectedFile.getPath());
+            imageUpload02.setIcon(icon);
+            getListImage(selectedFile);
+        }
+    }//GEN-LAST:event_imageUpload13ActionPerformed
+
+    private void imageUpload14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageUpload14ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser Chooser = new JFileChooser();
+        int returnValue = Chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = Chooser.getSelectedFile();
+            ImageIcon icon = new ImageIcon(selectedFile.getPath());
+            imageUpload02.setIcon(icon);
+            getListImage(selectedFile);
+        }
+    }//GEN-LAST:event_imageUpload14ActionPerformed
+
+    private void imageUpload15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageUpload15ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser Chooser = new JFileChooser();
+        int returnValue = Chooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = Chooser.getSelectedFile();
+            ImageIcon icon = new ImageIcon(selectedFile.getPath());
+            imageUpload02.setIcon(icon);
+            getListImage(selectedFile);
+        }
+    }//GEN-LAST:event_imageUpload15ActionPerformed
+
+    private void contact_telephoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contact_telephoneKeyTyped
+        // TODO add your handling code here:
+        char dot_hyhen = evt.getKeyChar();
+
+        if (evt.getKeyChar() <= KeyEvent.VK_9) {
+        } else {
+            evt.consume();
+        }
+    }//GEN-LAST:event_contact_telephoneKeyTyped
+
+    private void contact_telephone02KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contact_telephone02KeyTyped
+        // TODO add your handling code here:
+        char dot_hyhen = evt.getKeyChar();
+
+        if (evt.getKeyChar() <= KeyEvent.VK_9) {
+        } else {
+            evt.consume();
+        }
+    }//GEN-LAST:event_contact_telephone02KeyTyped
+
+    private void surfaceAreaTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_surfaceAreaTextFieldKeyTyped
+        // TODO add your handling code here:
+        char dot_hyhen = evt.getKeyChar();
+
+        if (evt.getKeyChar() <= KeyEvent.VK_9) {
+        } else {
+            evt.consume();
+        }
+    }//GEN-LAST:event_surfaceAreaTextFieldKeyTyped
+
+    private void mileAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mileAgeKeyTyped
+        // TODO add your handling code here:
+        char dot_hyhen = evt.getKeyChar();
+
+        if (evt.getKeyChar() <= KeyEvent.VK_9) {
+        } else {
+            evt.consume();
+        }
+    }//GEN-LAST:event_mileAgeKeyTyped
+
+    private void jobSalaryKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jobSalaryKeyTyped
+        // TODO add your handling code here:
+        char dot_hyhen = evt.getKeyChar();
+
+        if (evt.getKeyChar() <= KeyEvent.VK_9) {
+        } else {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jobSalaryKeyTyped
+
+
+    private void countryItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_countryItemStateChanged
+        // TODO add your handling code here:
+        String selectedCountry = country.getSelectedItem().toString();
+        getCountry(selectedCountry);
+    }//GEN-LAST:event_countryItemStateChanged
 
     //method the helps to switch the different cities depending on the region selected
     private void getCountry(String str) {
@@ -2222,22 +2739,22 @@ public class Ads extends javax.swing.JFrame {
     private javax.swing.JPanel hostPanel;
     private javax.swing.JPanel imagePanel;
     private javax.swing.JButton imageUpload01;
+    private javax.swing.JButton imageUpload02;
+    private javax.swing.JButton imageUpload03;
+    private javax.swing.JButton imageUpload04;
+    private javax.swing.JButton imageUpload05;
+    private javax.swing.JButton imageUpload06;
+    private javax.swing.JButton imageUpload07;
+    private javax.swing.JButton imageUpload08;
+    private javax.swing.JButton imageUpload09;
+    private javax.swing.JButton imageUpload10;
+    private javax.swing.JButton imageUpload11;
+    private javax.swing.JButton imageUpload12;
+    private javax.swing.JButton imageUpload13;
+    private javax.swing.JButton imageUpload14;
+    private javax.swing.JButton imageUpload15;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
