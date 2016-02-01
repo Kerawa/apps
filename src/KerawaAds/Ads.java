@@ -37,9 +37,9 @@ import org.w3c.dom.Element;
  * @author mabian
  */
 public class Ads extends javax.swing.JFrame {
-    
+
     JFileChooser fileChooser = new JFileChooser();
-    
+    String enter_name = "";
     File fileSelected;
     Cities cities = new Cities();
     String image = "";
@@ -50,105 +50,57 @@ public class Ads extends javax.swing.JFrame {
      * Creates new form Ads
      */
     String returnString = "";
-    String test = "hell1";
+
     public Ads() {
-        if(test.endsWith("o"))
-        {
-            initComponents();
-        
-        
-        imagesList = new ArrayList<>();
-        fileSelected = new File("/home/mabian/images/kerawalogo.jpeg");
-        header.setBackground(Color.LIGHT_GRAY);
-        ImageIcon logoIcon = new ImageIcon(fileSelected.getPath());
-        Image imageIcon = logoIcon.getImage().getScaledInstance(211, 70, Image.SCALE_DEFAULT);
-        ImageIcon reImage = new ImageIcon(imageIcon);
-        logo.setIcon(reImage);
-        
-        emailvalidationerror.setVisible(false);
-
-        //this is the external form fields
-        telelabel.setVisible(false);
-        contact_telephone.setVisible(false);
-        teleleble2.setVisible(false);
-        contact_telephone02.setVisible(false);
-        error.setVisible(false);
-        errorPrice.setVisible(false);
-        
-        surfaceLabel.setVisible(false);
-        surfaceAreaTextField.setVisible(false);
-        
-        carMileAgeLable.setVisible(false);
-        mileAge.setVisible(false);
-        
-        jobSal.setVisible(false);
-        jobSalary.setVisible(false);
-        
-        landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
-        landUnitaryHost.setVisible(false);
-        
-        contactFormOptions.setVisible(false);
-        contactByEmail.setVisible(false);
-        
-        attachedLabel.setVisible(false);
-        extensionNote.setVisible(false);
-        
-        buttonAttactments.setVisible(false);
-        showAttachedFiles.setVisible(false);
-        
-        addNewAttachments.setVisible(false);
-        
-        utubeLabel.setVisible(false);
-        utubeNote.setVisible(false);
-        youTubeUrl.setVisible(false);
-        }else{ 
-            returnString = JOptionPane.showInputDialog("Specify file name");
-            initComponents();
-            imagesList = new ArrayList<>();
-        fileSelected = new File("/home/mabian/images/kerawalogo.jpeg");
-        header.setBackground(Color.LIGHT_GRAY);
-        ImageIcon logoIcon = new ImageIcon(fileSelected.getPath());
-        Image imageIcon = logoIcon.getImage().getScaledInstance(211, 70, Image.SCALE_DEFAULT);
-        ImageIcon reImage = new ImageIcon(imageIcon);
-        logo.setIcon(reImage);
-        
-        emailvalidationerror.setVisible(false);
-
-        //this is the external form fields
-        telelabel.setVisible(false);
-        contact_telephone.setVisible(false);
-        teleleble2.setVisible(false);
-        contact_telephone02.setVisible(false);
-        error.setVisible(false);
-        errorPrice.setVisible(false);
-        
-        surfaceLabel.setVisible(false);
-        surfaceAreaTextField.setVisible(false);
-        
-        carMileAgeLable.setVisible(false);
-        mileAge.setVisible(false);
-        
-        jobSal.setVisible(false);
-        jobSalary.setVisible(false);
-        
-        landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
-        landUnitaryHost.setVisible(false);
-        
-        contactFormOptions.setVisible(false);
-        contactByEmail.setVisible(false);
-        
-        attachedLabel.setVisible(false);
-        extensionNote.setVisible(false);
-        
-        buttonAttactments.setVisible(false);
-        showAttachedFiles.setVisible(false);
-        
-        addNewAttachments.setVisible(false);
-        
-        utubeLabel.setVisible(false);
-        utubeNote.setVisible(false);
-        youTubeUrl.setVisible(false);
+        enter_name = JOptionPane.showInputDialog("Please enter your name?");
+        if (enter_name.isEmpty()) {
+            this.enter_name = "unknow";
         }
+        initComponents();
+        imagesList = new ArrayList<>();
+        ImageIcon icon = new ImageIcon("/home/mabian/CreatingAds/AdsCreator-AbsCreator/src/KerawaAds/kerawalogo.jpeg");
+        Image resizeIcon = icon.getImage().getScaledInstance(210, 70, Image.SCALE_DEFAULT);
+        logo.setIcon(new ImageIcon(resizeIcon));
+        user_name.setText(enter_name.toUpperCase());
+        emailvalidationerror.setVisible(false);
+
+        //this is the external form fields
+        telelabel.setVisible(false);
+        contact_telephone.setVisible(false);
+        teleleble2.setVisible(false);
+        contact_telephone02.setVisible(false);
+        telephone03.setVisible(false);
+        contact_telephone03.setVisible(false);
+        error.setVisible(false);
+        errorPrice.setVisible(false);
+
+        surfaceLabel.setVisible(false);
+        surfaceAreaTextField.setVisible(false);
+
+        carMileAgeLable.setVisible(false);
+        mileAge.setVisible(false);
+
+        jobSal.setVisible(false);
+        jobSalary.setVisible(false);
+
+        landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+        landUnitaryHost.setVisible(false);
+
+        contactFormOptions.setVisible(false);
+        contactByEmail.setVisible(false);
+
+        attachedLabel.setVisible(false);
+        extensionNote.setVisible(false);
+
+        buttonAttactments.setVisible(false);
+        showAttachedFiles.setVisible(false);
+
+        addNewAttachments.setVisible(false);
+
+        utubeLabel.setVisible(false);
+        utubeNote.setVisible(false);
+        youTubeUrl.setVisible(false);
+
     }
 
     /**
@@ -165,7 +117,6 @@ public class Ads extends javax.swing.JFrame {
         hostPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        dealer_name = new javax.swing.JTextField();
         dealers_email = new javax.swing.JTextField();
         publish = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -245,8 +196,9 @@ public class Ads extends javax.swing.JFrame {
         price = new javax.swing.JFormattedTextField();
         errorPrice = new javax.swing.JLabel();
         emailvalidationerror = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        telephone03 = new javax.swing.JLabel();
+        contact_telephone03 = new javax.swing.JTextField();
+        dealer_name = new javax.swing.JTextField();
         header = new javax.swing.JPanel();
         comfirmation_message = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -255,6 +207,7 @@ public class Ads extends javax.swing.JFrame {
         logo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         user_name = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -677,8 +630,14 @@ public class Ads extends javax.swing.JFrame {
 
         emailvalidationerror.setText("invalid");
 
-        jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel7.setText("Telephone 3");
+        telephone03.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        telephone03.setText("Telephone 3");
+
+        contact_telephone03.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                contact_telephone03KeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout hostPanelLayout = new javax.swing.GroupLayout(hostPanel);
         hostPanel.setLayout(hostPanelLayout);
@@ -704,7 +663,8 @@ public class Ads extends javax.swing.JFrame {
                                     .addComponent(categorylchoice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(31, 31, 31)
-                                .addComponent(error))))
+                                .addComponent(error)))
+                        .addGap(403, 403, 403))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -768,29 +728,28 @@ public class Ads extends javax.swing.JFrame {
                                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(hostPanelLayout.createSequentialGroup()
                                     .addGap(133, 133, 133)
-                                    .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(hostPanelLayout.createSequentialGroup()
-                                            .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
-                                                    .addGap(24, 24, 24)
-                                                    .addComponent(jLabel16))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
+                                    .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
+                                            .addGap(24, 24, 24)
+                                            .addComponent(jLabel16))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
+                                            .addComponent(jLabel21)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(CheckBoxShowEmail))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
+                                            .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(hostPanelLayout.createSequentialGroup()
                                                     .addGap(4, 4, 4)
                                                     .addComponent(jLabel18)
-                                                    .addGap(96, 96, 96)
-                                                    .addComponent(dealers_email, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, hostPanelLayout.createSequentialGroup()
-                                                    .addComponent(jLabel21)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(CheckBoxShowEmail)))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(emailvalidationerror)
-                                            .addGap(617, 617, 617))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hostPanelLayout.createSequentialGroup()
-                                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(97, 97, 97)
-                                            .addComponent(dealer_name, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 672, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                    .addGap(96, 96, 96))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hostPanelLayout.createSequentialGroup()
+                                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(97, 97, 97)))
+                                            .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(dealer_name, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(dealers_email, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(emailvalidationerror))
                                 .addGroup(hostPanelLayout.createSequentialGroup()
                                     .addGap(459, 459, 459)
                                     .addComponent(publish)
@@ -814,7 +773,7 @@ public class Ads extends javax.swing.JFrame {
                                                 .addComponent(jLabel14)
                                                 .addComponent(telelabel)
                                                 .addComponent(teleleble2)
-                                                .addComponent(jLabel7))
+                                                .addComponent(telephone03))
                                             .addGap(56, 56, 56)
                                             .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -823,7 +782,7 @@ public class Ads extends javax.swing.JFrame {
                                                 .addComponent(contact_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(contact_telephone02, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(country, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(contact_telephone03, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGap(17, 17, 17)
                                     .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 1171, Short.MAX_VALUE)
@@ -905,9 +864,8 @@ public class Ads extends javax.swing.JFrame {
                             .addComponent(contact_telephone02, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)))
+                            .addComponent(telephone03)
+                            .addComponent(contact_telephone03, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(hostPanelLayout.createSequentialGroup()
                         .addGap(697, 697, 697)
@@ -917,11 +875,11 @@ public class Ads extends javax.swing.JFrame {
                         .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel16)
-                        .addGap(8, 8, 8)
+                        .addGap(14, 14, 14)
                         .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dealer_name, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(3, 3, 3)
+                        .addGap(10, 10, 10)
                         .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(dealers_email, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel18)
@@ -994,16 +952,22 @@ public class Ads extends javax.swing.JFrame {
         jLabel34.setText("Version   1.0");
         jLabel34.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        logo.setIcon(new javax.swing.ImageIcon("/home/mabian/images/kerawalogo.jpeg")); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/KerawaAds/kerawalogo.jpeg"))); // NOI18N
         logo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         user_name.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         user_name.setText("user");
 
+        jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel7.setText("User:");
+
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 21, Short.MAX_VALUE))
             .addGroup(headerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1016,15 +980,18 @@ public class Ads extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(headerLayout.createSequentialGroup()
+                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(headerLayout.createSequentialGroup()
-                        .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(254, 254, 254)
                         .addComponent(comfirmation_message, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(user_name))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 21, Short.MAX_VALUE))
+                        .addComponent(user_name)
+                        .addGap(106, 106, 106))))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1034,11 +1001,12 @@ public class Ads extends javax.swing.JFrame {
                         .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(headerLayout.createSequentialGroup()
                         .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(comfirmation_message, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(user_name))))
+                            .addComponent(jLabel7)
+                            .addComponent(user_name, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(comfirmation_message, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -1124,8 +1092,8 @@ public class Ads extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 2346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(384, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(2083, Short.MAX_VALUE))
         );
 
         pack();
@@ -1142,7 +1110,7 @@ public class Ads extends javax.swing.JFrame {
     private void categorylchoiceItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_categorylchoiceItemStateChanged
         // TODO add your handling code here:
         String selectedCategory = categorylchoice.getSelectedItem().toString().trim();
-        
+
         switch (selectedCategory) {
             case "Vehicles":
                 //this is the external form fields
@@ -1150,30 +1118,32 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
-                
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(true);
                 mileAge.setVisible(true);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1185,32 +1155,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(true);
                 mileAge.setVisible(true);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1222,32 +1194,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1259,32 +1233,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1296,32 +1272,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(true);
                 surfaceAreaTextField.setVisible(true);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1333,32 +1311,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1370,32 +1350,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(true);
                 surfaceAreaTextField.setVisible(true);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(true);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1407,33 +1389,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
-                
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1445,32 +1428,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1482,32 +1467,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(true);
                 jobSalary.setVisible(true);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1519,33 +1506,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
-                
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1557,32 +1545,35 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
+
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1594,32 +1585,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1631,32 +1624,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1668,32 +1663,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1705,32 +1702,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1742,32 +1741,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1779,32 +1780,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1816,32 +1819,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1853,32 +1858,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1890,32 +1897,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1927,32 +1936,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -1964,32 +1975,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -2001,32 +2014,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -2038,32 +2053,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -2075,32 +2092,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -2112,32 +2131,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -2149,32 +2170,34 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
-                
+
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
@@ -2186,86 +2209,93 @@ public class Ads extends javax.swing.JFrame {
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
+                telephone03.setVisible(true);
+                contact_telephone03.setVisible(true);
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(true);
                 contactByEmail.setVisible(true);
-                
+
                 attachedLabel.setVisible(true);
                 extensionNote.setVisible(true);
-                
+
                 buttonAttactments.setVisible(true);
                 showAttachedFiles.setVisible(true);
-                
+
                 addNewAttachments.setVisible(true);
                 error.setVisible(false);
                 utubeLabel.setVisible(true);
                 utubeNote.setVisible(true);
                 youTubeUrl.setVisible(true);
                 break;
-            
+
             default:
                 //this is the external form fields
                 telelabel.setVisible(false);
                 contact_telephone.setVisible(false);
                 teleleble2.setVisible(false);
                 contact_telephone02.setVisible(false);
+                telephone03.setVisible(false);
+                contact_telephone03.setVisible(false);
+
+                emailvalidationerror.setVisible(false);
+
                 error.setVisible(false);
                 errorPrice.setVisible(false);
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 carMileAgeLable.setVisible(false);
                 mileAge.setVisible(false);
-                
+
                 jobSal.setVisible(false);
                 jobSalary.setVisible(false);
-                
+
                 landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
                 landUnitaryHost.setVisible(false);
-                
+
                 contactFormOptions.setVisible(false);
                 contactByEmail.setVisible(false);
-                
+
                 attachedLabel.setVisible(false);
                 extensionNote.setVisible(false);
-                
+
                 buttonAttactments.setVisible(false);
                 showAttachedFiles.setVisible(false);
-                
+
                 addNewAttachments.setVisible(false);
-                
+
                 utubeLabel.setVisible(false);
                 utubeNote.setVisible(false);
                 youTubeUrl.setVisible(false);
                 error.setVisible(true);
                 error.setForeground(Color.red);
                 error.setText(categorylchoice.getSelectedItem().toString().trim() + " is an invalid choice");
-            
+
         }
 
     }//GEN-LAST:event_categorylchoiceItemStateChanged
-    
+
     private List getListImage(File l) {
         List<File> fileList = new ArrayList<>();
         imagesList.add(l);
         return fileList;
     }
-    
+
 
     private void cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityActionPerformed
         // TODO add your handling code here:
@@ -2284,34 +2314,16 @@ public class Ads extends javax.swing.JFrame {
             showAttachedFiles.setText(file.getName());
         }
     }//GEN-LAST:event_buttonAttactmentsActionPerformed
-    
+
 
     private void publishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_publishActionPerformed
-        
+
         try {
 
             /**
              * Making up the xml document from the entered form fields
              *
              */
-            FileInputStream fis = null;
-            String stringBase64 = "";
-            for (File imagesList1 : imagesList) {
-                fis = new FileInputStream(imagesList1);
-                byte imageData[] = new byte[(int) imagesList1.length()];
-                fis.read(imageData);
-                stringBase64 = Base64.getEncoder().encodeToString(imageData);
-                
-            }
-            System.out.println(stringBase64 + " file name is " + "\n");
-            
-            fis.close();
-            
-            byte[] imageByte = Base64.getDecoder().decode(stringBase64);
-            for (byte j : imageByte) {
-                
-            }
-            
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
 
@@ -2323,10 +2335,14 @@ public class Ads extends javax.swing.JFrame {
             //ad tag
             Element ad = document.createElement("ad");
             rootElement.appendChild(ad);
-            
+
             Element adidElement = document.createElement("adid");
             adidElement.appendChild(document.createTextNode(categorylchoice.getSelectedItem().toString().trim()));
             ad.appendChild(adidElement);
+
+            Element creator = document.createElement("adWriter");
+            creator.appendChild(document.createTextNode(enter_name.toLowerCase()));
+            ad.appendChild(creator);
 
             //setting title element
             Element titleElement = document.createElement("title");
@@ -2342,7 +2358,7 @@ public class Ads extends javax.swing.JFrame {
             Element priceeElement = document.createElement("price");
             priceeElement.appendChild(document.createTextNode(price.getText().trim()));
             ad.appendChild(priceeElement);
-            
+
             Element currencyElement = document.createElement("currency");
             currencyElement.appendChild(document.createTextNode(currencyTag.getSelectedItem().toString()));
             ad.appendChild(currencyElement);
@@ -2366,23 +2382,27 @@ public class Ads extends javax.swing.JFrame {
             Element addressElement = document.createElement("address");
             addressElement.appendChild(document.createTextNode(address.getText()));
             ad.appendChild(addressElement);
-            
+
             Element contact01 = document.createElement("contact01");
             contact01.appendChild(document.createTextNode(contact_telephone.getText()));
             ad.appendChild(contact01);
-            
+
             Element contact02 = document.createElement("contact02");
             contact01.appendChild(document.createTextNode(contact_telephone02.getText()));
             ad.appendChild(contact02);
-            
+
+            Element contact03 = document.createElement("contact03");
+            contact03.appendChild(document.createTextNode(contact_telephone03.getText()));
+            ad.appendChild(contact03);
+
             Element sellersName = document.createElement("sellers_name");
             sellersName.appendChild(document.createTextNode(dealer_name.getText()));
             ad.appendChild(sellersName);
-            
+
             Element sellersEmail = document.createElement("sellers_email");
             sellersEmail.appendChild(document.createTextNode(dealers_email.getText()));
             ad.appendChild(sellersEmail);
-            
+
             Element showEmail = document.createElement("show_email");
             boolean returnValue = CheckBoxShowEmail.isSelected();
             String responds;
@@ -2393,23 +2413,23 @@ public class Ads extends javax.swing.JFrame {
             }
             showEmail.appendChild(document.createTextNode(responds));
             ad.appendChild(showEmail);
-            
+
             Element surfaceArea = document.createElement("surface");
             surfaceArea.appendChild(document.createTextNode(surfaceAreaTextField.getText()));
             ad.appendChild(surfaceArea);
-            
+
             Element unitaryPrice = document.createElement("unitry_price");
             unitaryPrice.appendChild(document.createTextNode(UnitaryPrice.getText().trim()));
             ad.appendChild(unitaryPrice);
-            
+
             Element milAge = document.createElement("mile_age");
             milAge.appendChild(document.createTextNode(mileAge.getText().trim()));
             ad.appendChild(milAge);
-            
+
             Element salaryElement = document.createElement("job_salary");
             salaryElement.appendChild(document.createTextNode(jobSalary.getText().trim()));
             ad.appendChild(salaryElement);
-            
+
             Element contactByMail = document.createElement("contact_by_mail");
             boolean repos = contactByEmail.isSelected();
             String checkResponds;
@@ -2425,7 +2445,7 @@ public class Ads extends javax.swing.JFrame {
             Element autoverifyElement = document.createElement("autoVerify");
             autoverifyElement.appendChild(document.createTextNode("true"));
             ad.appendChild(autoverifyElement);
-            
+
             Element noEmailElement = document.createElement("no_email");
             boolean showEmailCheck = CheckBoxShowEmail.isSelected();
             if (showEmailCheck) {
@@ -2434,37 +2454,51 @@ public class Ads extends javax.swing.JFrame {
                 noEmailElement.appendChild(document.createTextNode("N/A"));
             }
             ad.appendChild(noEmailElement);
-            
-            Element showAttached = document.createElement("attached_file");
-            showAttached.appendChild(document.createTextNode("not activated yet"));
-            ad.appendChild(showAttached);
-            
+
+            //attached file here
+//            Element showAttached = document.createElement("attached_file");
+//            showAttached.appendChild(document.createTextNode(""));
+//            ad.appendChild(showAttached);
             Element utube_url = document.createElement("youtube_url");
             utube_url.appendChild(document.createTextNode(youTubeUrl.getText().trim()));
             ad.appendChild(utube_url);
-            
-            Element imageElement = document.createElement("base64image");
-            
-            imageElement.appendChild(document.createTextNode(stringBase64));
-            ad.appendChild(imageElement);
 
+            FileInputStream fis;
+            String stringBase64;
+            int y = 1;
+            
+                
+                for (File imagesList1 : imagesList) {
+                    
+                    fis = new FileInputStream(imagesList1);
+                    byte imageData[] = new byte[(int) imagesList1.length()];
+                    fis.read(imageData);
+                    stringBase64 = Base64.getEncoder().encodeToString(imageData);
+                    Element imageTag = document.createElement("base64image"+ y);
+                    imageTag.appendChild(document.createTextNode(stringBase64));
+                    ad.appendChild(imageTag);
+                        y++;
+                    }
             //now i am write all the information to an xml file eg ads.xml
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(document);
-            StreamResult result = new StreamResult(new File("/home/mabian/Desktop/AdsFile/ads.xml"));
-            transformer.transform(source, result);
-            
-            JOptionPane.showMessageDialog(this, "Your ad has being saved."
-                    + "go to /home/mabian/Desktop/AdsFile/ads.xml to view.");
-           
-           
-        } catch (IOException
-                | ParserConfigurationException
-                | DOMException
-                | TransformerException
-                | HeadlessException ex) {
-            Logger.getLogger(Ads.class.getName()).log(Level.SEVERE, null, ex);
+            StreamResult result;
+            String saveFileTo = System.getProperty("user.home");
+
+            if (!saveFileTo.isEmpty()) {
+                String file_name = JOptionPane.showInputDialog("Please give the file a name");
+                result = new StreamResult(new File(saveFileTo + "/" + file_name + ".xml"));
+                transformer.transform(source, result);
+                clearAllInput();
+                JOptionPane.showMessageDialog(this, "Your ad has being saved. go to " + saveFileTo + "/" + file_name + ".xml to view");
+            } else {
+                JOptionPane.showMessageDialog(this, "No such directory found, File not save");
+            }
+
+        } catch (IOException | ParserConfigurationException | DOMException | TransformerException | HeadlessException ex) {
+            Logger.getLogger(Ads.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_publishActionPerformed
 
@@ -2486,12 +2520,12 @@ public class Ads extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_descriptionKeyTyped
-    
+
 
     private void priceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceKeyTyped
         // TODO add your handling code here:4
         char dot_hyhen = evt.getKeyChar();
-        
+
         if (evt.getKeyChar() <= KeyEvent.VK_9) {
             errorPrice.setVisible(false);
         } else {
@@ -2700,7 +2734,7 @@ public class Ads extends javax.swing.JFrame {
     private void contact_telephoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contact_telephoneKeyTyped
         // TODO add your handling code here:
         char dot_hyhen = evt.getKeyChar();
-        
+
         if (evt.getKeyChar() <= KeyEvent.VK_9) {
         } else {
             evt.consume();
@@ -2710,7 +2744,7 @@ public class Ads extends javax.swing.JFrame {
     private void contact_telephone02KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contact_telephone02KeyTyped
         // TODO add your handling code here:
         char dot_hyhen = evt.getKeyChar();
-        
+
         if (evt.getKeyChar() <= KeyEvent.VK_9) {
         } else {
             evt.consume();
@@ -2720,7 +2754,7 @@ public class Ads extends javax.swing.JFrame {
     private void surfaceAreaTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_surfaceAreaTextFieldKeyTyped
         // TODO add your handling code here:
         char dot_hyhen = evt.getKeyChar();
-        
+
         if (evt.getKeyChar() <= KeyEvent.VK_9) {
         } else {
             evt.consume();
@@ -2730,7 +2764,7 @@ public class Ads extends javax.swing.JFrame {
     private void mileAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mileAgeKeyTyped
         // TODO add your handling code here:
         char dot_hyhen = evt.getKeyChar();
-        
+
         if (evt.getKeyChar() <= KeyEvent.VK_9) {
         } else {
             evt.consume();
@@ -2740,13 +2774,13 @@ public class Ads extends javax.swing.JFrame {
     private void jobSalaryKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jobSalaryKeyTyped
         // TODO add your handling code here:
         char dot_hyhen = evt.getKeyChar();
-        
+
         if (evt.getKeyChar() <= KeyEvent.VK_9) {
         } else {
             evt.consume();
         }
     }//GEN-LAST:event_jobSalaryKeyTyped
-    
+
 
     private void countryItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_countryItemStateChanged
         // TODO add your handling code here:
@@ -2760,7 +2794,7 @@ public class Ads extends javax.swing.JFrame {
         String emailentered = dealers_email.getText().trim();
         boolean validate = emailentered.matches(EMAIL_REGEX);
         if (validate) {
-            
+
             emailvalidationerror.setVisible(true);
             emailvalidationerror.setForeground(Color.green);
             emailvalidationerror.setText("");
@@ -2794,6 +2828,16 @@ public class Ads extends javax.swing.JFrame {
             emailvalidationerror.setText("invalid email");
         }
     }//GEN-LAST:event_dealers_emailFocusLost
+
+    private void contact_telephone03KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contact_telephone03KeyTyped
+        // TODO add your handling code here:
+        char dot_hyhen = evt.getKeyChar();
+
+        if (evt.getKeyChar() <= KeyEvent.VK_9) {
+        } else {
+            evt.consume();
+        }
+    }//GEN-LAST:event_contact_telephone03KeyTyped
 
     //method the helps to switch the different cities depending on the region selected
     private void getCountry(String str) {
@@ -2839,7 +2883,7 @@ public class Ads extends javax.swing.JFrame {
                 city.addItem("no region selected");
         }
     }
-    
+
     public void clearAllInput() {
         UnitaryPrice.setText("");
         address.setText("");
@@ -2872,10 +2916,12 @@ public class Ads extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ads.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -2885,9 +2931,9 @@ public class Ads extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                
+
                 new Ads().setVisible(true);
-                
+
             }
         });
     }
@@ -2909,6 +2955,7 @@ public class Ads extends javax.swing.JFrame {
     private javax.swing.JLabel contactFormOptions;
     private javax.swing.JFormattedTextField contact_telephone;
     private javax.swing.JFormattedTextField contact_telephone02;
+    private javax.swing.JTextField contact_telephone03;
     private javax.swing.JMenuItem contentsMenuItem;
     private javax.swing.JMenuItem copyMenuItem;
     private javax.swing.JComboBox country;
@@ -2978,7 +3025,6 @@ public class Ads extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel jobSal;
     private javax.swing.JFormattedTextField jobSalary;
     private javax.swing.JPanel landUnitaryHost;
@@ -2997,11 +3043,16 @@ public class Ads extends javax.swing.JFrame {
     private javax.swing.JLabel surfaceLabel;
     private javax.swing.JLabel telelabel;
     private javax.swing.JLabel teleleble2;
+    private javax.swing.JLabel telephone03;
     private javax.swing.JTextField title;
     private javax.swing.JLabel user_name;
     private javax.swing.JLabel utubeLabel;
     private javax.swing.JLabel utubeNote;
     private javax.swing.JTextField youTubeUrl;
     // End of variables declaration//GEN-END:variables
+
+    private String getBase64String(String stringBase64) {
+        return stringBase64;
+    }
 
 }
