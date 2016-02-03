@@ -124,12 +124,10 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jScrollPane1" alignment="1" min="-2" pref="1288" max="-2" attributes="0"/>
-                  <Component id="header" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="0" pref="96" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
           </Group>
+          <Component id="header" alignment="1" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -137,8 +135,8 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="header" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="977" max="-2" attributes="0"/>
-              <EmptySpace pref="313" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="614" max="-2" attributes="0"/>
+              <EmptySpace pref="676" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -418,7 +416,7 @@
                                                               <Group type="102" alignment="0" attributes="0">
                                                                   <Component id="dealers_email" min="-2" pref="300" max="-2" attributes="0"/>
                                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                                  <Component id="emailvalidationerror" min="-2" pref="59" max="-2" attributes="0"/>
+                                                                  <Component id="emailvalidationerror" min="-2" pref="150" max="-2" attributes="0"/>
                                                               </Group>
                                                           </Group>
                                                       </Group>

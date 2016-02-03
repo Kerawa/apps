@@ -10,7 +10,7 @@ package KerawaAds;
  * @author mabian
  */
 public class Cities {
-    
+     
     public String cities_in_cameroun[] = new String[]{"Bafoussan", "Bamenda", "Bertoua",
         "Buea", "Douala", "Ebolowa", "Edea",
         "Foumban", "Garoua", "Kribi", "Kumba",

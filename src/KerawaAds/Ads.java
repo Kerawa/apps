@@ -870,7 +870,7 @@ public final class Ads extends javax.swing.JFrame {
                                                         .addGroup(hostPanelLayout.createSequentialGroup()
                                                             .addComponent(dealers_email, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                             .addGap(18, 18, 18)
-                                                            .addComponent(emailvalidationerror, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                                                            .addComponent(emailvalidationerror, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
                                 .addGroup(hostPanelLayout.createSequentialGroup()
                                     .addGap(471, 471, 471)
                                     .addComponent(publish)
@@ -1150,18 +1150,17 @@ public final class Ads extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 96, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+            .addComponent(header, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 977, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(313, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(676, Short.MAX_VALUE))
         );
 
         pack();
@@ -2562,19 +2561,38 @@ public final class Ads extends javax.swing.JFrame {
             String fileName = date_time + "_" + enter_name + ".xml";
 
             String sys = System.getProperty("user.home");
-            String adsPath = sys + "/Desktop/MyKerawaAds";
-            File fileDir = new File(adsPath);
-            if (fileDir.exists()) {
-                result = new StreamResult(new File(adsPath +"/"+ fileName));
-                transformer.transform(source, result);
-                clearAllInput();
-                JOptionPane.showMessageDialog(this, "Done");
+            String PathOnLinux = sys + "/Desktop/MyKerawaAds";
+            String PathOnWindows = sys +"\\Desktop\\MyKerawaAds";
+            File linuxFileSystem = new File(PathOnLinux);
+            File windowFileSystem = new File(PathOnWindows);
+            if (linuxFileSystem.exists() || windowFileSystem.exists()) {
+                if (sys.contains("/")) {
+                    result = new StreamResult(new File(PathOnLinux + "/" + fileName));
+                    transformer.transform(source, result);
+                    clearAllInput();
+                    JOptionPane.showMessageDialog(this, "Done");
+                }else{
+                    result = new StreamResult(new File(PathOnLinux + "\\" + fileName));
+                    transformer.transform(source, result);
+                    clearAllInput();
+                    JOptionPane.showMessageDialog(this, "Done");
+                }
+
             } else {
-                fileDir.mkdir();
-                result = new StreamResult(new File(adsPath +"/"+ fileName));
-                transformer.transform(source, result);
-                clearAllInput();
-                JOptionPane.showMessageDialog(this, "Done");
+                if (sys.contains("/")) {
+                    linuxFileSystem.mkdir();
+                    result = new StreamResult(new File(PathOnLinux + "/" + fileName));
+                    transformer.transform(source, result);
+                    clearAllInput();
+                    JOptionPane.showMessageDialog(this, "Done");
+                }else{
+                    linuxFileSystem.mkdir();
+                    result = new StreamResult(new File(PathOnLinux + "\\" + fileName));
+                    transformer.transform(source, result);
+                    clearAllInput();
+                    JOptionPane.showMessageDialog(this, "Done");
+                }
+
             }
 
         } catch (IOException | ParserConfigurationException | DOMException | TransformerException | HeadlessException ex) {
