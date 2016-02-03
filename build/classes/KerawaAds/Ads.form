@@ -123,10 +123,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="header" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jScrollPane1" min="-2" pref="1306" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jScrollPane1" alignment="1" min="-2" pref="1288" max="-2" attributes="0"/>
+                  <Component id="header" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="0" pref="96" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -135,14 +137,154 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="header" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="642" max="-2" attributes="0"/>
-              <EmptySpace pref="2083" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="977" max="-2" attributes="0"/>
+              <EmptySpace pref="313" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Container class="javax.swing.JPanel" name="header">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Component id="jSeparator1" min="-2" pref="1300" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
+                          <Component id="comfirmation_message" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="logo" min="-2" pref="211" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="user_name" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="logo" min="-2" pref="65" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="user_name" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="comfirmation_message" min="-2" pref="68" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                  <Component id="jSeparator1" min="-2" pref="4" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="comfirmation_message">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Sans Typewriter" size="24" style="3"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Gagnez tout en &#xe9;crivant des annonces pour Kerala"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Ubuntu" size="15" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Building opportunities"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Kerawa.com  &#xbb; Publier une annonce "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel34">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Ubuntu" size="15" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Version   1.0"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="logo">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/KerawaAds/logo.jpeg"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSeparator" name="jSeparator1">
+        </Component>
+        <Component class="javax.swing.JLabel" name="user_name">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Ubuntu" size="24" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="user"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel7">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Ubuntu" size="24" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="utilisateur"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <Properties>
+        <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+        <Property name="verticalScrollBarPolicy" type="int" value="22"/>
+        <Property name="autoscrolls" type="boolean" value="true"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
@@ -185,37 +327,29 @@
                                       <Component id="error" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="403" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jSeparator2" min="-2" pref="1280" max="-2" attributes="0"/>
-                          <Component id="jSeparator9" min="-2" pref="1280" max="-2" attributes="0"/>
+                          <Component id="jSeparator2" min="-2" pref="1292" max="-2" attributes="0"/>
+                          <Component id="jSeparator9" min="-2" pref="1292" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                                  <Component id="surfaceLabel" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
-                                                  <Component id="surfaceAreaTextField" min="-2" pref="300" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                                  <Component id="utubeLabel" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="landUnitaryHost" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="youTubeUrl" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
                                           <Component id="imagePanel" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="333" max="-2" attributes="0"/>
-                                          <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                                                   <Component id="contactFormOptions" min="-2" max="-2" attributes="0"/>
@@ -246,123 +380,131 @@
                                                       <Component id="jobSalary" min="-2" pref="300" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="utubeNote" min="-2" max="-2" attributes="0"/>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                                          <Component id="utubeLabel" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                              </Group>
-                                              <Component id="youTubeUrl" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Component id="jSeparator5" min="-2" pref="1280" max="-2" attributes="0"/>
-                                      <Component id="jSeparator8" min="-2" pref="1280" max="-2" attributes="0"/>
-                                      <Component id="jSeparator6" alignment="0" min="-2" pref="1280" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
-                                                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                                  <Component id="surfaceLabel" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                                                  <Component id="surfaceAreaTextField" min="-2" pref="300" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="CheckBoxShowEmail" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="surfaceerror" min="-2" max="-2" attributes="0"/>
                                               </Group>
+                                              <Component id="landUnitaryHost" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Group type="102" alignment="0" attributes="0">
-                                                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                                                          <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
+                                                          <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                                                       </Group>
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Component id="jLabel17" min="-2" pref="63" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                          <Component id="CheckBoxShowEmail" min="-2" max="-2" attributes="0"/>
                                                       </Group>
-                                                  </Group>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="dealer_name" min="-2" pref="300" max="-2" attributes="0"/>
-                                                      <Component id="dealers_email" min="-2" pref="300" max="-2" attributes="0"/>
+                                                      <Group type="102" attributes="0">
+                                                          <Group type="103" groupAlignment="0" attributes="0">
+                                                              <Group type="102" alignment="0" attributes="0">
+                                                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                                                  <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                                                  <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                                                              </Group>
+                                                              <Group type="102" alignment="1" attributes="0">
+                                                                  <Component id="jLabel17" min="-2" pref="63" max="-2" attributes="0"/>
+                                                                  <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                                                              </Group>
+                                                          </Group>
+                                                          <Group type="103" groupAlignment="0" attributes="0">
+                                                              <Component id="dealer_name" min="-2" pref="300" max="-2" attributes="0"/>
+                                                              <Group type="102" alignment="0" attributes="0">
+                                                                  <Component id="dealers_email" min="-2" pref="300" max="-2" attributes="0"/>
+                                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                                  <Component id="emailvalidationerror" min="-2" pref="59" max="-2" attributes="0"/>
+                                                              </Group>
+                                                          </Group>
+                                                      </Group>
                                                   </Group>
                                               </Group>
                                           </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="emailvalidationerror" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="459" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="471" max="-2" attributes="0"/>
                                           <Component id="publish" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
-                                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="editFile" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="452" max="-2" attributes="0"/>
                                   <Component id="jSeparator7" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="148" pref="148" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="telelabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="teleleble2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="telephone03" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="city" min="-2" pref="300" max="-2" attributes="0"/>
-                                                      <Component id="city_area" min="-2" pref="300" max="-2" attributes="0"/>
-                                                      <Component id="address" min="-2" pref="300" max="-2" attributes="0"/>
-                                                      <Component id="contact_telephone" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                                      <Component id="contact_telephone02" min="-2" pref="300" max="-2" attributes="0"/>
-                                                      <Component id="country" min="-2" pref="300" max="-2" attributes="0"/>
-                                                      <Component id="contact_telephone03" min="-2" pref="300" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                          </Group>
                                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="695" pref="695" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jSeparator4" alignment="0" pref="1171" max="32767" attributes="0"/>
+                                              <Component id="jSeparator4" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jSeparator3" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-                                          <Component id="price" min="-2" pref="140" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="currencyTag" min="-2" pref="140" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                          <Component id="errorPrice" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="telelabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="teleleble2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="telephone03" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="city" min="-2" pref="300" max="-2" attributes="0"/>
+                                              <Component id="city_area" min="-2" pref="300" max="-2" attributes="0"/>
+                                              <Component id="address" min="-2" pref="300" max="-2" attributes="0"/>
+                                              <Component id="contact_telephone" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                              <Component id="contact_telephone02" min="-2" pref="300" max="-2" attributes="0"/>
+                                              <Component id="country" min="-2" pref="300" max="-2" attributes="0"/>
+                                              <Component id="contact_telephone03" min="-2" pref="300" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="errorPasting1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="errorPasting2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="errorPasting3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="invalidcountry" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                                  <Component id="price" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="currencyTag" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="errorPrice" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jSeparator5" min="-2" pref="1292" max="-2" attributes="0"/>
+                          <Component id="jSeparator6" min="-2" pref="1292" max="-2" attributes="0"/>
+                          <Component id="jSeparator8" min="-2" pref="1292" max="-2" attributes="0"/>
+                          <Component id="jSeparator10" min="-2" pref="1292" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Component id="utubeNote" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
+                              <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="85" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -402,19 +544,17 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jSeparator9" min="-2" pref="2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jSeparator3" min="-2" pref="0" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jSeparator4" alignment="0" min="-2" pref="0" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jSeparator3" min="-2" pref="0" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jSeparator4" min="-2" pref="0" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="374" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="country" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="invalidcountry" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -435,28 +575,34 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="telelabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="contact_telephone" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="errorPasting1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="teleleble2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="contact_telephone02" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="errorPasting2" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="telephone03" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="contact_telephone03" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="contact_telephone03" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="telephone03" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="errorPasting3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="697" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jSeparator8" min="-2" pref="2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="-2" pref="701" max="-2" attributes="0"/>
                               <Component id="jSeparator7" min="-2" pref="0" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jSeparator8" min="-2" pref="2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -467,21 +613,22 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="dealers_email" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="emailvalidationerror" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="emailvalidationerror" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="CheckBoxShowEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="surfaceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="surfaceAreaTextField" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="surfaceerror" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="landUnitaryHost" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="carMileAgeLable" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="mileAge" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
@@ -506,23 +653,25 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="addNewAttachments" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="jSeparator5" min="-2" pref="2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                               <Component id="jSeparator6" min="-2" pref="2" max="-2" attributes="0"/>
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="utubeLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="utubeNote" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="youTubeUrl" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="jSeparator10" min="-2" pref="2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="imagePanel" min="-2" pref="504" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="imagePanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="editFile" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="publish" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
@@ -538,7 +687,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="15" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="General Information"/>
+                <Property name="text" type="java.lang.String" value="Informations g&#xe9;n&#xe9;rales"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
@@ -546,7 +695,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Publish a listing"/>
+                <Property name="text" type="java.lang.String" value="Publier une annonce"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="dealers_email">
@@ -560,18 +709,18 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="15" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Publish"/>
+                <Property name="text" type="java.lang.String" value="Publier"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="publishActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="editFile">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="15" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Edit file"/>
+                <Property name="text" type="java.lang.String" value="Modifiez le fichier"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel18">
@@ -587,7 +736,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Name"/>
+                <Property name="text" type="java.lang.String" value="Nom"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel16">
@@ -595,7 +744,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Seller&apos;s information"/>
+                <Property name="text" type="java.lang.String" value="Informations sur le vendeur"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
@@ -603,50 +752,50 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Category *"/>
+                <Property name="text" type="java.lang.String" value="Cat&#xe9;gorie *"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="categorylchoice">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="37">
-                    <StringItem index="0" value="Select a category....."/>
-                    <StringItem index="1" value="Automotive"/>
-                    <StringItem index="2" value="      Vehicles"/>
-                    <StringItem index="3" value="      Motorcycles"/>
-                    <StringItem index="4" value="      Car parts - Accessories"/>
-                    <StringItem index="5" value="      Other Automotive"/>
-                    <StringItem index="6" value="Real Estate"/>
-                    <StringItem index="7" value="      Houses - Apartments for Sale"/>
-                    <StringItem index="8" value="      Houses - Apartments for Rent"/>
-                    <StringItem index="9" value="      Land for sale or rent"/>
-                    <StringItem index="10" value="      Office - commercial space"/>
-                    <StringItem index="11" value="      Other Real Estate"/>
-                    <StringItem index="12" value="Jobs"/>
-                    <StringItem index="13" value="      Job vacancies"/>
-                    <StringItem index="14" value="      Job wanted - Resume"/>
-                    <StringItem index="15" value="Fashion"/>
-                    <StringItem index="16" value="       Women&apos;s Clothing"/>
-                    <StringItem index="17" value="       Men&apos;s Clothing"/>
-                    <StringItem index="18" value="       Children&apos;s Clothing"/>
-                    <StringItem index="19" value="        Watches - Jewelries - Sunglasses"/>
-                    <StringItem index="20" value="         Fashion Accessories"/>
-                    <StringItem index="21" value="         Other fashion articles"/>
+                    <StringItem index="0" value="S&#xe9;lectionnez une cat&#xe9;gorie..."/>
+                    <StringItem index="1" value="Automobile"/>
+                    <StringItem index="2" value="      Voitures"/>
+                    <StringItem index="3" value="      Motos"/>
+                    <StringItem index="4" value="      Pi&#xe8;ces d&#xe9;tach&#xe9;es - accessoires"/>
+                    <StringItem index="5" value="      Autres - Automobile"/>
+                    <StringItem index="6" value="Immobilier"/>
+                    <StringItem index="7" value="      Maisons - Appartements &#xe0; vendre"/>
+                    <StringItem index="8" value="      Maisons - Appartements &#xe0; louer"/>
+                    <StringItem index="9" value="      Terrains &#xe0; vendre ou &#xe0; louer"/>
+                    <StringItem index="10" value="      Bureaux - locaux commerciaux"/>
+                    <StringItem index="11" value="      Autres Immobilier"/>
+                    <StringItem index="12" value="Emploi"/>
+                    <StringItem index="13" value="      Offres d&apos;emploi"/>
+                    <StringItem index="14" value="      Demandes d&apos;emploi - CVth&#xe8;que"/>
+                    <StringItem index="15" value="Mode"/>
+                    <StringItem index="16" value="       Habillement Femme"/>
+                    <StringItem index="17" value="       Habillement Homme"/>
+                    <StringItem index="18" value="       Habillement Enfants"/>
+                    <StringItem index="19" value="        Montres - Bijoux - Lunettes"/>
+                    <StringItem index="20" value="         Accessoires de mode"/>
+                    <StringItem index="21" value="         Autres articles de mode"/>
                     <StringItem index="22" value="High Tech"/>
                     <StringItem index="23" value="        Audio - Video"/>
-                    <StringItem index="24" value="         Phones - Tablets"/>
-                    <StringItem index="25" value="         Computers"/>
-                    <StringItem index="26" value="         Video games"/>
-                    <StringItem index="27" value="         Other -  High Tech"/>
-                    <StringItem index="28" value="For sale"/>
-                    <StringItem index="29" value="         Furniture, House decorations"/>
-                    <StringItem index="30" value="        Appliances"/>
-                    <StringItem index="31" value="        Other - For Sale"/>
+                    <StringItem index="24" value="         T&#xe9;l&#xe9;phones - tablettes tactiles"/>
+                    <StringItem index="25" value="         Ordinateurs"/>
+                    <StringItem index="26" value="         Consoles - Jeux vid&#xe9;os"/>
+                    <StringItem index="27" value="         Autres - High Tech"/>
+                    <StringItem index="28" value="A vendre"/>
+                    <StringItem index="29" value="       Mobiliers, d&#xe9;coration"/>
+                    <StringItem index="30" value="        Electromenager"/>
+                    <StringItem index="31" value="        Autres - A vendre"/>
                     <StringItem index="32" value="Services"/>
-                    <StringItem index="33" value="       Service offered"/>
-                    <StringItem index="34" value="       Looking for service"/>
-                    <StringItem index="35" value="       Events"/>
-                    <StringItem index="36" value="       Other - Services"/>
+                    <StringItem index="33" value="       Offres de service"/>
+                    <StringItem index="34" value="       Recherche de services"/>
+                    <StringItem index="35" value="       Evenementiel"/>
+                    <StringItem index="36" value="       Autres - Services"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -659,7 +808,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Title *"/>
+                <Property name="text" type="java.lang.String" value="Titre *"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="title">
@@ -708,7 +857,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Price"/>
+                <Property name="text" type="java.lang.String" value="Prix"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="currencyTag">
@@ -738,7 +887,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Listing Location"/>
+                <Property name="text" type="java.lang.String" value="Lieu de l&apos;annonce"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -749,20 +898,19 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Country *"/>
+                <Property name="text" type="java.lang.String" value="Pays *"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="country">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="7">
-                    <StringItem index="0" value="Select a region...."/>
-                    <StringItem index="1" value="Cameroun"/>
-                    <StringItem index="2" value="Congo Brazza"/>
-                    <StringItem index="3" value="Congo Kinshasa"/>
-                    <StringItem index="4" value="C&#xf4;te d&#x2019;Ivoire"/>
-                    <StringItem index="5" value="Gabon"/>
-                    <StringItem index="6" value="Senegal"/>
+                  <StringArray count="6">
+                    <StringItem index="0" value="Cameroun"/>
+                    <StringItem index="1" value="Congo Brazza"/>
+                    <StringItem index="2" value="Congo Kinshasa"/>
+                    <StringItem index="3" value="C&#xf4;te d&#x2019;Ivoire"/>
+                    <StringItem index="4" value="Gabon"/>
+                    <StringItem index="5" value="Senegal"/>
                   </StringArray>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -778,14 +926,31 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="City *"/>
+                <Property name="text" type="java.lang.String" value="Ville *"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="city">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
-                    <StringItem index="0" value="Choose a city..."/>
+                  <StringArray count="18">
+                    <StringItem index="0" value="Bafoussan"/>
+                    <StringItem index="1" value="Bamenda"/>
+                    <StringItem index="2" value="Bertoua"/>
+                    <StringItem index="3" value="Buea"/>
+                    <StringItem index="4" value="Douala"/>
+                    <StringItem index="5" value="Ebolowa"/>
+                    <StringItem index="6" value="Edea"/>
+                    <StringItem index="7" value="Foumban"/>
+                    <StringItem index="8" value="Garoua"/>
+                    <StringItem index="9" value="Kribi"/>
+                    <StringItem index="10" value="Kumba"/>
+                    <StringItem index="11" value="Limbe"/>
+                    <StringItem index="12" value="Maroua"/>
+                    <StringItem index="13" value="Mbalmayo"/>
+                    <StringItem index="14" value="Ngaoudere"/>
+                    <StringItem index="15" value="Nkongsamba"/>
+                    <StringItem index="16" value="Tiko"/>
+                    <StringItem index="17" value="Yaounde"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -795,7 +960,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="City Area"/>
+                <Property name="text" type="java.lang.String" value="Arrondissement"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="city_area">
@@ -805,7 +970,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Address"/>
+                <Property name="text" type="java.lang.String" value="Adresse"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="address">
@@ -815,7 +980,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Telephone 1"/>
+                <Property name="text" type="java.lang.String" value="T&#xe9;l&#xe9;phone #1 *"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="contact_telephone">
@@ -825,6 +990,8 @@
                 </Property>
               </Properties>
               <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="contact_telephoneFocusLost"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="contact_telephoneKeyPressed"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="contact_telephoneKeyTyped"/>
               </Events>
             </Component>
@@ -833,11 +1000,12 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Telephone 2"/>
+                <Property name="text" type="java.lang.String" value="T&#xe9;l&#xe9;phone #2"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="contact_telephone02">
               <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="contact_telephone02FocusLost"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="contact_telephone02KeyTyped"/>
               </Events>
             </Component>
@@ -848,7 +1016,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Show e-mail on the listing page"/>
+                <Property name="text" type="java.lang.String" value="Montrer e -mail sur la page d&apos;inscription"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="CheckBoxShowEmail">
@@ -871,7 +1039,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Contact Form Options"/>
+                <Property name="text" type="java.lang.String" value="Contactez Options de formulaire"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="contactByEmail">
@@ -879,7 +1047,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Allow users to contact you by email"/>
+                <Property name="text" type="java.lang.String" value="Autoriser les utilisateurs &#xe0; vous contacter par email"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="attachedLabel">
@@ -887,7 +1055,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Attachments"/>
+                <Property name="text" type="java.lang.String" value="Pi&#xe8;ces jointes"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="extensionNote">
@@ -895,12 +1063,12 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="*Allowed extensions are pdf,doc,docx,ppt,pptx,xls,xlsx,zip,rtf,rar. Any other file will not be uploaded"/>
+                <Property name="text" type="java.lang.String" value="Extensions autoris&#xe9;es sont pdf,doc,docx,ppt,pptx,xls,xlsx,zip,rtf,rar. Toute autre fichier ne sera pas charg&#xe9;"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="buttonAttactments">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Browse..."/>
+                <Property name="text" type="java.lang.String" value="Feuilleter..."/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAttactmentsActionPerformed"/>
@@ -911,7 +1079,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="no file selected"/>
+                <Property name="text" type="java.lang.String" value="aucun fichier s&#xe9;lectionn&#xe9;"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="addNewAttachments">
@@ -919,7 +1087,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Add new attachment"/>
+                <Property name="text" type="java.lang.String" value="Ajouter une nouvelle pi&#xe8;ce jointe"/>
                 <Property name="toolTipText" type="java.lang.String" value="please click to add.."/>
               </Properties>
             </Component>
@@ -941,7 +1109,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Youtube video"/>
+                <Property name="text" type="java.lang.String" value="Vid&#xe9;o YouTube"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="utubeNote">
@@ -949,7 +1117,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="*Enter the youtube url, i.e.: http://www.youtube.com/watch?v=ojqWclLQOxk or http://www.youtube.com/v/ojqWclLQOxk"/>
+                <Property name="text" type="java.lang.String" value=" Entrez le lien vers la vid&#xe9;o You Tube, c&apos;est &#xe0; dire http://www.youtube.com/watch?v=ojqWclLQOxk ou http://www.youtube.com/v/ojqWclLQOxk "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="youTubeUrl">
@@ -977,7 +1145,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="landUnitaryLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane3" min="-2" pref="305" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1206,7 +1374,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Please click the boxes to upload images"/>
+                <Property name="text" type="java.lang.String" value="S&apos;il vous pla&#xee;t cliquez sur les cases de t&#xe9;l&#xe9;charger des images"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator9">
@@ -1255,6 +1423,7 @@
                 <Property name="focusLostBehavior" type="int" value="0"/>
               </Properties>
               <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="priceKeyPressed"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="priceKeyTyped"/>
               </Events>
             </Component>
@@ -1265,6 +1434,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="emailvalidationerror">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/KerawaAds/valid.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="invalid"/>
               </Properties>
             </Component>
@@ -1273,160 +1445,53 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Telephone 3"/>
+                <Property name="text" type="java.lang.String" value="T&#xe9;l&#xe9;phone #3*"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="contact_telephone03">
               <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="contact_telephone03FocusLost"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="contact_telephone03KeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="dealer_name">
             </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator10">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="surfaceerror">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="invaid"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="errorPasting1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="pasteTelephone1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="errorPasting2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="pasteTelephone2"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="errorPasting3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="pasteTelephone3"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="invalidcountry">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="invalid"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="header">
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Component id="jSeparator1" min="-2" pref="1300" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="logo" min="-2" pref="211" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="254" max="-2" attributes="0"/>
-                          <Component id="comfirmation_message" min="-2" pref="479" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                          <Component id="user_name" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="logo" min="-2" pref="65" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="user_name" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="comfirmation_message" min="-2" pref="68" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                  <Component id="jSeparator1" min="-2" pref="4" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="comfirmation_message">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Sans Typewriter" size="24" style="3"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Earn while writing ads for Kerawa"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Ubuntu" size="15" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Building opportunities"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Kerawa.com  &#xbb; Publish a listing "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel34">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Ubuntu" size="15" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Version   1.0"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
-                <BevelBorder/>
-              </Border>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="logo">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/KerawaAds/kerawalogo.jpeg"/>
-            </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
-                <BevelBorder/>
-              </Border>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JSeparator" name="jSeparator1">
-        </Component>
-        <Component class="javax.swing.JLabel" name="user_name">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Ubuntu" size="24" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="user"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel7">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Ubuntu" size="24" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="User:"/>
-          </Properties>
-        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
