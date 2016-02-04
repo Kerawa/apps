@@ -135,8 +135,8 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="header" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="614" max="-2" attributes="0"/>
-              <EmptySpace pref="676" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="589" max="-2" attributes="0"/>
+              <EmptySpace pref="736" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -325,6 +325,7 @@
                                       <Component id="error" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <EmptySpace min="-2" pref="258" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jSeparator2" min="-2" pref="1292" max="-2" attributes="0"/>
                           <Component id="jSeparator9" min="-2" pref="1292" max="-2" attributes="0"/>
@@ -1418,6 +1419,9 @@
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="price">
               <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+                  <Format format="#,##0.00" subtype="-1" type="4"/>
+                </Property>
                 <Property name="focusLostBehavior" type="int" value="0"/>
               </Properties>
               <Events>

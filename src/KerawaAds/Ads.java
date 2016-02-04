@@ -19,6 +19,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -44,7 +45,8 @@ public final class Ads extends javax.swing.JFrame {
     String image = "";
     int i = 0;
     List<File> imagesList;
-
+    String catSubString = "";
+    
     /**
      * Creates new form Ads
      */
@@ -62,7 +64,7 @@ public final class Ads extends javax.swing.JFrame {
         contact_telephone.setTransferHandler(null);
         contact_telephone02.setTransferHandler(null);
         contact_telephone03.setTransferHandler(null);
-
+        
         imagesList = new ArrayList<>();
         ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/logo.jpeg"));
         Image resizeIcon = icon.getImage().getScaledInstance(210, 70, Image.SCALE_DEFAULT);
@@ -731,6 +733,7 @@ public final class Ads extends javax.swing.JFrame {
 
         error.setText("invalid");
 
+        price.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
         price.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
         price.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -796,7 +799,8 @@ public final class Ads extends javax.swing.JFrame {
                                     .addComponent(categorylchoice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(31, 31, 31)
-                                .addComponent(error))))
+                                .addComponent(error)))
+                        .addGap(258, 258, 258))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1159,8 +1163,8 @@ public final class Ads extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(676, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(736, Short.MAX_VALUE))
         );
 
         pack();
@@ -1177,7 +1181,20 @@ public final class Ads extends javax.swing.JFrame {
     private void categorylchoiceItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_categorylchoiceItemStateChanged
         // TODO add your handling code here:
         String selectedCategory = categorylchoice.getSelectedItem().toString().trim();
-
+            if(selectedCategory.length() < 10)
+            {
+                try {
+                    catSubString = selectedCategory.substring(0, 5);
+                } catch (Exception e) {
+                }
+                
+            }else{
+                try {
+                    catSubString = selectedCategory.substring(0, 11);
+                } catch (Exception e) {
+                }
+                
+            }
         switch (selectedCategory) {
             case "Voitures":
                 //this is the external form fields
@@ -2558,7 +2575,7 @@ public final class Ads extends javax.swing.JFrame {
             LocalDateTime timestap = LocalDateTime.now();
             String time = timestap.toLocalTime().toString();
             String date_time = timestap.toLocalDate() + "_" + time.subSequence(0, 8);
-            String fileName = date_time + "_" + enter_name + ".xml";
+            String fileName = date_time + "_" + enter_name + catSubString.toUpperCase() + ".xml";
 
             String sys = System.getProperty("user.home");
             String PathOnLinux = sys + "/Desktop/MyKerawaAds";
@@ -2570,12 +2587,13 @@ public final class Ads extends javax.swing.JFrame {
                     result = new StreamResult(new File(PathOnLinux + "/" + fileName));
                     transformer.transform(source, result);
                     clearAllInput();
-                    JOptionPane.showMessageDialog(this, "Done");
+                    JOptionPane.showMessageDialog(this, "Done. Your Document is found at "+ PathOnLinux+"/"+fileName);
+                    
                 }else{
-                    result = new StreamResult(new File(PathOnLinux + "\\" + fileName));
+                    result = new StreamResult(new File(PathOnWindows + "\\" + fileName));
                     transformer.transform(source, result);
                     clearAllInput();
-                    JOptionPane.showMessageDialog(this, "Done");
+                    JOptionPane.showMessageDialog(this, "Done. Your Document is found at "+ PathOnWindows+"\\"+fileName);
                 }
 
             } else {
@@ -2584,13 +2602,15 @@ public final class Ads extends javax.swing.JFrame {
                     result = new StreamResult(new File(PathOnLinux + "/" + fileName));
                     transformer.transform(source, result);
                     clearAllInput();
-                    JOptionPane.showMessageDialog(this, "Done");
+                    JOptionPane.showMessageDialog(this, "Done. Your Document is found at "+ PathOnLinux+"/"+fileName);
                 }else{
-                    linuxFileSystem.mkdir();
-                    result = new StreamResult(new File(PathOnLinux + "\\" + fileName));
+                    windowFileSystem.mkdir();
+                    result = new StreamResult(new File(PathOnWindows + "\\" + fileName));
                     transformer.transform(source, result);
                     clearAllInput();
-                    JOptionPane.showMessageDialog(this, "Done");
+                    //show a message here so that the user will know what is happeninng 
+                    JOptionPane.showMessageDialog(this, "Done. Your Document is found at "+PathOnWindows+"\\"+fileName);
+                    
                 }
 
             }
@@ -2634,6 +2654,12 @@ public final class Ads extends javax.swing.JFrame {
                 || (evt.getKeyChar() == KeyEvent.VK_7)
                 || (evt.getKeyChar() == KeyEvent.VK_8)
                 || (evt.getKeyChar() == KeyEvent.VK_9)) {
+//            String priceValue = price.getText();
+//            StringBuilder sb = new StringBuilder();
+//            for (int index = 0; index < priceValue.length(); index++) {
+//                
+//            }
+//            price.setText(sb.toString().trim());
             errorPrice.setVisible(false);
         } else {
             errorPrice.setVisible(true);
@@ -2649,10 +2675,27 @@ public final class Ads extends javax.swing.JFrame {
         int returnValue = Chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            imageUpload01.setIcon(new ImageIcon(resizeIcon));
-            getListImage(selectedFile);
+            String format = selectedFile.getName();
+            if (format.endsWith(".gif")
+                    || format.endsWith(".GIF")
+                    || format.endsWith(".jpeg")
+                    || format.endsWith(".JPEG")
+                    || format.endsWith(".png")
+                    || format.endsWith(".PNG")) {
+                ImageIcon icon = new ImageIcon(selectedFile.getPath());
+                Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
+                imageUpload01.setIcon(new ImageIcon(resizeIcon));
+                getListImage(selectedFile);
+            }
+            else{
+                
+                //"Pas un fichier image");
+                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+                Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+                 ImageIcon newIcon = new ImageIcon(ic);
+                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+            }
+
         }
     }//GEN-LAST:event_imageUpload01ActionPerformed
 
@@ -2662,10 +2705,27 @@ public final class Ads extends javax.swing.JFrame {
         int returnValue = Chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            Image resImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            imageUpload02.setIcon(new ImageIcon(resImage));
-            getListImage(selectedFile);
+            String format = selectedFile.getName();
+            if (format.endsWith(".gif")
+                    || format.endsWith(".GIF")
+                    || format.endsWith(".jpeg")
+                    || format.endsWith(".JPEG")
+                    || format.endsWith(".png")
+                    || format.endsWith(".PNG")) {
+                ImageIcon icon = new ImageIcon(selectedFile.getPath());
+                Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
+                imageUpload02.setIcon(new ImageIcon(resizeIcon));
+                getListImage(selectedFile);
+            }
+            else{
+                
+                //"Pas un fichier image");
+                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+                Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+                 ImageIcon newIcon = new ImageIcon(ic);
+                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+            }
+
         }
     }//GEN-LAST:event_imageUpload02ActionPerformed
 
@@ -2675,10 +2735,27 @@ public final class Ads extends javax.swing.JFrame {
         int returnValue = Chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            Image resImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            imageUpload03.setIcon(new ImageIcon(resImage));
-            getListImage(selectedFile);
+            String format = selectedFile.getName();
+            if (format.endsWith(".gif")
+                    || format.endsWith(".GIF")
+                    || format.endsWith(".jpeg")
+                    || format.endsWith(".JPEG")
+                    || format.endsWith(".png")
+                    || format.endsWith(".PNG")) {
+                ImageIcon icon = new ImageIcon(selectedFile.getPath());
+                Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
+                imageUpload03.setIcon(new ImageIcon(resizeIcon));
+                getListImage(selectedFile);
+            }
+            else{
+                
+                //"Pas un fichier image");
+                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+                Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+                 ImageIcon newIcon = new ImageIcon(ic);
+                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+            }
+
         }
     }//GEN-LAST:event_imageUpload03ActionPerformed
 
@@ -2688,10 +2765,27 @@ public final class Ads extends javax.swing.JFrame {
         int returnValue = Chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            Image resImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            imageUpload04.setIcon(new ImageIcon(resImage));
-            getListImage(selectedFile);
+            String format = selectedFile.getName();
+            if (format.endsWith(".gif")
+                    || format.endsWith(".GIF")
+                    || format.endsWith(".jpeg")
+                    || format.endsWith(".JPEG")
+                    || format.endsWith(".png")
+                    || format.endsWith(".PNG")) {
+                ImageIcon icon = new ImageIcon(selectedFile.getPath());
+                Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
+                imageUpload04.setIcon(new ImageIcon(resizeIcon));
+                getListImage(selectedFile);
+            }
+            else{
+                
+                //"Pas un fichier image");
+                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+                Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+                 ImageIcon newIcon = new ImageIcon(ic);
+                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+            }
+
         }
     }//GEN-LAST:event_imageUpload04ActionPerformed
 
@@ -2701,10 +2795,27 @@ public final class Ads extends javax.swing.JFrame {
         int returnValue = Chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            Image resImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            imageUpload05.setIcon(new ImageIcon(resImage));
-            getListImage(selectedFile);
+            String format = selectedFile.getName();
+            if (format.endsWith(".gif")
+                    || format.endsWith(".GIF")
+                    || format.endsWith(".jpeg")
+                    || format.endsWith(".JPEG")
+                    || format.endsWith(".png")
+                    || format.endsWith(".PNG")) {
+                ImageIcon icon = new ImageIcon(selectedFile.getPath());
+                Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
+                imageUpload05.setIcon(new ImageIcon(resizeIcon));
+                getListImage(selectedFile);
+            }
+            else{
+                
+                //"Pas un fichier image");
+                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+                Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+                 ImageIcon newIcon = new ImageIcon(ic);
+                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+            }
+
         }
     }//GEN-LAST:event_imageUpload05ActionPerformed
 
@@ -2714,10 +2825,27 @@ public final class Ads extends javax.swing.JFrame {
         int returnValue = Chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            Image resImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            imageUpload06.setIcon(new ImageIcon(resImage));
-            getListImage(selectedFile);
+            String format = selectedFile.getName();
+            if (format.endsWith(".gif")
+                    || format.endsWith(".GIF")
+                    || format.endsWith(".jpeg")
+                    || format.endsWith(".JPEG")
+                    || format.endsWith(".png")
+                    || format.endsWith(".PNG")) {
+                ImageIcon icon = new ImageIcon(selectedFile.getPath());
+                Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
+                imageUpload06.setIcon(new ImageIcon(resizeIcon));
+                getListImage(selectedFile);
+            }
+            else{
+                
+                //"Pas un fichier image");
+                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+                Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+                 ImageIcon newIcon = new ImageIcon(ic);
+                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+            }
+
         }
     }//GEN-LAST:event_imageUpload06ActionPerformed
 
@@ -2727,10 +2855,27 @@ public final class Ads extends javax.swing.JFrame {
         int returnValue = Chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            Image resImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            imageUpload07.setIcon(new ImageIcon(resImage));
-            getListImage(selectedFile);
+            String format = selectedFile.getName();
+            if (format.endsWith(".gif")
+                    || format.endsWith(".GIF")
+                    || format.endsWith(".jpeg")
+                    || format.endsWith(".JPEG")
+                    || format.endsWith(".png")
+                    || format.endsWith(".PNG")) {
+                ImageIcon icon = new ImageIcon(selectedFile.getPath());
+                Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
+                imageUpload07.setIcon(new ImageIcon(resizeIcon));
+                getListImage(selectedFile);
+            }
+            else{
+                
+                //"Pas un fichier image");
+                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+                Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+                 ImageIcon newIcon = new ImageIcon(ic);
+                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+            }
+
         }
     }//GEN-LAST:event_imageUpload07ActionPerformed
 
@@ -2740,10 +2885,27 @@ public final class Ads extends javax.swing.JFrame {
         int returnValue = Chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            Image resImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            imageUpload08.setIcon(new ImageIcon(resImage));
-            getListImage(selectedFile);
+            String format = selectedFile.getName();
+            if (format.endsWith(".gif")
+                    || format.endsWith(".GIF")
+                    || format.endsWith(".jpeg")
+                    || format.endsWith(".JPEG")
+                    || format.endsWith(".png")
+                    || format.endsWith(".PNG")) {
+                ImageIcon icon = new ImageIcon(selectedFile.getPath());
+                Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
+                imageUpload08.setIcon(new ImageIcon(resizeIcon));
+                getListImage(selectedFile);
+            }
+            else{
+                
+                //"Pas un fichier image");
+                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+                Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+                 ImageIcon newIcon = new ImageIcon(ic);
+                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+            }
+
         }
     }//GEN-LAST:event_imageUpload08ActionPerformed
 
@@ -2753,10 +2915,27 @@ public final class Ads extends javax.swing.JFrame {
         int returnValue = Chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            Image resImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            imageUpload09.setIcon(new ImageIcon(resImage));
-            getListImage(selectedFile);
+            String format = selectedFile.getName();
+            if (format.endsWith(".gif")
+                    || format.endsWith(".GIF")
+                    || format.endsWith(".jpeg")
+                    || format.endsWith(".JPEG")
+                    || format.endsWith(".png")
+                    || format.endsWith(".PNG")) {
+                ImageIcon icon = new ImageIcon(selectedFile.getPath());
+                Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
+                imageUpload09.setIcon(new ImageIcon(resizeIcon));
+                getListImage(selectedFile);
+            }
+            else{
+                
+                //"Pas un fichier image");
+                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+                Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+                 ImageIcon newIcon = new ImageIcon(ic);
+                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+            }
+
         }
     }//GEN-LAST:event_imageUpload09ActionPerformed
 
@@ -2766,10 +2945,27 @@ public final class Ads extends javax.swing.JFrame {
         int returnValue = Chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            Image resImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            imageUpload10.setIcon(new ImageIcon(resImage));
-            getListImage(selectedFile);
+            String format = selectedFile.getName();
+            if (format.endsWith(".gif")
+                    || format.endsWith(".GIF")
+                    || format.endsWith(".jpeg")
+                    || format.endsWith(".JPEG")
+                    || format.endsWith(".png")
+                    || format.endsWith(".PNG")) {
+                ImageIcon icon = new ImageIcon(selectedFile.getPath());
+                Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
+                imageUpload10.setIcon(new ImageIcon(resizeIcon));
+                getListImage(selectedFile);
+            }
+            else{
+                
+                //"Pas un fichier image");
+                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+                Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+                 ImageIcon newIcon = new ImageIcon(ic);
+                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+            }
+
         }
     }//GEN-LAST:event_imageUpload10ActionPerformed
 
@@ -2779,10 +2975,27 @@ public final class Ads extends javax.swing.JFrame {
         int returnValue = Chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            Image resImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            imageUpload11.setIcon(new ImageIcon(resImage));
-            getListImage(selectedFile);
+            String format = selectedFile.getName();
+            if (format.endsWith(".gif")
+                    || format.endsWith(".GIF")
+                    || format.endsWith(".jpeg")
+                    || format.endsWith(".JPEG")
+                    || format.endsWith(".png")
+                    || format.endsWith(".PNG")) {
+                ImageIcon icon = new ImageIcon(selectedFile.getPath());
+                Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
+                imageUpload11.setIcon(new ImageIcon(resizeIcon));
+                getListImage(selectedFile);
+            }
+            else{
+                
+                //"Pas un fichier image");
+                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+                Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+                 ImageIcon newIcon = new ImageIcon(ic);
+                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+            }
+
         }
     }//GEN-LAST:event_imageUpload11ActionPerformed
 
@@ -2792,10 +3005,27 @@ public final class Ads extends javax.swing.JFrame {
         int returnValue = Chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            Image resImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            imageUpload12.setIcon(new ImageIcon(resImage));
-            getListImage(selectedFile);
+            String format = selectedFile.getName();
+            if (format.endsWith(".gif")
+                    || format.endsWith(".GIF")
+                    || format.endsWith(".jpeg")
+                    || format.endsWith(".JPEG")
+                    || format.endsWith(".png")
+                    || format.endsWith(".PNG")) {
+                ImageIcon icon = new ImageIcon(selectedFile.getPath());
+                Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
+                imageUpload12.setIcon(new ImageIcon(resizeIcon));
+                getListImage(selectedFile);
+            }
+            else{
+                
+                //"Pas un fichier image");
+                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+                Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+                 ImageIcon newIcon = new ImageIcon(ic);
+                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+            }
+
         }
     }//GEN-LAST:event_imageUpload12ActionPerformed
 
@@ -2805,10 +3035,27 @@ public final class Ads extends javax.swing.JFrame {
         int returnValue = Chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            Image resImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            imageUpload13.setIcon(new ImageIcon(resImage));
-            getListImage(selectedFile);
+            String format = selectedFile.getName();
+            if (format.endsWith(".gif")
+                    || format.endsWith(".GIF")
+                    || format.endsWith(".jpeg")
+                    || format.endsWith(".JPEG")
+                    || format.endsWith(".png")
+                    || format.endsWith(".PNG")) {
+                ImageIcon icon = new ImageIcon(selectedFile.getPath());
+                Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
+                imageUpload13.setIcon(new ImageIcon(resizeIcon));
+                getListImage(selectedFile);
+            }
+            else{
+                
+                //"Pas un fichier image");
+                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+                Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+                 ImageIcon newIcon = new ImageIcon(ic);
+                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+            }
+
         }
     }//GEN-LAST:event_imageUpload13ActionPerformed
 
@@ -2818,10 +3065,27 @@ public final class Ads extends javax.swing.JFrame {
         int returnValue = Chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            Image resImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            imageUpload14.setIcon(new ImageIcon(resImage));
-            getListImage(selectedFile);
+            String format = selectedFile.getName();
+            if (format.endsWith(".gif")
+                    || format.endsWith(".GIF")
+                    || format.endsWith(".jpeg")
+                    || format.endsWith(".JPEG")
+                    || format.endsWith(".png")
+                    || format.endsWith(".PNG")) {
+                ImageIcon icon = new ImageIcon(selectedFile.getPath());
+                Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
+                imageUpload14.setIcon(new ImageIcon(resizeIcon));
+                getListImage(selectedFile);
+            }
+            else{
+                
+                //"Pas un fichier image");
+                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+                Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+                 ImageIcon newIcon = new ImageIcon(ic);
+                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+            }
+
         }
     }//GEN-LAST:event_imageUpload14ActionPerformed
 
@@ -2831,10 +3095,27 @@ public final class Ads extends javax.swing.JFrame {
         int returnValue = Chooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = Chooser.getSelectedFile();
-            ImageIcon icon = new ImageIcon(selectedFile.getPath());
-            Image resImage = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
-            imageUpload15.setIcon(new ImageIcon(resImage));
-            getListImage(selectedFile);
+            String format = selectedFile.getName();
+            if (format.endsWith(".gif")
+                    || format.endsWith(".GIF")
+                    || format.endsWith(".jpeg")
+                    || format.endsWith(".JPEG")
+                    || format.endsWith(".png")
+                    || format.endsWith(".PNG")) {
+                ImageIcon icon = new ImageIcon(selectedFile.getPath());
+                Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
+                imageUpload15.setIcon(new ImageIcon(resizeIcon));
+                getListImage(selectedFile);
+            }
+            else{
+                
+                //"Pas un fichier image");
+                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+                Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+                 ImageIcon newIcon = new ImageIcon(ic);
+                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+            }
+
         }
     }//GEN-LAST:event_imageUpload15ActionPerformed
 
@@ -2945,7 +3226,6 @@ public final class Ads extends javax.swing.JFrame {
         String emailentered = dealers_email.getText().trim();
         boolean validate = emailentered.matches(EMAIL_REGEX);
         if (validate) {
-
             emailvalidationerror.setVisible(true);
             emailvalidationerror.setForeground(Color.green);
             emailvalidationerror.setText("");
@@ -2956,8 +3236,11 @@ public final class Ads extends javax.swing.JFrame {
         } else {
             emailvalidationerror.setVisible(true);
             emailvalidationerror.setForeground(Color.red);
-            emailvalidationerror.setText("email invalide");
-            emailvalidationerror.setIcon(new ImageIcon());
+            emailvalidationerror.setText("");
+            ImageIcon e = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+            Image ic =e.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
+            ImageIcon newIcon = new ImageIcon(ic);
+            emailvalidationerror.setIcon(newIcon);
             publish.setVisible(false);
         }
     }//GEN-LAST:event_dealers_emailMouseExited
@@ -2978,8 +3261,11 @@ public final class Ads extends javax.swing.JFrame {
         } else {
             emailvalidationerror.setVisible(true);
             emailvalidationerror.setForeground(Color.red);
-            emailvalidationerror.setIcon(new ImageIcon());
-            emailvalidationerror.setText("email invalide");
+            ImageIcon e = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+            Image ic =e.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
+            ImageIcon newIcon = new ImageIcon(ic);
+            emailvalidationerror.setIcon(newIcon);
+            emailvalidationerror.setText("");
             publish.setVisible(false);
         }
     }//GEN-LAST:event_dealers_emailFocusLost
