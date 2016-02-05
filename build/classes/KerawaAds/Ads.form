@@ -135,8 +135,8 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="header" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="589" max="-2" attributes="0"/>
-              <EmptySpace pref="736" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="583" max="-2" attributes="0"/>
+              <EmptySpace pref="742" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -216,7 +216,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Gagnez tout en &#xe9;crivant des annonces pour Kerala"/>
+            <Property name="text" type="java.lang.String" value="Gagnez tout en &#xe9;crivant des annonces pour Kerawa"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
@@ -301,34 +301,6 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jLabel5" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jScrollPane2" max="32767" attributes="0"/>
-                                          <Component id="categorylchoice" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
-                                          <Component id="title" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                      <Component id="error" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="258" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jSeparator2" min="-2" pref="1292" max="-2" attributes="0"/>
-                          <Component id="jSeparator9" min="-2" pref="1292" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -490,17 +462,47 @@
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jSeparator5" min="-2" pref="1292" max="-2" attributes="0"/>
-                          <Component id="jSeparator6" min="-2" pref="1292" max="-2" attributes="0"/>
-                          <Component id="jSeparator8" min="-2" pref="1292" max="-2" attributes="0"/>
-                          <Component id="jSeparator10" min="-2" pref="1292" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="utubeNote" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
-                              <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jLabel5" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jScrollPane2" max="32767" attributes="0"/>
+                                              <Component id="categorylchoice" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
+                                              <Component id="title" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                          <Component id="error" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jSeparator2" min="-2" pref="1292" max="-2" attributes="0"/>
+                              <Component id="jSeparator9" min="-2" pref="1292" max="-2" attributes="0"/>
+                              <Component id="jSeparator5" min="-2" pref="1292" max="-2" attributes="0"/>
+                              <Component id="jSeparator6" min="-2" pref="1292" max="-2" attributes="0"/>
+                              <Component id="jSeparator8" min="-2" pref="1292" max="-2" attributes="0"/>
+                              <Component id="jSeparator10" min="-2" pref="1292" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                  <Component id="utubeNote" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
+                                  <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -866,7 +868,7 @@
                     <StringItem index="0" value="Franc FA"/>
                     <StringItem index="1" value="euro (&#x20ac;)"/>
                     <StringItem index="2" value="pound (&#xa3;)"/>
-                    <StringItem index="3" value="FR"/>
+                    <StringItem index="3" value="Fr"/>
                     <StringItem index="4" value="Dirhams"/>
                     <StringItem index="5" value="Rs"/>
                     <StringItem index="6" value="Nairas"/>
@@ -907,7 +909,7 @@
                     <StringItem index="0" value="Cameroun"/>
                     <StringItem index="1" value="Congo Brazza"/>
                     <StringItem index="2" value="Congo Kinshasa"/>
-                    <StringItem index="3" value="C&#xf4;te d&#x2019;Ivoire"/>
+                    <StringItem index="3" value="C&#xf4;te d&apos;Ivoire"/>
                     <StringItem index="4" value="Gabon"/>
                     <StringItem index="5" value="Senegal"/>
                   </StringArray>
@@ -1029,6 +1031,11 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="jobSalary">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+                  <Format format="#,##0.00" subtype="-1" type="4"/>
+                </Property>
+              </Properties>
               <Events>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jobSalaryKeyTyped"/>
               </Events>
