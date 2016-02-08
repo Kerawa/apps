@@ -135,8 +135,8 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="header" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="583" max="-2" attributes="0"/>
-              <EmptySpace pref="742" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="585" max="-2" attributes="0"/>
+              <EmptySpace pref="740" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -156,6 +156,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="303" max="-2" attributes="0"/>
+                          <Component id="generalerror" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -200,8 +202,8 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="generalerror" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="4" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -273,6 +275,14 @@
               <Font name="Ubuntu" size="24" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="utilisateur"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="generalerror">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Ubuntu" size="18" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="general error message here"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -380,7 +390,7 @@
                                                                   <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
                                                               </Group>
                                                               <Group type="102" alignment="1" attributes="0">
-                                                                  <Component id="jLabel17" min="-2" pref="63" max="-2" attributes="0"/>
+                                                                  <Component id="nam" min="-2" pref="63" max="-2" attributes="0"/>
                                                                   <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                                                               </Group>
                                                           </Group>
@@ -462,47 +472,49 @@
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jLabel5" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jScrollPane2" max="32767" attributes="0"/>
-                                              <Component id="categorylchoice" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
-                                              <Component id="title" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                          <Component id="jLabel5" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="cat" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="tLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="desc" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="jScrollPane2" max="32767" attributes="0"/>
+                                                  <Component id="categorylchoice" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
+                                                  <Component id="title" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                              <Component id="error" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                          <Component id="error" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
+                                  <Component id="jSeparator2" min="-2" pref="1292" max="-2" attributes="0"/>
+                                  <Component id="jSeparator9" min="-2" pref="1292" max="-2" attributes="0"/>
+                                  <Component id="jSeparator5" min="-2" pref="1292" max="-2" attributes="0"/>
+                                  <Component id="jSeparator6" min="-2" pref="1292" max="-2" attributes="0"/>
+                                  <Component id="jSeparator8" min="-2" pref="1292" max="-2" attributes="0"/>
+                                  <Component id="jSeparator10" min="-2" pref="1292" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                      <Component id="utubeNote" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
+                                      <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <Component id="jSeparator2" min="-2" pref="1292" max="-2" attributes="0"/>
-                              <Component id="jSeparator9" min="-2" pref="1292" max="-2" attributes="0"/>
-                              <Component id="jSeparator5" min="-2" pref="1292" max="-2" attributes="0"/>
-                              <Component id="jSeparator6" min="-2" pref="1292" max="-2" attributes="0"/>
-                              <Component id="jSeparator8" min="-2" pref="1292" max="-2" attributes="0"/>
-                              <Component id="jSeparator10" min="-2" pref="1292" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                                  <Component id="utubeNote" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
-                                  <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -517,18 +529,18 @@
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cat" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="categorylchoice" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="error" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="title" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                          <Component id="desc" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -607,7 +619,7 @@
                               <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel17" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
+                                  <Component id="nam" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
                                   <Component id="dealer_name" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -732,7 +744,7 @@
                 <Property name="text" type="java.lang.String" value="E-mail *"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel17">
+            <Component class="javax.swing.JLabel" name="nam">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
@@ -748,7 +760,7 @@
                 <Property name="text" type="java.lang.String" value="Informations sur le vendeur"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="cat">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
@@ -802,9 +814,10 @@
               </Properties>
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="categorylchoiceItemStateChanged"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="categorylchoiceFocusLost"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel6">
+            <Component class="javax.swing.JLabel" name="tLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
@@ -814,10 +827,11 @@
             </Component>
             <Component class="javax.swing.JTextField" name="title">
               <Events>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="titleMouseExited"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="titleKeyTyped"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel8">
+            <Component class="javax.swing.JLabel" name="desc">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="18" style="0"/>
@@ -839,6 +853,8 @@
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="descriptionMouseExited"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="descriptionFocusLost"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="descriptionKeyTyped"/>
                   </Events>
                 </Component>
@@ -1464,6 +1480,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="dealer_name">
+              <Events>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dealer_nameMouseExited"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator10">
               <Properties>

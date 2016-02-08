@@ -53,6 +53,7 @@ public final class Ads extends javax.swing.JFrame {
     String returnString = "";
     int country_Code = 40;
     String city_Code = "338";
+
     public Ads() {
         this.enter_name = showDialog();
         if (enter_name.isEmpty()) {
@@ -65,7 +66,9 @@ public final class Ads extends javax.swing.JFrame {
         contact_telephone.setTransferHandler(null);
         contact_telephone02.setTransferHandler(null);
         contact_telephone03.setTransferHandler(null);
-        
+
+        generalerror.setVisible(false);
+
         imagesList = new ArrayList<>();
         ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/logo.jpeg"));
         Image resizeIcon = icon.getImage().getScaledInstance(210, 70, Image.SCALE_DEFAULT);
@@ -142,6 +145,7 @@ public final class Ads extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         user_name = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        generalerror = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         hostPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -150,13 +154,13 @@ public final class Ads extends javax.swing.JFrame {
         publish = new javax.swing.JButton();
         editFile = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        nam = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        cat = new javax.swing.JLabel();
         categorylchoice = new javax.swing.JComboBox();
-        jLabel6 = new javax.swing.JLabel();
+        tLabel = new javax.swing.JLabel();
         title = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        desc = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         description = new javax.swing.JTextArea();
         jSeparator2 = new javax.swing.JSeparator();
@@ -275,6 +279,9 @@ public final class Ads extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         jLabel7.setText("utilisateur");
 
+        generalerror.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        generalerror.setText("general error message here");
+
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
@@ -287,6 +294,8 @@ public final class Ads extends javax.swing.JFrame {
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(headerLayout.createSequentialGroup()
                         .addComponent(jLabel3)
+                        .addGap(303, 303, 303)
+                        .addComponent(generalerror)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel34))
                     .addGroup(headerLayout.createSequentialGroup()
@@ -320,8 +329,8 @@ public final class Ads extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel34))
-                .addGap(0, 0, 0)
+                    .addComponent(jLabel34)
+                    .addComponent(generalerror))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -363,14 +372,14 @@ public final class Ads extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel18.setText("E-mail *");
 
-        jLabel17.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel17.setText("Nom");
+        nam.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        nam.setText("Nom");
 
         jLabel16.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
         jLabel16.setText("Informations sur le vendeur");
 
-        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel2.setText("Catégorie *");
+        cat.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        cat.setText("Catégorie *");
 
         categorylchoice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sélectionnez une catégorie...", "Automobile", "      Voitures", "      Motos", "      Pièces détachées - accessoires", "      Autres - Automobile", "Immobilier", "      Maisons - Appartements à vendre", "      Maisons - Appartements à louer", "      Terrains à vendre ou à louer", "      Bureaux - locaux commerciaux", "      Autres Immobilier", "Emploi", "      Offres d'emploi", "      Demandes d'emploi - CVthèque", "Mode", "       Habillement Femme", "       Habillement Homme", "       Habillement Enfants", "        Montres - Bijoux - Lunettes", "         Accessoires de mode", "         Autres articles de mode", "High Tech", "        Audio - Video", "         Téléphones - tablettes tactiles", "         Ordinateurs", "         Consoles - Jeux vidéos", "         Autres - High Tech", "A vendre", "       Mobiliers, décoration", "        Electromenager", "        Autres - A vendre", "Services", "       Offres de service", "       Recherche de services", "       Evenementiel", "       Autres - Services" }));
         categorylchoice.addItemListener(new java.awt.event.ItemListener() {
@@ -378,22 +387,42 @@ public final class Ads extends javax.swing.JFrame {
                 categorylchoiceItemStateChanged(evt);
             }
         });
+        categorylchoice.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                categorylchoiceFocusLost(evt);
+            }
+        });
 
-        jLabel6.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel6.setText("Titre *");
+        tLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        tLabel.setText("Titre *");
 
+        title.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                titleMouseExited(evt);
+            }
+        });
         title.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 titleKeyTyped(evt);
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel8.setText("Description *");
+        desc.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        desc.setText("Description *");
 
         description.setColumns(20);
         description.setLineWrap(true);
         description.setRows(5);
+        description.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                descriptionMouseExited(evt);
+            }
+        });
+        description.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                descriptionFocusLost(evt);
+            }
+        });
         description.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 descriptionKeyTyped(evt);
@@ -765,6 +794,12 @@ public final class Ads extends javax.swing.JFrame {
             }
         });
 
+        dealer_name.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                dealer_nameMouseExited(evt);
+            }
+        });
+
         jSeparator10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         surfaceerror.setText("invaid");
@@ -847,7 +882,7 @@ public final class Ads extends javax.swing.JFrame {
                                                             .addComponent(jLabel18)
                                                             .addGap(96, 96, 96))
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hostPanelLayout.createSequentialGroup()
-                                                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(nam, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                             .addGap(97, 97, 97)))
                                                     .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(dealer_name, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -907,39 +942,40 @@ public final class Ads extends javax.swing.JFrame {
                             .addGap(35, 35, 35)
                             .addComponent(errorPrice)
                             .addGap(0, 0, Short.MAX_VALUE)))
-                    .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(hostPanelLayout.createSequentialGroup()
-                            .addGap(150, 150, 150)
-                            .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(hostPanelLayout.createSequentialGroup()
-                                    .addGap(12, 12, 12)
-                                    .addComponent(jLabel4))
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(hostPanelLayout.createSequentialGroup()
-                                    .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel8))
-                                    .addGap(37, 37, 37)
-                                    .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jScrollPane2)
-                                        .addComponent(categorylchoice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(31, 31, 31)
-                                    .addComponent(error)))
-                            .addGap(232, 232, 232))
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(hostPanelLayout.createSequentialGroup()
-                            .addGap(21, 21, 21)
-                            .addComponent(utubeNote))
-                        .addGroup(hostPanelLayout.createSequentialGroup()
-                            .addGap(248, 248, 248)
-                            .addComponent(jLabel15))))
+                    .addGroup(hostPanelLayout.createSequentialGroup()
+                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(hostPanelLayout.createSequentialGroup()
+                                .addGap(150, 150, 150)
+                                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(hostPanelLayout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jLabel4))
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(hostPanelLayout.createSequentialGroup()
+                                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cat)
+                                            .addComponent(tLabel)
+                                            .addComponent(desc))
+                                        .addGap(37, 37, 37)
+                                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jScrollPane2)
+                                            .addComponent(categorylchoice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(31, 31, 31)
+                                        .addComponent(error))))
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(hostPanelLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(utubeNote))
+                            .addGroup(hostPanelLayout.createSequentialGroup()
+                                .addGap(248, 248, 248)
+                                .addComponent(jLabel15)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         hostPanelLayout.setVerticalGroup(
@@ -950,16 +986,16 @@ public final class Ads extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(cat)
                     .addComponent(categorylchoice, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(error))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(tLabel)
                     .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
+                    .addComponent(desc)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1024,7 +1060,7 @@ public final class Ads extends javax.swing.JFrame {
                         .addComponent(jLabel16)
                         .addGap(14, 14, 14)
                         .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nam, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dealer_name, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
                         .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1166,8 +1202,8 @@ public final class Ads extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(742, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(740, Short.MAX_VALUE))
         );
 
         pack();
@@ -1184,35 +1220,31 @@ public final class Ads extends javax.swing.JFrame {
     private void categorylchoiceItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_categorylchoiceItemStateChanged
         // TODO add your handling code here:
         String selectedCategory = categorylchoice.getSelectedItem().toString().trim();
-            if(selectedCategory.length() < 10)
-            {
-                try {
-                    catSubString = selectedCategory.substring(0, 5);
-                } catch (Exception e) {
-                }
-                
-            }else{
-                try {
-                    catSubString = selectedCategory.substring(0, 11);
-                } catch (Exception e) {
-                }
-                
+        if (selectedCategory.length() < 10) {
+            try {
+                catSubString = selectedCategory.substring(0, 5);
+            } catch (Exception e) {
             }
+
+        } else {
+            try {
+                catSubString = selectedCategory.substring(0, 11);
+            } catch (Exception e) {
+            }
+
+        }
         switch (selectedCategory) {
             case "Voitures":
                 //this is the external form fields
                 subCategoryCode_c = 98;
-                
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
                 contact_telephone02.setVisible(true);
                 telephone03.setVisible(true);
                 contact_telephone03.setVisible(true);
-                
-                
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
                 publish.setVisible(true);
@@ -1255,11 +1287,10 @@ public final class Ads extends javax.swing.JFrame {
                 publish.setVisible(true);
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
-                
+
                 //Testing.......
                 subCategoryCode_c = 99;
-               
-                
+
                 carMileAgeLable.setVisible(true);
                 mileAge.setVisible(true);
 
@@ -1298,7 +1329,7 @@ public final class Ads extends javax.swing.JFrame {
                 publish.setVisible(true);
 
                 subCategoryCode_c = 101;
-                
+
                 surfaceLabel.setVisible(false);
                 surfaceAreaTextField.setVisible(false);
 
@@ -1329,10 +1360,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Autres - Automobile":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 121;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -1372,11 +1403,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Maisons - Appartements à vendre":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 30;
-               
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -1416,10 +1446,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Maisons - Appartements à louer":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 31;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -1459,10 +1489,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Terrains à vendre ou à louer":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 34;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -1502,10 +1532,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Bureaux - locaux commerciaux":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 33;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -1545,10 +1575,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Autres Immobilier":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 122;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -1588,10 +1618,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Offres d'emploi":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 123;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -1631,10 +1661,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Demandes d'emploi - CVthèque":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 74;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -1674,10 +1704,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Habillement Femme":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 139;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -1720,7 +1750,7 @@ public final class Ads extends javax.swing.JFrame {
                 //this is the external form fields
                 //testing.......
                 subCategoryCode_c = 138;
-               
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -1760,10 +1790,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Habillement Enfants":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 140;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -1803,10 +1833,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Montres - Bijoux - Lunettes":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 142;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -1846,10 +1876,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Accessoires de mode":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 141;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -1889,10 +1919,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Autres articles de mode":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 143;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -1934,7 +1964,7 @@ public final class Ads extends javax.swing.JFrame {
                 //this is the external form fields
                 //testing.......
                 subCategoryCode_c = 125;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -1974,10 +2004,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Téléphones - tablettes tactiles":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 126;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -2017,10 +2047,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Ordinateurs":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 134;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -2060,10 +2090,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Consoles - Jeux vidéos":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 135;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -2103,10 +2133,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Autres - High Tech":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 136;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -2146,10 +2176,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Mobiliers, décoration":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 26;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -2189,10 +2219,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Electromenager":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 24;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -2232,10 +2262,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Autres - A vendre":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 127;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -2275,10 +2305,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Offres de service":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 130;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -2318,10 +2348,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Recherche de services":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 131;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -2361,10 +2391,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Evenementiel":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 133;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -2404,10 +2434,10 @@ public final class Ads extends javax.swing.JFrame {
                 break;
             case "Autres - Services":
                 //this is the external form fields
-                
+
                 //testing.......
                 subCategoryCode_c = 132;
-                
+
                 telelabel.setVisible(true);
                 contact_telephone.setVisible(true);
                 teleleble2.setVisible(true);
@@ -2522,7 +2552,7 @@ public final class Ads extends javax.swing.JFrame {
 
 
     private void publishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_publishActionPerformed
-
+        String nothing = "N/A";
         try {
 
             /**
@@ -2542,8 +2572,12 @@ public final class Ads extends javax.swing.JFrame {
             rootElement.appendChild(ad);
 
             Element adidElement = document.createElement("adid");
-            adidElement.appendChild(document.createTextNode(String.valueOf(subCategoryCode_c)));
+            adidElement.appendChild(document.createTextNode("N/A"));
             ad.appendChild(adidElement);
+
+            Element subCat = document.createElement("subCategoryCode_c");
+            subCat.appendChild(document.createTextNode(String.valueOf(subCategoryCode_c)));
+            ad.appendChild(subCat);
 
             Element creator = document.createElement("adWriter");
             creator.appendChild(document.createTextNode(enter_name.toLowerCase()));
@@ -2563,24 +2597,27 @@ public final class Ads extends javax.swing.JFrame {
             Element city_c = document.createElement("true_city");
             city_c.appendChild(document.createTextNode(city.getSelectedItem().toString()));
             ad.appendChild(descriptionElement);
-            
+
             //setting price element
             String priceString = price.getText().trim();
             String ending;
             String realPrice;
-            if(priceString.endsWith(".00"))
-            {
+            if (priceString.endsWith(".00")) {
                 ending = priceString.replace(".00", "");
                 realPrice = ending.replaceAll("[,.]", "");
-            }
-            else{
+            } else {
                 ending = priceString;
                 realPrice = ending.replaceAll("[,.]", "");
             }
-            
+
             Element priceeElement = document.createElement("price");
-            priceeElement.appendChild(document.createTextNode(realPrice));
-            ad.appendChild(priceeElement);
+            if (realPrice.equalsIgnoreCase("")) {
+                priceeElement.appendChild(document.createTextNode(nothing));
+                ad.appendChild(priceeElement);
+            } else {
+                priceeElement.appendChild(document.createTextNode(realPrice));
+                ad.appendChild(priceeElement);
+            }
 
             String cCode = cities.currencyCode(currencyTag.getSelectedItem().toString());
             Element currencyElement = document.createElement("currency");
@@ -2591,8 +2628,6 @@ public final class Ads extends javax.swing.JFrame {
 //            Element countryElement = document.createElement("country");
 //            countryElement.appendChild(document.createTextNode(country.getSelectedItem().toString().trim()));
 //            ad.appendChild(countryElement);
-
-           
             //setting city element
             city_Code = cities.code(country.getSelectedItem().toString(), city.getSelectedItem().toString());
             Element cityElement = document.createElement("cityCode_c");
@@ -2603,24 +2638,41 @@ public final class Ads extends javax.swing.JFrame {
 //            Element cityarea = document.createElement("city_area");
 //            cityarea.appendChild(document.createTextNode(city_area.getText()));
 //            ad.appendChild(cityarea);
-
             //setting up address element
             Element addressElement = document.createElement("contact_address");
-            addressElement.appendChild(document.createTextNode(address.getText()));
-            ad.appendChild(addressElement);
+            if (address.getText().contentEquals("")) {
+                addressElement.appendChild(document.createTextNode("N/A"));
+                ad.appendChild(addressElement);
+            } else {
+                addressElement.appendChild(document.createTextNode(address.getText()));
+                ad.appendChild(addressElement);
+
+            }
 
             Element contact01 = document.createElement("contact_telephone");
-            contact01.appendChild(document.createTextNode(contact_telephone.getText()));
-            ad.appendChild(contact01);
-
+            if (contact_telephone.getText().contentEquals("")) {
+                contact01.appendChild(document.createTextNode("N/A"));
+                ad.appendChild(contact01);
+            } else {
+                contact01.appendChild(document.createTextNode(contact_telephone.getText()));
+                ad.appendChild(contact01);
+            }
             Element contact02 = document.createElement("contact_telephone2");
-            contact02.appendChild(document.createTextNode(contact_telephone02.getText()));
-            ad.appendChild(contact02);
-
+            if (contact_telephone02.getText().contentEquals("")) {
+                contact02.appendChild(document.createTextNode("N/A"));
+                ad.appendChild(contact02);
+            } else {
+                contact02.appendChild(document.createTextNode(contact_telephone02.getText()));
+                ad.appendChild(contact02);
+            }
             Element contact03 = document.createElement("contact_telephone3");
-            contact03.appendChild(document.createTextNode(contact_telephone03.getText()));
-            ad.appendChild(contact03);
-
+            if (contact_telephone03.getText().contentEquals("")) {
+                contact03.appendChild(document.createTextNode("N/A"));
+                ad.appendChild(contact03);
+            } else {
+                contact03.appendChild(document.createTextNode(contact_telephone03.getText()));
+                ad.appendChild(contact03);
+            }
             Element sellersName = document.createElement("contact_name");
             sellersName.appendChild(document.createTextNode(dealer_name.getText()));
             ad.appendChild(sellersName);
@@ -2639,49 +2691,45 @@ public final class Ads extends javax.swing.JFrame {
 //            }
 //            showEmail.appendChild(document.createTextNode(responds));
 //            ad.appendChild(showEmail);
-
-            
-            
-            Element surfaceArea = document.createElement("surface");
-            surfaceArea.appendChild(document.createTextNode(surfaceAreaTextField.getText()));
-            ad.appendChild(surfaceArea);
-
-            Element unitaryPrice = document.createElement("unitry_price");
-            unitaryPrice.appendChild(document.createTextNode(UnitaryPrice.getText().trim()));
-            ad.appendChild(unitaryPrice);
-
-            Element milAge = document.createElement("mile_age");
-            milAge.appendChild(document.createTextNode(mileAge.getText().trim()));
-            ad.appendChild(milAge);
-
-            String sal = jobSalary.getText().trim();
-            String trim;
-            String realSal;
-            if(sal.endsWith(".00"))
-            {
-                trim = priceString.replace(".00", "");
-                realSal = trim.replaceAll("[,.]", "");
-            }
-            else{
-                trim = sal;
-                realSal = trim.replaceAll("[,.]", "");
-            }
-            
-            Element salaryElement = document.createElement("job_salary");
-            salaryElement.appendChild(document.createTextNode(realSal));
-            ad.appendChild(salaryElement);
-
-            Element contactByMail = document.createElement("contact_enabled");
-            boolean repos = contactByEmail.isSelected();
-            String checkResponds;
-            if (repos) {
-                checkResponds = "0";
-            } else {
-                checkResponds = "1";
-            }
-            contactByMail.appendChild(document.createTextNode("0"));
-            ad.appendChild(contactByMail);
-
+//            Element surfaceArea = document.createElement("surface");
+//            surfaceArea.appendChild(document.createTextNode(surfaceAreaTextField.getText()));
+//            ad.appendChild(surfaceArea);
+//
+//            Element unitaryPrice = document.createElement("unitry_price");
+//            unitaryPrice.appendChild(document.createTextNode(UnitaryPrice.getText().trim()));
+//            ad.appendChild(unitaryPrice);
+//
+//            Element milAge = document.createElement("mile_age");
+//            milAge.appendChild(document.createTextNode(mileAge.getText().trim()));
+//            ad.appendChild(milAge);
+//
+//            String sal = jobSalary.getText().trim();
+//            String trim;
+//            String realSal;
+//            if(sal.endsWith(".00"))
+//            {
+//                trim = priceString.replace(".00", "");
+//                realSal = trim.replaceAll("[,.]", "");
+//            }
+//            else{
+//                trim = sal;
+//                realSal = trim.replaceAll("[,.]", "");
+//            }
+//            
+//            Element salaryElement = document.createElement("job_salary");
+//            salaryElement.appendChild(document.createTextNode(realSal));
+//            ad.appendChild(salaryElement);
+//
+//            Element contactByMail = document.createElement("contact_enabled");
+//            boolean repos = contactByEmail.isSelected();
+//            String checkResponds;
+//            if (repos) {
+//                checkResponds = "1";
+//            } else {
+//                checkResponds = "0";
+//            }
+//            contactByMail.appendChild(document.createTextNode("0"));
+//            ad.appendChild(contactByMail);
             //auto verification element
             Element autoverifyElement = document.createElement("autoVerify");
             autoverifyElement.appendChild(document.createTextNode("true"));
@@ -2690,7 +2738,7 @@ public final class Ads extends javax.swing.JFrame {
             Element noEmailElement = document.createElement("no_email");
             boolean showEmailCheck = CheckBoxShowEmail.isSelected();
             if (showEmailCheck) {
-                noEmailElement.appendChild(document.createTextNode(dealers_email.getText().trim()));
+                noEmailElement.appendChild(document.createTextNode("0"));
             } else {
                 noEmailElement.appendChild(document.createTextNode("N/A"));
             }
@@ -2701,23 +2749,36 @@ public final class Ads extends javax.swing.JFrame {
 //            showAttached.appendChild(document.createTextNode(""));
 //            ad.appendChild(showAttached);
             Element utube_url = document.createElement("youtube_url");
-            utube_url.appendChild(document.createTextNode(youTubeUrl.getText().trim()));
-            ad.appendChild(utube_url);
+            if (youTubeUrl.getText().contentEquals("")) {
+                utube_url.appendChild(document.createTextNode("N/A"));
+                ad.appendChild(utube_url);
+            } else {
+                utube_url.appendChild(document.createTextNode(youTubeUrl.getText().trim()));
+                ad.appendChild(utube_url);
+            }
 
             FileInputStream fis;
             String stringBase64;
             int y = 1;
-
-            for (File imagesList1 : imagesList) {
-
-                fis = new FileInputStream(imagesList1);
-                byte imageData[] = new byte[(int) imagesList1.length()];
-                fis.read(imageData);
-                stringBase64 = Base64.getEncoder().encodeToString(imageData);
+            if (imagesList.isEmpty()) {
                 Element imageTag = document.createElement("base64image");
-                imageTag.appendChild(document.createTextNode(stringBase64));
-                ad.appendChild(imageTag);
-                y++;
+
+                    imageTag.appendChild(document.createTextNode("N/A"));
+                    ad.appendChild(imageTag);
+            } else {
+                for (File imagesList1 : imagesList) {
+
+                    fis = new FileInputStream(imagesList1);
+                    byte imageData[] = new byte[(int) imagesList1.length()];
+                    fis.read(imageData);
+                    stringBase64 = Base64.getEncoder().encodeToString(imageData);
+
+                    Element imageTag = document.createElement("base64image");
+
+                    imageTag.appendChild(document.createTextNode(stringBase64));
+                    ad.appendChild(imageTag);
+                    //y++;
+                }
             }
             //now i am write all the information to an xml file eg ads.xml
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -2728,13 +2789,11 @@ public final class Ads extends javax.swing.JFrame {
             LocalDateTime timestap = LocalDateTime.now();
             String time = timestap.toLocalTime().toString();
             String date_time = timestap.toLocalDate() + "_" + time.subSequence(0, 8);
-            String fileName = date_time + "_" + enter_name +"_("+catSubString.toLowerCase() +")"  + ".xml";
+            String fileName = date_time + "_" + enter_name + "_(" + catSubString.toLowerCase() + ")" + ".xml";
 
-            
-            
-            File desktop = new File(System.getProperty("user.home") + 
-                    File.separator + "Desktop"+ File.separator
-                    +"Kerawa_Ads_By_"+enter_name);
+            File desktop = new File(System.getProperty("user.home")
+                    + File.separator + "Desktop" + File.separator
+                    + "Kerawa_Ads_By_" + enter_name);
             if (desktop.exists()) {
 
                 result = new StreamResult(desktop + File.separator + fileName);
@@ -2746,25 +2805,21 @@ public final class Ads extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Done. Your Document is found at "
                         + desktop + File.separator + fileName, "Thanks From Kerawa.com", 0, newIcon);
 //                System.exit(0);
-            }
-            else{
-                
+            } else {
+
                 desktop.mkdir();
-                 result = new StreamResult(desktop + File.separator + fileName);
-                 transformer.transform(source, result);
-                 clearAllInput();
-                 ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/valid.png"));
+                result = new StreamResult(desktop + File.separator + fileName);
+                transformer.transform(source, result);
+                clearAllInput();
+                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/valid.png"));
                 Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                 ImageIcon newIcon = new ImageIcon(ic);
-                JOptionPane.showMessageDialog(this, "Done. Your Document is found at "+
-                        desktop + File.separator +fileName, "Thanks From Kerawa.com",0,  newIcon);
+                ImageIcon newIcon = new ImageIcon(ic);
+                JOptionPane.showMessageDialog(this, "Done. Your Document is found at "
+                        + desktop + File.separator + fileName, "Thanks From Kerawa.com", 0, newIcon);
 //                System.exit(0);
             }
-            
 
-
-        } catch (IOException | ParserConfigurationException | DOMException
-                | TransformerException | HeadlessException ex) {
+        } catch (IOException | ParserConfigurationException | DOMException | TransformerException | HeadlessException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }//GEN-LAST:event_publishActionPerformed
@@ -2835,14 +2890,13 @@ public final class Ads extends javax.swing.JFrame {
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload01.setIcon(new ImageIcon(resizeIcon));
                 getListImage(selectedFile);
-            }
-            else{
-                
+            } else {
+
                 //"Pas un fichier image");
                 ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
                 Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                 ImageIcon newIcon = new ImageIcon(ic);
-                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+                ImageIcon newIcon = new ImageIcon(ic);
+                JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
             }
 
         }
@@ -2865,14 +2919,13 @@ public final class Ads extends javax.swing.JFrame {
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload02.setIcon(new ImageIcon(resizeIcon));
                 getListImage(selectedFile);
-            }
-            else{
-                
+            } else {
+
                 //"Pas un fichier image");
                 ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
                 Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                 ImageIcon newIcon = new ImageIcon(ic);
-                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+                ImageIcon newIcon = new ImageIcon(ic);
+                JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
             }
 
         }
@@ -2895,14 +2948,13 @@ public final class Ads extends javax.swing.JFrame {
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload03.setIcon(new ImageIcon(resizeIcon));
                 getListImage(selectedFile);
-            }
-            else{
-                
+            } else {
+
                 //"Pas un fichier image");
                 ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
                 Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                 ImageIcon newIcon = new ImageIcon(ic);
-                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+                ImageIcon newIcon = new ImageIcon(ic);
+                JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
             }
 
         }
@@ -2925,14 +2977,13 @@ public final class Ads extends javax.swing.JFrame {
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload04.setIcon(new ImageIcon(resizeIcon));
                 getListImage(selectedFile);
-            }
-            else{
-                
+            } else {
+
                 //"Pas un fichier image");
                 ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
                 Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                 ImageIcon newIcon = new ImageIcon(ic);
-                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+                ImageIcon newIcon = new ImageIcon(ic);
+                JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
             }
 
         }
@@ -2955,14 +3006,13 @@ public final class Ads extends javax.swing.JFrame {
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload05.setIcon(new ImageIcon(resizeIcon));
                 getListImage(selectedFile);
-            }
-            else{
-                
+            } else {
+
                 //"Pas un fichier image");
                 ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
                 Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                 ImageIcon newIcon = new ImageIcon(ic);
-                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+                ImageIcon newIcon = new ImageIcon(ic);
+                JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
             }
 
         }
@@ -2985,14 +3035,13 @@ public final class Ads extends javax.swing.JFrame {
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload06.setIcon(new ImageIcon(resizeIcon));
                 getListImage(selectedFile);
-            }
-            else{
-                
+            } else {
+
                 //"Pas un fichier image");
                 ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
                 Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                 ImageIcon newIcon = new ImageIcon(ic);
-                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+                ImageIcon newIcon = new ImageIcon(ic);
+                JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
             }
 
         }
@@ -3015,14 +3064,13 @@ public final class Ads extends javax.swing.JFrame {
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload07.setIcon(new ImageIcon(resizeIcon));
                 getListImage(selectedFile);
-            }
-            else{
-                
+            } else {
+
                 //"Pas un fichier image");
                 ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
                 Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                 ImageIcon newIcon = new ImageIcon(ic);
-                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+                ImageIcon newIcon = new ImageIcon(ic);
+                JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
             }
 
         }
@@ -3045,14 +3093,13 @@ public final class Ads extends javax.swing.JFrame {
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload08.setIcon(new ImageIcon(resizeIcon));
                 getListImage(selectedFile);
-            }
-            else{
-                
+            } else {
+
                 //"Pas un fichier image");
                 ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
                 Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                 ImageIcon newIcon = new ImageIcon(ic);
-                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+                ImageIcon newIcon = new ImageIcon(ic);
+                JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
             }
 
         }
@@ -3075,14 +3122,13 @@ public final class Ads extends javax.swing.JFrame {
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload09.setIcon(new ImageIcon(resizeIcon));
                 getListImage(selectedFile);
-            }
-            else{
-                
+            } else {
+
                 //"Pas un fichier image");
                 ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
                 Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                 ImageIcon newIcon = new ImageIcon(ic);
-                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+                ImageIcon newIcon = new ImageIcon(ic);
+                JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
             }
 
         }
@@ -3105,14 +3151,13 @@ public final class Ads extends javax.swing.JFrame {
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload10.setIcon(new ImageIcon(resizeIcon));
                 getListImage(selectedFile);
-            }
-            else{
-                
+            } else {
+
                 //"Pas un fichier image");
                 ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
                 Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                 ImageIcon newIcon = new ImageIcon(ic);
-                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+                ImageIcon newIcon = new ImageIcon(ic);
+                JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
             }
 
         }
@@ -3135,14 +3180,13 @@ public final class Ads extends javax.swing.JFrame {
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload11.setIcon(new ImageIcon(resizeIcon));
                 getListImage(selectedFile);
-            }
-            else{
-                
+            } else {
+
                 //"Pas un fichier image");
                 ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
                 Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                 ImageIcon newIcon = new ImageIcon(ic);
-                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+                ImageIcon newIcon = new ImageIcon(ic);
+                JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
             }
 
         }
@@ -3165,14 +3209,13 @@ public final class Ads extends javax.swing.JFrame {
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload12.setIcon(new ImageIcon(resizeIcon));
                 getListImage(selectedFile);
-            }
-            else{
-                
+            } else {
+
                 //"Pas un fichier image");
                 ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
                 Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                 ImageIcon newIcon = new ImageIcon(ic);
-                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+                ImageIcon newIcon = new ImageIcon(ic);
+                JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
             }
 
         }
@@ -3195,14 +3238,13 @@ public final class Ads extends javax.swing.JFrame {
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload13.setIcon(new ImageIcon(resizeIcon));
                 getListImage(selectedFile);
-            }
-            else{
-                
+            } else {
+
                 //"Pas un fichier image");
                 ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
                 Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                 ImageIcon newIcon = new ImageIcon(ic);
-                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+                ImageIcon newIcon = new ImageIcon(ic);
+                JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
             }
 
         }
@@ -3225,14 +3267,13 @@ public final class Ads extends javax.swing.JFrame {
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload14.setIcon(new ImageIcon(resizeIcon));
                 getListImage(selectedFile);
-            }
-            else{
-                
+            } else {
+
                 //"Pas un fichier image");
                 ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
                 Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                 ImageIcon newIcon = new ImageIcon(ic);
-                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+                ImageIcon newIcon = new ImageIcon(ic);
+                JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
             }
 
         }
@@ -3255,14 +3296,13 @@ public final class Ads extends javax.swing.JFrame {
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload15.setIcon(new ImageIcon(resizeIcon));
                 getListImage(selectedFile);
-            }
-            else{
-                
+            } else {
+
                 //"Pas un fichier image");
                 ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
                 Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                 ImageIcon newIcon = new ImageIcon(ic);
-                 JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
+                ImageIcon newIcon = new ImageIcon(ic);
+                JOptionPane.showMessageDialog(null, "Pas un fichier image", "Attension!!!", 0, newIcon);
             }
 
         }
@@ -3281,10 +3321,9 @@ public final class Ads extends javax.swing.JFrame {
                 || (evt.getKeyChar() == KeyEvent.VK_6)
                 || (evt.getKeyChar() == KeyEvent.VK_7)
                 || (evt.getKeyChar() == KeyEvent.VK_8)
-                || (evt.getKeyChar() == KeyEvent.VK_9)
-                ) {
-                errorPrice.setVisible(false);
-                errorPasting1.setVisible(false);
+                || (evt.getKeyChar() == KeyEvent.VK_9)) {
+            errorPrice.setVisible(false);
+            errorPasting1.setVisible(false);
         } else {
             errorPasting1.setVisible(true);
             errorPasting1.setText("invalid character");
@@ -3295,7 +3334,7 @@ public final class Ads extends javax.swing.JFrame {
 
     private void contact_telephone02KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contact_telephone02KeyTyped
         // TODO add your handling code here:
-         char dot_hyhen = evt.getKeyChar();
+        char dot_hyhen = evt.getKeyChar();
 
         if ((evt.getKeyChar() == (KeyEvent.VK_0)
                 || evt.getKeyChar() == KeyEvent.VK_1)
@@ -3306,10 +3345,9 @@ public final class Ads extends javax.swing.JFrame {
                 || (evt.getKeyChar() == KeyEvent.VK_6)
                 || (evt.getKeyChar() == KeyEvent.VK_7)
                 || (evt.getKeyChar() == KeyEvent.VK_8)
-                || (evt.getKeyChar() == KeyEvent.VK_9)
-                ) {
-                errorPrice.setVisible(false);
-                errorPasting2.setVisible(false);
+                || (evt.getKeyChar() == KeyEvent.VK_9)) {
+            errorPrice.setVisible(false);
+            errorPasting2.setVisible(false);
         } else {
             errorPasting2.setVisible(true);
             errorPasting2.setText("invalid character");
@@ -3395,7 +3433,7 @@ public final class Ads extends javax.swing.JFrame {
             emailvalidationerror.setForeground(Color.red);
             emailvalidationerror.setText("");
             ImageIcon e = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
-            Image ic =e.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
+            Image ic = e.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
             ImageIcon newIcon = new ImageIcon(ic);
             emailvalidationerror.setIcon(newIcon);
             publish.setVisible(false);
@@ -3419,7 +3457,7 @@ public final class Ads extends javax.swing.JFrame {
             emailvalidationerror.setVisible(true);
             emailvalidationerror.setForeground(Color.red);
             ImageIcon e = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
-            Image ic =e.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
+            Image ic = e.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
             ImageIcon newIcon = new ImageIcon(ic);
             emailvalidationerror.setIcon(newIcon);
             emailvalidationerror.setText("");
@@ -3441,9 +3479,9 @@ public final class Ads extends javax.swing.JFrame {
                 || (evt.getKeyChar() == KeyEvent.VK_7)
                 || (evt.getKeyChar() == KeyEvent.VK_8)
                 || (evt.getKeyChar() == KeyEvent.VK_9)
-                ||(evt.getKeyChar() == KeyEvent.VK_BACK_SPACE)) {
-                    errorPrice.setVisible(false);
-                    errorPasting3.setVisible(false);
+                || (evt.getKeyChar() == KeyEvent.VK_BACK_SPACE)) {
+            errorPrice.setVisible(false);
+            errorPasting3.setVisible(false);
         } else {
             errorPasting3.setVisible(true);
             errorPasting3.setText("invalid character");
@@ -3480,8 +3518,96 @@ public final class Ads extends javax.swing.JFrame {
         errorPasting3.setVisible(false);
     }//GEN-LAST:event_contact_telephone03FocusLost
 
+    private void descriptionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_descriptionFocusLost
+        // TODO add your handling code here:
+        if (description.getText().contentEquals("")) {
+            publish.setVisible(false);
+            //tell the user what is wrong
+            generalerror.setVisible(true);
+            generalerror.setText("Please fields should not be empty");
+            generalerror.setForeground(Color.red);
+            desc.setForeground(Color.red);
+
+        } else {
+            publish.setVisible(true);
+            desc.setForeground(Color.black);
+            generalerror.setVisible(false);
+        }
+    }//GEN-LAST:event_descriptionFocusLost
+
+    private void descriptionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descriptionMouseExited
+        // TODO add your handling code here
+        if (description.getText().contentEquals("")) {
+            publish.setVisible(false);
+            //tell the user what is wrong
+            generalerror.setVisible(true);
+            generalerror.setText("Please some fills are left empty");
+            generalerror.setForeground(Color.red);
+            desc.setForeground(Color.red);
+
+        } else {
+            publish.setVisible(true);
+            desc.setForeground(Color.black);
+            generalerror.setVisible(false);
+        }
+    }//GEN-LAST:event_descriptionMouseExited
+
+    private void titleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_titleMouseExited
+        // TODO add your handling code here:
+        if (title.getText().contentEquals("")) {
+            publish.setVisible(false);
+            //tell the user what went wrong
+            tLabel.setForeground(Color.red);
+            generalerror.setVisible(true);
+            generalerror.setText("The title field should not be empty!");
+            generalerror.setForeground(Color.red);
+        } else {
+            publish.setVisible(true);
+            tLabel.setForeground(Color.black);
+            generalerror.setVisible(false);
+        }
+
+    }//GEN-LAST:event_titleMouseExited
+
+    private void categorylchoiceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_categorylchoiceFocusLost
+        // TODO add your handling code here:
+        if (categorylchoice.getSelectedItem().toString().equalsIgnoreCase("Sélectionnez une catégorie...")
+                || categorylchoice.getSelectedItem().toString().equalsIgnoreCase("Immobilier")
+                || categorylchoice.getSelectedItem().toString().equalsIgnoreCase("Emploi")
+                || categorylchoice.getSelectedItem().toString().equalsIgnoreCase("Mode")
+                || categorylchoice.getSelectedItem().toString().equalsIgnoreCase("High Tech")
+                || categorylchoice.getSelectedItem().toString().equalsIgnoreCase("A vendre")
+                || categorylchoice.getSelectedItem().toString().equalsIgnoreCase("Services")) {
+            generalerror.setVisible(true);
+            generalerror.setText("The Category fill is not valid");
+            generalerror.setForeground(Color.red);
+            publish.setVisible(false);
+            cat.setForeground(Color.red);
+
+        } else {
+            generalerror.setVisible(false);
+            publish.setVisible(true);
+            cat.setForeground(Color.black);
+
+        }
+    }//GEN-LAST:event_categorylchoiceFocusLost
+
+    private void dealer_nameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dealer_nameMouseExited
+        // TODO add your handling code here:
+        if (dealer_name.getText().equalsIgnoreCase("")) {
+            nam.setForeground(Color.red);
+            generalerror.setVisible(true);
+            generalerror.setText("Please provide your name");
+            generalerror.setForeground(Color.red);
+            publish.setVisible(false);
+        } else {
+            nam.setForeground(Color.black);
+            generalerror.setVisible(true);
+            publish.setVisible(true);
+        }
+    }//GEN-LAST:event_dealer_nameMouseExited
+
     //method helps to switch the different cities depending on the region selected
-    
     private void getCountry(String str) {
         switch (str) {
             case "Cameroun":
@@ -3490,7 +3616,7 @@ public final class Ads extends javax.swing.JFrame {
                 for (String cities_in_cameroun1 : cities.cities_in_cameroun) {
                     city.addItem(cities_in_cameroun1.trim());
                 }
-                
+
                 break;
             case "Congo Brazza":
                 city.removeAllItems();
@@ -3615,6 +3741,7 @@ public final class Ads extends javax.swing.JFrame {
     private javax.swing.JLabel attachedLabel;
     private javax.swing.JButton buttonAttactments;
     private javax.swing.JLabel carMileAgeLable;
+    private javax.swing.JLabel cat;
     private javax.swing.JComboBox categorylchoice;
     private javax.swing.JComboBox city;
     private javax.swing.JTextField city_area;
@@ -3632,6 +3759,7 @@ public final class Ads extends javax.swing.JFrame {
     private javax.swing.JTextField dealer_name;
     private javax.swing.JTextField dealers_email;
     private javax.swing.JMenuItem deleteMenuItem;
+    private javax.swing.JLabel desc;
     private javax.swing.JTextArea description;
     private javax.swing.JButton editFile;
     private javax.swing.JMenu editMenu;
@@ -3644,6 +3772,7 @@ public final class Ads extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JLabel extensionNote;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JLabel generalerror;
     private javax.swing.JPanel header;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JPanel hostPanel;
@@ -3673,17 +3802,13 @@ public final class Ads extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -3705,6 +3830,7 @@ public final class Ads extends javax.swing.JFrame {
     private javax.swing.JLabel logo;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JTextField mileAge;
+    private javax.swing.JLabel nam;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;
     private javax.swing.JFormattedTextField price;
@@ -3715,6 +3841,7 @@ public final class Ads extends javax.swing.JFrame {
     private javax.swing.JTextField surfaceAreaTextField;
     private javax.swing.JLabel surfaceLabel;
     private javax.swing.JLabel surfaceerror;
+    private javax.swing.JLabel tLabel;
     private javax.swing.JLabel telelabel;
     private javax.swing.JLabel teleleble2;
     private javax.swing.JLabel telephone03;
