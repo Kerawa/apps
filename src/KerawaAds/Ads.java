@@ -2830,7 +2830,8 @@ public final class Ads extends javax.swing.JFrame {
                     || format.endsWith(".jpeg")
                     || format.endsWith(".JPEG")
                     || format.endsWith(".png")
-                    || format.endsWith(".PNG")) {
+                    || format.endsWith(".PNG")
+                    || format.endsWith(".jpg")) {
                 ImageIcon icon = new ImageIcon(selectedFile.getPath());
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload01.setIcon(new ImageIcon(resizeIcon));
@@ -2859,7 +2860,8 @@ public final class Ads extends javax.swing.JFrame {
                     || format.endsWith(".jpeg")
                     || format.endsWith(".JPEG")
                     || format.endsWith(".png")
-                    || format.endsWith(".PNG")) {
+                    || format.endsWith(".PNG")
+                    | format.endsWith(".jpg")) {
                 ImageIcon icon = new ImageIcon(selectedFile.getPath());
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload02.setIcon(new ImageIcon(resizeIcon));
@@ -2888,7 +2890,8 @@ public final class Ads extends javax.swing.JFrame {
                     || format.endsWith(".jpeg")
                     || format.endsWith(".JPEG")
                     || format.endsWith(".png")
-                    || format.endsWith(".PNG")) {
+                    || format.endsWith(".PNG")
+                    || format.endsWith(".jpg")) {
                 ImageIcon icon = new ImageIcon(selectedFile.getPath());
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload03.setIcon(new ImageIcon(resizeIcon));
@@ -2917,7 +2920,8 @@ public final class Ads extends javax.swing.JFrame {
                     || format.endsWith(".jpeg")
                     || format.endsWith(".JPEG")
                     || format.endsWith(".png")
-                    || format.endsWith(".PNG")) {
+                    || format.endsWith(".PNG")
+                    || format.endsWith(".jpg")) {
                 ImageIcon icon = new ImageIcon(selectedFile.getPath());
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload04.setIcon(new ImageIcon(resizeIcon));
@@ -2946,7 +2950,8 @@ public final class Ads extends javax.swing.JFrame {
                     || format.endsWith(".jpeg")
                     || format.endsWith(".JPEG")
                     || format.endsWith(".png")
-                    || format.endsWith(".PNG")) {
+                    || format.endsWith(".PNG")
+                    || format.endsWith(".jpg")) {
                 ImageIcon icon = new ImageIcon(selectedFile.getPath());
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload05.setIcon(new ImageIcon(resizeIcon));
@@ -2975,7 +2980,8 @@ public final class Ads extends javax.swing.JFrame {
                     || format.endsWith(".jpeg")
                     || format.endsWith(".JPEG")
                     || format.endsWith(".png")
-                    || format.endsWith(".PNG")) {
+                    || format.endsWith(".PNG")
+                    || format.endsWith(".jpg")) {
                 ImageIcon icon = new ImageIcon(selectedFile.getPath());
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload06.setIcon(new ImageIcon(resizeIcon));
@@ -3004,7 +3010,8 @@ public final class Ads extends javax.swing.JFrame {
                     || format.endsWith(".jpeg")
                     || format.endsWith(".JPEG")
                     || format.endsWith(".png")
-                    || format.endsWith(".PNG")) {
+                    || format.endsWith(".PNG")
+                    || format.endsWith(".jpg")) {
                 ImageIcon icon = new ImageIcon(selectedFile.getPath());
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload07.setIcon(new ImageIcon(resizeIcon));
@@ -3033,7 +3040,8 @@ public final class Ads extends javax.swing.JFrame {
                     || format.endsWith(".jpeg")
                     || format.endsWith(".JPEG")
                     || format.endsWith(".png")
-                    || format.endsWith(".PNG")) {
+                    || format.endsWith(".PNG")
+                    || format.endsWith(".jpg")) {
                 ImageIcon icon = new ImageIcon(selectedFile.getPath());
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload08.setIcon(new ImageIcon(resizeIcon));
@@ -3062,7 +3070,8 @@ public final class Ads extends javax.swing.JFrame {
                     || format.endsWith(".jpeg")
                     || format.endsWith(".JPEG")
                     || format.endsWith(".png")
-                    || format.endsWith(".PNG")) {
+                    || format.endsWith(".PNG")
+                    || format.endsWith(".jpg")) {
                 ImageIcon icon = new ImageIcon(selectedFile.getPath());
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload09.setIcon(new ImageIcon(resizeIcon));
@@ -3091,7 +3100,8 @@ public final class Ads extends javax.swing.JFrame {
                     || format.endsWith(".jpeg")
                     || format.endsWith(".JPEG")
                     || format.endsWith(".png")
-                    || format.endsWith(".PNG")) {
+                    || format.endsWith(".PNG")
+                    || format.endsWith(".jpg")) {
                 ImageIcon icon = new ImageIcon(selectedFile.getPath());
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload10.setIcon(new ImageIcon(resizeIcon));
@@ -3120,7 +3130,8 @@ public final class Ads extends javax.swing.JFrame {
                     || format.endsWith(".jpeg")
                     || format.endsWith(".JPEG")
                     || format.endsWith(".png")
-                    || format.endsWith(".PNG")) {
+                    || format.endsWith(".PNG")
+                    || format.endsWith(".jpg")) {
                 ImageIcon icon = new ImageIcon(selectedFile.getPath());
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload11.setIcon(new ImageIcon(resizeIcon));
@@ -3149,7 +3160,8 @@ public final class Ads extends javax.swing.JFrame {
                     || format.endsWith(".jpeg")
                     || format.endsWith(".JPEG")
                     || format.endsWith(".png")
-                    || format.endsWith(".PNG")) {
+                    || format.endsWith(".PNG")
+                    || format.endsWith(".jpg")) {
                 ImageIcon icon = new ImageIcon(selectedFile.getPath());
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload12.setIcon(new ImageIcon(resizeIcon));
@@ -3178,7 +3190,8 @@ public final class Ads extends javax.swing.JFrame {
                     || format.endsWith(".jpeg")
                     || format.endsWith(".JPEG")
                     || format.endsWith(".png")
-                    || format.endsWith(".PNG")) {
+                    || format.endsWith(".PNG")
+                    || format.endsWith(".jpg")) {
                 ImageIcon icon = new ImageIcon(selectedFile.getPath());
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload13.setIcon(new ImageIcon(resizeIcon));
@@ -3207,7 +3220,8 @@ public final class Ads extends javax.swing.JFrame {
                     || format.endsWith(".jpeg")
                     || format.endsWith(".JPEG")
                     || format.endsWith(".png")
-                    || format.endsWith(".PNG")) {
+                    || format.endsWith(".PNG")
+                    || format.endsWith(".jpg")) {
                 ImageIcon icon = new ImageIcon(selectedFile.getPath());
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload14.setIcon(new ImageIcon(resizeIcon));
@@ -3236,7 +3250,8 @@ public final class Ads extends javax.swing.JFrame {
                     || format.endsWith(".jpeg")
                     || format.endsWith(".JPEG")
                     || format.endsWith(".png")
-                    || format.endsWith(".PNG")) {
+                    || format.endsWith(".PNG")
+                    || format.endsWith(".jpg")) {
                 ImageIcon icon = new ImageIcon(selectedFile.getPath());
                 Image resizeIcon = icon.getImage().getScaledInstance(158, 158, Image.SCALE_DEFAULT);
                 imageUpload15.setIcon(new ImageIcon(resizeIcon));
@@ -3555,7 +3570,8 @@ public final class Ads extends javax.swing.JFrame {
     private void createAdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAdActionPerformed
         // TODO add your handling code here:
         this.enter_name = showDialog();
-        if (enter_name.isEmpty()) {
+        try {
+            if (enter_name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please name can't be empty!!");
         }else{
             //here i hide some field not to be seen by users
@@ -3570,6 +3586,13 @@ public final class Ads extends javax.swing.JFrame {
                 + File.separator + "Desktop" + File.separator
                 + "Kerawa_Ads_By_" + enter_name + File.separator);
             desktop.mkdir();
+        }
+        
+        } catch (Exception e) {
+            ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/e.png"));
+            Image imageIcon = icon.getImage().getScaledInstance(50, 50, Image.SCALE_AREA_AVERAGING);
+            ImageIcon icon1 = new ImageIcon(imageIcon);
+            JOptionPane.showMessageDialog(this, "Please provide a Writer name","No Writer!!!",0,icon1);
         }
         
         
@@ -3888,5 +3911,7 @@ public final class Ads extends javax.swing.JFrame {
         
 
     }
-
+    
+    
+    
 }
