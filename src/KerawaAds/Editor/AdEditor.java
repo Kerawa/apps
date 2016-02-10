@@ -5,6 +5,7 @@
  */
 package KerawaAds.Editor;
 
+import KerawaAds.Ads;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
@@ -154,6 +155,7 @@ public class AdEditor extends javax.swing.JFrame {
         edit = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
+        callHome = new javax.swing.JButton();
         ScrollPanel = new javax.swing.JScrollPane();
         form_panel = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -260,7 +262,7 @@ public class AdEditor extends javax.swing.JFrame {
 
         jLabel10.setBackground(new java.awt.Color(204, 204, 204));
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("<html>Kerawa.com >> publish ad");
+        jLabel10.setText("Kerawa.com  » Publier une annonce ");
 
         jLabel13.setBackground(new java.awt.Color(204, 204, 204));
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
@@ -303,7 +305,7 @@ public class AdEditor extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(logo1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 6, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,7 +320,7 @@ public class AdEditor extends javax.swing.JFrame {
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addContainerGap())
         );
 
         editfilepanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -327,7 +329,7 @@ public class AdEditor extends javax.swing.JFrame {
 
         browse.setBackground(new java.awt.Color(255, 255, 255));
         browse.setForeground(new java.awt.Color(0, 0, 0));
-        browse.setText("Browse");
+        browse.setText("Browse....");
         browse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 browseActionPerformed(evt);
@@ -337,11 +339,11 @@ public class AdEditor extends javax.swing.JFrame {
         select.setBackground(new java.awt.Color(0, 0, 0));
         select.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         select.setForeground(new java.awt.Color(0, 0, 0));
-        select.setText("nofile selected");
+        select.setText("no file selected");
 
         edit.setBackground(new java.awt.Color(255, 255, 255));
         edit.setForeground(new java.awt.Color(0, 0, 0));
-        edit.setText("Edit");
+        edit.setText("Edit File");
         edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editActionPerformed(evt);
@@ -356,23 +358,33 @@ public class AdEditor extends javax.swing.JFrame {
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator3.setForeground(new java.awt.Color(153, 153, 153));
 
+        callHome.setText("Create Ad");
+        callHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                callHomeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout editfilepanelLayout = new javax.swing.GroupLayout(editfilepanel);
         editfilepanel.setLayout(editfilepanelLayout);
         editfilepanelLayout.setHorizontalGroup(
             editfilepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(editfilepanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(editfilepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(editfilepanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(editfilepanelLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addGroup(editfilepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(editfilepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(edit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(browse, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
-                        .addGap(32, 32, 32)
-                        .addComponent(select, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(browse, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
+                        .addGroup(editfilepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(editfilepanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(select, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editfilepanelLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(callHome, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         editfilepanelLayout.setVerticalGroup(
@@ -387,7 +399,9 @@ public class AdEditor extends javax.swing.JFrame {
                     .addComponent(select, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(browse, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
-                .addComponent(edit, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addGroup(editfilepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(callHome, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(4, 4, 4))
         );
 
@@ -1299,7 +1313,7 @@ public class AdEditor extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(editfilepanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(ScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3603,6 +3617,13 @@ public class AdEditor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_selectcatItemStateChanged
 
+    private void callHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_callHomeActionPerformed
+        // TODO add your handling code here:
+        Ads ads = new Ads();
+        ads.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_callHomeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3653,6 +3674,7 @@ public class AdEditor extends javax.swing.JFrame {
     private javax.swing.JLabel bymail;
     private javax.swing.JSeparator bymaillabel;
     private javax.swing.JSeparator bymailtop;
+    private javax.swing.JButton callHome;
     private javax.swing.JLabel caterror;
     private javax.swing.JComboBox cityN;
     private javax.swing.JLabel conta2;

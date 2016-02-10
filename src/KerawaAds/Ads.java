@@ -5,6 +5,7 @@
  */
 package KerawaAds;
 
+import KerawaAds.Editor.AdEditor;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.Image;
@@ -58,79 +59,22 @@ public final class Ads extends javax.swing.JFrame {
     String city_Code = "338";
 
     public Ads() {
-        this.enter_name = showDialog();
-        if (enter_name.isEmpty()) {
-            this.enter_name = "anonyme";
-        }
-        
+
         initComponents();
-        desktop = new File(System.getProperty("user.home")
-                    + File.separator + "Desktop" + File.separator
-                    + "Kerawa_Ads_By_"+ enter_name + File.separator);
-        desktop.mkdir();
+        hideField();
+       
         //here i disenable the copy and pasting functionality
         price.setTransferHandler(null);
         contact_telephone.setTransferHandler(null);
         contact_telephone02.setTransferHandler(null);
         contact_telephone03.setTransferHandler(null);
-
-        generalerror.setVisible(false);
-
+        
         imagesList = new ArrayList<>();
         ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/logo.jpeg"));
         Image resizeIcon = icon.getImage().getScaledInstance(210, 70, Image.SCALE_DEFAULT);
         logo.setIcon(new ImageIcon(resizeIcon));
         user_name.setText(enter_name.toUpperCase());
-        emailvalidationerror.setVisible(false);
-        publish.setVisible(false);
-        editFile.setVisible(false);
-        invalidcountry.setVisible(false);
-        errorPasting1.setVisible(false);
-        errorPasting2.setVisible(false);
-        errorPasting3.setVisible(false);
 
-        //this is the external form fields
-        surfaceerror.setVisible(false);
-        telelabel.setVisible(false);
-        contact_telephone.setVisible(false);
-        teleleble2.setVisible(false);
-        contact_telephone02.setVisible(false);
-        telephone03.setVisible(false);
-        contact_telephone03.setVisible(false);
-        error.setVisible(false);
-        errorPrice.setVisible(false);
-
-        surfaceLabel.setVisible(false);
-        surfaceAreaTextField.setVisible(false);
-
-        carMileAgeLable.setVisible(false);
-        mileAge.setVisible(false);
-
-        jobSal.setVisible(false);
-        jobSalary.setVisible(false);
-
-        landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
-        landUnitaryHost.setVisible(false);
-
-        contactFormOptions.setVisible(false);
-        contactByEmail.setVisible(false);
-
-        attachedLabel.setVisible(false);
-        extensionNote.setVisible(false);
-
-        buttonAttactments.setVisible(false);
-        showAttachedFiles.setVisible(false);
-
-        addNewAttachments.setVisible(false);
-
-        utubeLabel.setVisible(false);
-        utubeNote.setVisible(false);
-        youTubeUrl.setVisible(false);
-
-        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
-        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
-        jScrollPane3.getVerticalScrollBar().setUnitIncrement(16);
-       
     }
 
     /**
@@ -151,9 +95,9 @@ public final class Ads extends javax.swing.JFrame {
         logo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         user_name = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        userLabel = new javax.swing.JLabel();
         generalerror = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        hostScrolBar = new javax.swing.JScrollPane();
         hostPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -245,17 +189,13 @@ public final class Ads extends javax.swing.JFrame {
         errorPasting2 = new javax.swing.JLabel();
         errorPasting3 = new javax.swing.JLabel();
         invalidcountry = new javax.swing.JLabel();
+        optionPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        createAd = new javax.swing.JButton();
+        editAd = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentsMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -283,8 +223,8 @@ public final class Ads extends javax.swing.JFrame {
         user_name.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         user_name.setText("user");
 
-        jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel7.setText("utilisateur");
+        userLabel.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        userLabel.setText("utilisateur");
 
         generalerror.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         generalerror.setText("general error message here");
@@ -297,27 +237,28 @@ public final class Ads extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(headerLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(headerLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(303, 303, 303)
-                        .addComponent(generalerror)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel34))
+                        .addContainerGap()
+                        .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(headerLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(303, 303, 303)
+                                .addComponent(generalerror)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel34))
+                            .addGroup(headerLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(130, 130, 130)
+                                .addComponent(comfirmation_message)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(headerLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(164, 164, 164)
-                        .addComponent(comfirmation_message)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(userLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(user_name, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(headerLayout.createSequentialGroup()
-                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(user_name)
-                .addGap(106, 106, 106))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,8 +270,8 @@ public final class Ads extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(headerLayout.createSequentialGroup()
                         .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(user_name, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(userLabel)
+                            .addComponent(user_name, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(comfirmation_message, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -341,9 +282,9 @@ public final class Ads extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        jScrollPane1.setAutoscrolls(true);
+        hostScrolBar.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        hostScrolBar.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        hostScrolBar.setAutoscrolls(true);
 
         hostPanel.setBackground(new java.awt.Color(241, 242, 240));
         hostPanel.setForeground(new java.awt.Color(107, 95, 95));
@@ -1127,23 +1068,57 @@ public final class Ads extends javax.swing.JFrame {
                         .addGap(142, 142, 142))))
         );
 
-        jScrollPane1.setViewportView(hostPanel);
+        hostScrolBar.setViewportView(hostPanel);
+
+        jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
+        jLabel2.setText("What do you want to do?");
+
+        createAd.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        createAd.setText("Create Ad For Kerawa");
+        createAd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createAdActionPerformed(evt);
+            }
+        });
+
+        editAd.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        editAd.setText("Edit My Existing Ad");
+        editAd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editAdActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout optionPanelLayout = new javax.swing.GroupLayout(optionPanel);
+        optionPanel.setLayout(optionPanelLayout);
+        optionPanelLayout.setHorizontalGroup(
+            optionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(optionPanelLayout.createSequentialGroup()
+                .addGroup(optionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(optionPanelLayout.createSequentialGroup()
+                        .addGap(438, 438, 438)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(optionPanelLayout.createSequentialGroup()
+                        .addGap(304, 304, 304)
+                        .addComponent(createAd, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(109, 109, 109)
+                        .addComponent(editAd, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        optionPanelLayout.setVerticalGroup(
+            optionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(optionPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(optionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(createAd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editAd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(80, 80, 80))
+        );
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("File");
-
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Open");
-        fileMenu.add(openMenuItem);
-
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Save");
-        fileMenu.add(saveMenuItem);
-
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Save As ...");
-        saveAsMenuItem.setDisplayedMnemonicIndex(5);
-        fileMenu.add(saveAsMenuItem);
 
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
@@ -1156,29 +1131,7 @@ public final class Ads extends javax.swing.JFrame {
 
         menuBar.add(fileMenu);
 
-        editMenu.setMnemonic('e');
-        editMenu.setText("Edit");
-
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Cut");
-        editMenu.add(cutMenuItem);
-
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Copy");
-        editMenu.add(copyMenuItem);
-
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Paste");
-        editMenu.add(pasteMenuItem);
-
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Delete");
-        editMenu.add(deleteMenuItem);
-
-        menuBar.add(editMenu);
-
         helpMenu.setMnemonic('h');
-        helpMenu.setText("Help");
 
         contentsMenuItem.setMnemonic('c');
         contentsMenuItem.setText("Contents");
@@ -1202,8 +1155,9 @@ public final class Ads extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(optionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(hostScrolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 1277, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -1211,8 +1165,10 @@ public final class Ads extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(740, Short.MAX_VALUE))
+                .addComponent(optionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(hostScrolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(570, Short.MAX_VALUE))
         );
 
         pack();
@@ -2772,8 +2728,8 @@ public final class Ads extends javax.swing.JFrame {
             if (imagesList.isEmpty()) {
                 Element imageTag = document.createElement("base64image");
 
-                    imageTag.appendChild(document.createTextNode("N/A"));
-                    ad.appendChild(imageTag);
+                imageTag.appendChild(document.createTextNode("N/A"));
+                ad.appendChild(imageTag);
             } else {
                 for (File imagesList1 : imagesList) {
 
@@ -2793,23 +2749,20 @@ public final class Ads extends javax.swing.JFrame {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(document);
-            
 
-            String name = "_"+enter_name+"("+catSubString+")";
-            String date = new SimpleDateFormat("yyyy-MM-dd hh-mm-ss'"+name+".xml'").format(new Date());
+            String name = "_" + enter_name + "(" + catSubString + ")";
+            String date = new SimpleDateFormat("yyyy-MM-dd hh-mm-ss'" + name + ".xml'").format(new Date());
 
-               
 //              StreamResult result = new StreamResult(desktop + File.separator+ date_time + "_" + enter_name + 
 //                      "_(" + catSubString.toLowerCase() + ").xml");
-              StreamResult result1 = new StreamResult(desktop + File.separator+ date);
-                transformer.transform(source, result1);
-                clearAllInput();
-                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/valid.png"));
-                Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                ImageIcon newIcon = new ImageIcon(ic);
-                JOptionPane.showMessageDialog(this, "Done. Your Document is found at "
-                        + desktop +File.separator+ date, "Thanks From Kerawa.com", 0, newIcon);
-
+            StreamResult result1 = new StreamResult(desktop + File.separator + date);
+            transformer.transform(source, result1);
+            clearAllInput();
+            ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/valid.png"));
+            Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+            ImageIcon newIcon = new ImageIcon(ic);
+            JOptionPane.showMessageDialog(this, "Done. Your Document is found at "
+                    + desktop + File.separator + date, "Thanks From Kerawa.com", 0, newIcon);
 
         } catch (IOException | ParserConfigurationException | DOMException | TransformerException | HeadlessException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -3599,6 +3552,38 @@ public final class Ads extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_dealer_nameMouseExited
 
+    private void createAdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAdActionPerformed
+        // TODO add your handling code here:
+        this.enter_name = showDialog();
+        if (enter_name.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please name can't be empty!!");
+        }else{
+            //here i hide some field not to be seen by users
+            userLabel.setVisible(true);
+            user_name.setVisible(true);
+            user_name.setText(enter_name);
+            hostScrolBar.setVisible(true);
+            optionPanel.setVisible(false);
+            
+            //here i create a folder on your desktop with the user given name
+             desktop = new File(System.getProperty("user.home")
+                + File.separator + "Desktop" + File.separator
+                + "Kerawa_Ads_By_" + enter_name + File.separator);
+            desktop.mkdir();
+        }
+        
+        
+    }//GEN-LAST:event_createAdActionPerformed
+
+    private void editAdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAdActionPerformed
+        // TODO add your handling code here:
+        //calling the AdEditor interface
+        AdEditor editor = new AdEditor();
+        editor.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_editAdActionPerformed
+
     //method helps to switch the different cities depending on the region selected
     private void getCountry(String str) {
         switch (str) {
@@ -3744,17 +3729,15 @@ public final class Ads extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField contact_telephone02;
     private javax.swing.JTextField contact_telephone03;
     private javax.swing.JMenuItem contentsMenuItem;
-    private javax.swing.JMenuItem copyMenuItem;
     private javax.swing.JComboBox country;
+    private javax.swing.JButton createAd;
     private javax.swing.JComboBox currencyTag;
-    private javax.swing.JMenuItem cutMenuItem;
     private javax.swing.JTextField dealer_name;
     private javax.swing.JTextField dealers_email;
-    private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JLabel desc;
     private javax.swing.JTextArea description;
+    private javax.swing.JButton editAd;
     private javax.swing.JButton editFile;
-    private javax.swing.JMenu editMenu;
     private javax.swing.JLabel emailvalidationerror;
     private javax.swing.JLabel error;
     private javax.swing.JLabel errorPasting1;
@@ -3768,6 +3751,7 @@ public final class Ads extends javax.swing.JFrame {
     private javax.swing.JPanel header;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JPanel hostPanel;
+    private javax.swing.JScrollPane hostScrolBar;
     private javax.swing.JPanel imagePanel;
     private javax.swing.JButton imageUpload01;
     private javax.swing.JButton imageUpload02;
@@ -3795,14 +3779,13 @@ public final class Ads extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
@@ -3823,12 +3806,9 @@ public final class Ads extends javax.swing.JFrame {
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JTextField mileAge;
     private javax.swing.JLabel nam;
-    private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem pasteMenuItem;
+    private javax.swing.JPanel optionPanel;
     private javax.swing.JFormattedTextField price;
     private javax.swing.JButton publish;
-    private javax.swing.JMenuItem saveAsMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
     private javax.swing.JLabel showAttachedFiles;
     private javax.swing.JTextField surfaceAreaTextField;
     private javax.swing.JLabel surfaceLabel;
@@ -3838,6 +3818,7 @@ public final class Ads extends javax.swing.JFrame {
     private javax.swing.JLabel teleleble2;
     private javax.swing.JLabel telephone03;
     private javax.swing.JTextField title;
+    private javax.swing.JLabel userLabel;
     private javax.swing.JLabel user_name;
     private javax.swing.JLabel utubeLabel;
     private javax.swing.JLabel utubeNote;
@@ -3851,6 +3832,61 @@ public final class Ads extends javax.swing.JFrame {
     public String showDialog() {
         String returnVal = JOptionPane.showInputDialog("Please writer name?");
         return returnVal;
+    }
+
+    public void hideField() {
+        userLabel.setVisible(false);
+        user_name.setVisible(false);
+        hostScrolBar.setVisible(false);
+        emailvalidationerror.setVisible(false);
+        publish.setVisible(false);
+        editFile.setVisible(false);
+        invalidcountry.setVisible(false);
+        errorPasting1.setVisible(false);
+        errorPasting2.setVisible(false);
+        errorPasting3.setVisible(false);
+
+        //this is the external form fields
+        surfaceerror.setVisible(false);
+        telelabel.setVisible(false);
+        contact_telephone.setVisible(false);
+        teleleble2.setVisible(false);
+        contact_telephone02.setVisible(false);
+        telephone03.setVisible(false);
+        contact_telephone03.setVisible(false);
+        error.setVisible(false);
+        errorPrice.setVisible(false);
+        generalerror.setVisible(false);
+        surfaceLabel.setVisible(false);
+        surfaceAreaTextField.setVisible(false);
+
+        carMileAgeLable.setVisible(false);
+        mileAge.setVisible(false);
+
+        jobSal.setVisible(false);
+        jobSalary.setVisible(false);
+
+        landUnitaryHost.setBackground(Color.getColor("#f1f2f0"));
+        landUnitaryHost.setVisible(false);
+
+        contactFormOptions.setVisible(false);
+        contactByEmail.setVisible(false);
+
+        attachedLabel.setVisible(false);
+        extensionNote.setVisible(false);
+
+        buttonAttactments.setVisible(false);
+        showAttachedFiles.setVisible(false);
+
+        addNewAttachments.setVisible(false);
+
+        utubeLabel.setVisible(false);
+        utubeNote.setVisible(false);
+        youTubeUrl.setVisible(false);
+
+        hostScrolBar.getVerticalScrollBar().setUnitIncrement(16);
+        
+
     }
 
 }

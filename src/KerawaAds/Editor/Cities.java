@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package kerawaads;
+package KerawaAds.Editor;
 
 /**
  *
@@ -19,17 +19,17 @@ public class Cities {
 
     public String cities_in_Congo_Brazza[] = new String[]{"Brazzaville", "Pointe Noire"};
 
-    String cities_Congo_Kinshasa[] = new String[]{"Boma", "Bukavu", "Goma",
+   public String cities_Congo_Kinshasa[] = new String[]{"Boma", "Bukavu", "Goma",
         "Kananga", "Kinshasa", "Kisangani", "Kolwezi", "Likasi",
         "Lubumbashi", "Mbuji-mayi", "Tshikapa"};
 
-    String cities_in_cote_dlvoire[] = new String[]{"Abidjan", "Agboville", "Bouake",
+  public  String cities_in_cote_dlvoire[] = new String[]{"Abidjan", "Agboville", "Bouake",
         "Grand Bassam", "Korhogo", "San Pedro", "Tieme", "Touba", "Yamoussoukro"};
 
-    String cities_in_Gabon[] = new String[]{"Koulamoutou", "Lambarene", "Libreville",
+   public String cities_in_Gabon[] = new String[]{"Koulamoutou", "Lambarene", "Libreville",
         "Maskuku", "Moanda", "Mouila", "Oyem", "Port Gentil", "Tchibanga"};
 
-    String cities_in_Senegal[] = new String[]{"Dakar", "Diourbel", "Guediawaye",
+   public String cities_in_Senegal[] = new String[]{"Dakar", "Diourbel", "Guediawaye",
         "Kaolack", "Kolda", "Louga", "Mbacke", "Mbour", "Pikine", "Rufisque",
         "Saint Louis", "Tambacounda", "Thies", "Touba", "Ziguinchor"};
     
