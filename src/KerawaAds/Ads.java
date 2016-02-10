@@ -12,9 +12,10 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -39,6 +40,8 @@ import org.w3c.dom.Element;
 public final class Ads extends javax.swing.JFrame {
 
     JFileChooser fileChooser = new JFileChooser();
+    File desktop = new File("");
+
     String enter_name = "";
     File fileSelected;
     Cities cities = new Cities();
@@ -59,8 +62,12 @@ public final class Ads extends javax.swing.JFrame {
         if (enter_name.isEmpty()) {
             this.enter_name = "anonyme";
         }
-
+        
         initComponents();
+        desktop = new File(System.getProperty("user.home")
+                    + File.separator + "Desktop" + File.separator
+                    + "Kerawa_Ads_By_"+ enter_name + File.separator);
+        desktop.mkdir();
         //here i disenable the copy and pasting functionality
         price.setTransferHandler(null);
         contact_telephone.setTransferHandler(null);
@@ -123,7 +130,7 @@ public final class Ads extends javax.swing.JFrame {
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
         jScrollPane3.getVerticalScrollBar().setUnitIncrement(16);
-
+       
     }
 
     /**
@@ -943,39 +950,36 @@ public final class Ads extends javax.swing.JFrame {
                             .addComponent(errorPrice)
                             .addGap(0, 0, Short.MAX_VALUE)))
                     .addGroup(hostPanelLayout.createSequentialGroup()
+                        .addGap(150, 150, 150)
                         .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(hostPanelLayout.createSequentialGroup()
-                                .addGap(150, 150, 150)
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel4))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(hostPanelLayout.createSequentialGroup()
                                 .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(hostPanelLayout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jLabel4))
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(hostPanelLayout.createSequentialGroup()
-                                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cat)
-                                            .addComponent(tLabel)
-                                            .addComponent(desc))
-                                        .addGap(37, 37, 37)
-                                        .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jScrollPane2)
-                                            .addComponent(categorylchoice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(31, 31, 31)
-                                        .addComponent(error))))
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(hostPanelLayout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(utubeNote))
-                            .addGroup(hostPanelLayout.createSequentialGroup()
-                                .addGap(248, 248, 248)
-                                .addComponent(jLabel15)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                    .addComponent(cat)
+                                    .addComponent(tLabel)
+                                    .addComponent(desc))
+                                .addGap(37, 37, 37)
+                                .addGroup(hostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane2)
+                                    .addComponent(categorylchoice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(31, 31, 31)
+                                .addComponent(error))))
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 1292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(hostPanelLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(utubeNote))
+                    .addGroup(hostPanelLayout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addComponent(jLabel15)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         hostPanelLayout.setVerticalGroup(
@@ -1194,8 +1198,13 @@ public final class Ads extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-            .addComponent(header, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2784,40 +2793,23 @@ public final class Ads extends javax.swing.JFrame {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(document);
-            StreamResult result;
+            
 
-            LocalDateTime timestap = LocalDateTime.now();
-            String time = timestap.toLocalTime().toString();
-            String date_time = timestap.toLocalDate() + "_" + time.subSequence(0, 8);
-            String fileName = date_time + "_" + enter_name + "_(" + catSubString.toLowerCase() + ")" + ".xml";
+            String name = "_"+enter_name+"("+catSubString+")";
+            String date = new SimpleDateFormat("yyyy-MM-dd hh-mm-ss'"+name+".xml'").format(new Date());
 
-            File desktop = new File(System.getProperty("user.home")
-                    + File.separator + "Desktop" + File.separator
-                    + "Kerawa_Ads_By_" + enter_name);
-            if (desktop.exists()) {
-
-                result = new StreamResult(desktop + File.separator + fileName);
-                transformer.transform(source, result);
+               
+//              StreamResult result = new StreamResult(desktop + File.separator+ date_time + "_" + enter_name + 
+//                      "_(" + catSubString.toLowerCase() + ").xml");
+              StreamResult result1 = new StreamResult(desktop + File.separator+ date);
+                transformer.transform(source, result1);
                 clearAllInput();
                 ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/valid.png"));
                 Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
                 ImageIcon newIcon = new ImageIcon(ic);
                 JOptionPane.showMessageDialog(this, "Done. Your Document is found at "
-                        + desktop + File.separator + fileName, "Thanks From Kerawa.com", 0, newIcon);
-//                System.exit(0);
-            } else {
+                        + desktop +File.separator+ date, "Thanks From Kerawa.com", 0, newIcon);
 
-                desktop.mkdir();
-                result = new StreamResult(desktop + File.separator + fileName);
-                transformer.transform(source, result);
-                clearAllInput();
-                ImageIcon icon = new ImageIcon(getClass().getResource("/KerawaAds/valid.png"));
-                Image ic = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-                ImageIcon newIcon = new ImageIcon(ic);
-                JOptionPane.showMessageDialog(this, "Done. Your Document is found at "
-                        + desktop + File.separator + fileName, "Thanks From Kerawa.com", 0, newIcon);
-//                System.exit(0);
-            }
 
         } catch (IOException | ParserConfigurationException | DOMException | TransformerException | HeadlessException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());

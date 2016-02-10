@@ -1,0 +1,1 @@
+kerawaads.Details
